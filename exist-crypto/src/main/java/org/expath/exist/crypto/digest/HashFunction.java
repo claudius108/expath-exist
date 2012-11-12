@@ -26,6 +26,7 @@ package org.expath.exist.crypto.digest;
  * @author Claudius Teodorescu <claudius.teodorescu@gmail.com>
  */
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -39,7 +40,9 @@ import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
 import org.exist.xquery.XPathException;
 import org.exist.xquery.XQueryContext;
+import org.exist.xquery.value.Base64BinaryValueType;
 import org.exist.xquery.value.BinaryValue;
+import org.exist.xquery.value.BinaryValueFromInputStream;
 import org.exist.xquery.value.FunctionParameterSequenceType;
 import org.exist.xquery.value.FunctionReturnSequenceType;
 import org.exist.xquery.value.IntegerValue;
@@ -90,7 +93,9 @@ public class HashFunction extends BasicFunction {
 			}
         } else if (inputType == 26 || inputType == 27) {//xs:base64Binary or xs:hexBinary
         	try {
-				resultBytes = Hash.hashBinary(((BinaryValue) args[0].itemAt(0)).getInputStream(), hashAlgorithm, provider);
+        		byte[] binary = (byte[]) ((BinaryValue) args[0].itemAt(0)).toJavaObject(byte[].class);
+        		BinaryValue data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(), new ByteArrayInputStream(binary));
+				resultBytes = Hash.hashBinary(data.getInputStream(), hashAlgorithm, provider);
 			} catch (Exception ex) {
 				throw new XPathException(ex.getMessage());
 			}
