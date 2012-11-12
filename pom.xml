@@ -52,4 +52,186 @@
 			<version>2.0-tech-preview</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xml-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>transform-docbook-docs</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>transform</goal>
+						</goals>
+						<configuration>
+							<forceCreation>true</forceCreation>
+							<transformationSets>
+								<transformationSet>
+									<dir>../../expath-specs/${project.artifactId}</dir>
+									<includes>
+										<include>${project.artifactId}.xml</include>
+									</includes>
+									<stylesheet>../utils/generate-xar-descriptors.xsl</stylesheet>
+									<parameters>
+										<parameter>
+											<name>module-version</name>
+											<value>${project.version}</value>
+										</parameter>
+										<parameter>
+											<name>eXist-main-class-name</name>
+											<value>${eXist-main-class-name}</value>
+										</parameter>
+									</parameters>
+								</transformationSet>
+							</transformationSets>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>net.sf.saxon</groupId>
+						<artifactId>Saxon-HE</artifactId>
+						<version>9.4</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.5.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/files/${project.artifactId}/</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<excludeTransitive>true</excludeTransitive>
+							<includeArtifactIds>${dependency-list}</includeArtifactIds>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target name="copy-module-jar" description="Copy module jar">
+								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
+								<copy file="${project.build.directory}/${project.artifactId}-${project.version}.jar" todir="${project.build.directory}/files/${project.artifactId}/"
+									overwrite="true" />
+								<!-- </target> -->
+								<!-- <target name="deploy-module-to-local-eXist-server" description="Deploy module jars and its dependencies to local 
+									eXist server"> -->
+								<!-- <echo>Deploy module jar and its dependencies to local eXist server...</echo> -->
+								<!-- <copy todir="/home/claudius/eXist/webapp/WEB-INF/expathrepo/${ant.project.name}-${module-version}" -->
+								<!-- overwrite="true"> -->
+								<!-- <fileset dir="${kuberam.temp.dir}/files"> -->
+								<!-- <include name="**/*.*" /> -->
+								<!-- </fileset> -->
+								<!-- </copy> -->
+								<!-- </target> -->
+								<!-- <target name="generate-xar" description="Generate xar archive"> -->
+								<echo>Making ${project.artifactId}-${project.version}.xar...</echo>
+								<!-- <xslt force="true" style="${kuberam.web.specs.dir}/utils/generate-module/generate-xar-descriptors.xsl" in="${kuberam.web.specs.dir}/${ant.project.name}/${ant.project.name}.xml" -->
+								<!-- out="${kuberam.temp.dir}/files/a.xml"> -->
+								<!-- <param name="module-version" expression="${module-version}" /> -->
+								<!-- <param name="eXist-main-class-name" expression="${eXist-main-class-name}" /> -->
+								<!-- </xslt> -->
+								<!-- <delete file="${kuberam.temp.dir}/files/a.xml" /> -->
+
+								<zip destfile="${project.build.directory}/expath-${project.artifactId}-${project.version}.xar">
+									<fileset dir="${project.build.directory}/files">
+										<include name="**/*.*" />
+										<exclude name="*-tests.jar" />
+									</fileset>
+								</zip>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>org.codehaus.mojo</groupId> -->
+			<!-- <artifactId>xml-maven-plugin</artifactId> -->
+			<!-- <version>1.0</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>transform-docbook-docs</id> -->
+			<!-- <phase>package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>transform</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <forceCreation>true</forceCreation> -->
+			<!-- <transformationSets> -->
+
+			<!-- <transformationSet> -->
+			<!-- <dir>testset</dir> -->
+			<!-- <includes> -->
+			<!-- <include>empty-document.xml</include> -->
+			<!-- </includes> -->
+			<!-- <stylesheet>xslt/docbook-elements-usage-analyzer.xsl</stylesheet> -->
+			<!-- <excludes> -->
+			<!-- <exclude>testset-definition.xlsx</exclude> -->
+			<!-- <exclude>UT/*.*</exclude> -->
+			<!-- </excludes> -->
+			<!-- </transformationSet> -->
+
+			<!-- <transformationSet> -->
+			<!-- <dir>testset</dir> -->
+			<!-- <stylesheet>xslt/dbk-to-oecd-doc.xsl</stylesheet> -->
+			<!-- <excludes> -->
+			<!-- <exclude>empty-document.xml</exclude> -->
+			<!-- <exclude>testset-definition.xlsx</exclude> -->
+			<!-- <exclude>UT/*.*</exclude> -->
+			<!-- <exclude>**/*.pdf</exclude> -->
+			<!-- <exclude>**/*.doc</exclude> -->
+			<!-- <exclude>**/*.png</exclude> -->
+			<!-- <exclude>**/out/*.xml</exclude> -->
+			<!-- <exclude>_ARTIFACTS/**/*.*</exclude> -->
+			<!-- <exclude>ENV/**/*.*</exclude> -->
+			<!-- </excludes> -->
+			<!-- </transformationSet> -->
+
+			<!-- <transformationSet> -->
+			<!-- <dir>testset</dir> -->
+			<!-- <includes> -->
+			<!-- <include>empty-document.xml</include> -->
+			<!-- </includes> -->
+			<!-- <stylesheet>xslt/oecd-elements-usage-analyzer.xsl</stylesheet> -->
+			<!-- <excludes> -->
+			<!-- <exclude>testset-definition.xlsx</exclude> -->
+			<!-- </excludes> -->
+			<!-- </transformationSet> -->
+
+			<!-- </transformationSets> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- <dependencies> -->
+			<!-- <dependency> -->
+			<!-- <groupId>net.sf.saxon</groupId> -->
+			<!-- <artifactId>Saxon-HE</artifactId> -->
+			<!-- <version>9.4</version> -->
+			<!-- </dependency> -->
+			<!-- </dependencies> -->
+			<!-- </plugin> -->
+		</plugins>
+	</build>
 </project>

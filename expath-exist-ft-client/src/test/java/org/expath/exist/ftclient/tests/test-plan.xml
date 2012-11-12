@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kert:test-plan xmlns="http://www.w3.org/1999/xhtml" xmlns:kert="http://kuberam.ro/ns/kert" xml:base=""
+  test-plan-version="0.4">
+  <kert:description>Test plan for FTP Client XQuery extension module of eXist XMLDB</kert:description>
+  <kert:version>0.3</kert:version>
+  <kert:results>
+    <!--start of standard results - do not remove them -->
+    <kert:result id="passed" icon-url="../resources/images/passed.png" font-color="white" background-color="green"
+      score="0">Passed</kert:result>
+    <kert:result id="failed" icon-url="../resources/images/failed.png" font-color="white" background-color="red"
+      score="0">Failed</kert:result>
+    <kert:result id="unfound" icon-url="" font-color="white" background-color="black" score="0">Unfound
+    </kert:result>
+    <kert:result id="undefined" icon-url="" font-color="white" background-color="black" score="0">Undefined
+      result token
+    </kert:result>
+    <!--end of standard results - do not remove them -->
+    <kert:result id="partial" icon-url="" font-color="white" background-color="yellow" score="0">Partial
+    </kert:result>
+    <kert:result id="unknown" icon-url="" font-color="black" background-color="white" score="0">Unknown
+    </kert:result>
+    <kert:result id="deprecated" icon-url="" font-color="white" background-color="green" score="0">Deprecated
+    </kert:result>
+    <kert:result id="timeout" icon-url="" font-color="white" background-color="green" score="0">Timeout
+    </kert:result>
+  </kert:results>
+  <kert:test id="1">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function list-resources(), anonymous FTP</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function list-resources() with an anonymous FTP connection.
+      The evaluation
+      of test is based on the listing of a directory having contents.
+      If list contains something (files or directories),
+      the test is passed.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/01.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/01.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="2">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function retrieve-resource(), anonymous FTP, binary file</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function retrieve-resource() for a binary file, with an
+      anonymous FTP
+      connection. The evaluation of test is based on the content of the file.
+      If the file exists and has content, the
+      test is passed. Note that this test depends of this file; in
+      case when that file will cease to exist on the remote
+      host, the test has to be modified
+      accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/02.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/02.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="3">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function store-resource(), anonymous FTP, binary file</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function store-resource() for a binary file,
+      with an anonymous FTP
+      connection.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/03.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/03.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="8">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function retrieve-resource(), anonymous FTP, text file</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function retrieve-resource() for a text file, with an
+      anonymous FTP
+      connection.
+      The evaluation of test is based on the content of the file. If the file exists
+      and has content, the test
+      is passed. Note that this test depends of this file; in
+      case when that file will cease to exist on server, the test
+      has to be modified
+      accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/08.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/08.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="7">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function store-resource(), anonymous FTP, text file</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function store-resource() for a text file,
+      with an anonymous FTP connection.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/07.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/07.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="4">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function list-resources(), non-anonymous FTP</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function list-resources() with a private key SFTP connection.
+      The evaluation
+      of test is based on the listing of a directory.
+      The test is considered as passed if this directory has contents.
+      In
+      case this content will have no contents at one moment in time, for various
+      reasons, the test has to be modified
+      accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/04.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/04.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="5">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function retrieve-resource(), non-anonymous FTP, binary file</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function retrieve-resource() for a binary file, with a
+      private key SFTP
+      connection.
+      The evaluation of test is based on the contents of the file. If the file exists
+      and has contents, the
+      test is passed. Note that this test depends of this file; in
+      case when that file will cease to exist on the remote
+      host, the test has to be modified
+      accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/05.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/05.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="9">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function retrieve-resource(), non-anonymous FTP, text file</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function retrieve-resource() for a text file, with a
+      private key SFTP
+      connection.
+      The evaluation of test is based on the contents of the file. If the file exists
+      and has contents, the
+      test is passed. Note that this test depends of this file; in
+      case when that file will cease to exist on server, the
+      test has to be modified
+      accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/09.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/09.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="6">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function store-resource(), non-anonymous FTP, binary file</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function store-resource() for a binary file,
+      with a private key SFTP
+      connection.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/06.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/06.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="10">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function store-resource(), non-anonymous FTP, binary file</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function store-resource() for a text file,
+      with a private key SFTP
+      connection.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/10.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/10.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="12">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function retrieve-resource(), anonymous FTP, binary file, no rights</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the error raising for function retrieve-resource() with a binary file
+      having no
+      read rigths, with an anonymous FTP connection.
+      The evaluation of test is based on the permissions of the file. If
+      the file exists
+      and logged user have no read rights, the test is passed. Note that this test depends
+      on this file;
+      in case when that file will cease to exist on server, the test has
+      to be modified accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/02.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/02.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="11">
+    <kert:author>Dan McCreary</kert:author>
+    <kert:title>Check installation of module</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies that the module is installed.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/11.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/11.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="13">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Error for list-resources(), anonymous FTP, wrong directory</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies raising of error when using the function list-resources() with an
+      anonymous FTP
+      connection in order to list a non-existent directory.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/13.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/13.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="14">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Error for list-resources(), non-anonymous FTP, wrong directory</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies raising of error when using the function list-resources() with a
+      non-anonymous
+      FTP connection in order to list a non-existent directory.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/14.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/14.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="15">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Error for list-resources(), non-anonymous FTP, no rights directory</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies raising of error when using the function list-resources() with a
+      anonymous FTP
+      connection in order to list a directory the user has no access.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/15.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/15.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="16">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Error for list-resources(), non-anonymous FTP, no rights directory</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies raising of error when using the function list-resources() with a
+      non-anonymous
+      FTP connection in order to list a directory the user has no access.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/16.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/16.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="17">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Error for retrieve-resource(), anonymous FTP, binary file, wrong name</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the error raising for function retrieve-resource() for a wrong name
+      of a binary
+      file, with an anonymous FTP connection.
+      The evaluation of test is based on the non-existence of the file name. If
+      the file name
+      does not exists, the test is passed. Note that this test depends on this file name;
+      in case when that
+      file name will start to exist on server, the test has to be modified
+      accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/17.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/17.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="18">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function retrieve-resource(), non-anonymous FTP, binary file, wrong name</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function retrieve-resource() for a wrong name
+      of a binary file, with an
+      non-anonymous FTP connection.
+      The evaluation of test is based on the non-existence of the file name. If the file
+      name
+      does not exists, the test is passed. Note that this test depends on this file name;
+      in case when that file name
+      will start to exist on server, the test has to be modified
+      accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/18.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/18.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="19">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function retrieve-resource(), non-anonymous FTP, binary file, no rights</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the error raising for function retrieve-resource() with a binary file
+      having no
+      read rigths, with a non-anonymous FTP connection.
+      The evaluation of test is based on the permissions of the file.
+      If the file exists
+      and logged user have no read rights, the test is passed. Note that this test depends
+      on this
+      file; in case when that file will cease to exist on server, the test has
+      to be modified accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/19.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/19.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="20">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function store-resource(), anonymous FTP, binary file, wrong path</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the error raising for function store-resource() for a binary file
+      stored with a
+      wrong path, with an anonymous FTP connection.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/20.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/20.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="21">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function store-resource(), anonymous FTP, binary file, no rights path</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the error raising for function store-resource() for a binary file
+      stored with a
+      no rights path, with an anonymous FTP connection.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/21.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/21.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="22">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Error for connection closed by server, anonymous FTP</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the error raising for an anonymous FTP connection
+      that is unexpectedly closed by
+      the server. In order to simulate the closing
+      of connection, function disconnect() in called before the function
+      list-resources(), which raises the error.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/22.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/22.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="23">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function delete-resource(), anonymous FTP, directory</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function delete-resource() for a directory, with an
+      anonymous FTP
+      connection. The evaluation of test is based on the existence of the directory.
+      If the directory exists, the test is
+      passed. Note that this test depends of this directory; in
+      case when that directory will cease to exist on the
+      remote host, the test has to be modified
+      accordingly.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/23.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/23.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:test id="24">
+    <kert:author>Claudius Teodorescu</kert:author>
+    <kert:title>Function delete-resource(), anonymous FTP, file</kert:title>
+    <kert:version>0.1</kert:version>
+    <kert:description>
+      This test verifies the function delete-resource() for a file, with an
+      anonymous FTP connection. The
+      evaluation of test is based on the existence of the file.
+      The tests generates itself a file (with
+      store-resource()), which is afterwards deleted.
+    </kert:description>
+    <kert:test-url>http://127.0.0.1:8080/rest//db/web-apps/tests/ft-client/tests/24.xql</kert:test-url>
+    <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/24.xql
+    </kert:source-url>
+    <kert:assertion>//result-token</kert:assertion>
+    <kert:timeout />
+    <kert:run-status timestamp="" />
+    <kert:development-status timestamp="" />
+    <kert:log />
+    <kert:loops-number />
+    <kert:total-test-time />
+    <kert:type>unattended</kert:type>
+    <kert:assertion-type>assert-xml</kert:assertion-type>
+  </kert:test>
+  <kert:traceability-matrix />
+  <kert:test-tree>
+    <ul id="data">
+      <li id="tree-11" title="Test 11">Check installation of module</li>
+      <li id="tree-1" title="Test 1">Function list-resources(), anonymous FTP</li>
+      <li id="tree-13" title="Test 13">Error for list-resources(), anonymous FTP, wrong directory</li>
+      <li id="tree-15" title="Test 15">Error for list-resources(), anonymous FTP, no rights directory</li>
+      <li id="tree-2" title="Test 2">Function retrieve-resource(), anonymous FTP, binary file</li>
+      <li id="tree-17" title="Test 17">Error for retrieve-resource(), anonymous FTP, binary file, wrong name</li>
+      <li id="tree-12" title="Test 12">Error for retrieve-resource(), anonymous FTP, binary file, no rights</li>
+      <li id="tree-8" title="Test 8">Function retrieve-resource(), anonymous FTP, text file</li>
+      <li id="tree-3" title="Test 3">Function store-resource(), anonymous FTP, binary file</li>
+      <li id="tree-20" title="Test 20">Function store-resource(), anonymous FTP, binary file, wrong path</li>
+      <li id="tree-21" title="Test 21">Function store-resource(), anonymous FTP, binary file, no rights path</li>
+      <li id="tree-7" title="Test 7">Function store-resource(), anonymous FTP, text file</li>
+      <li id="tree-23" title="Test 23">Function delete-resource(), anonymous FTP, directory</li>
+      <li id="tree-24" title="Test 24">Function delete-resource(), anonymous FTP, file</li>
+      <li id="tree-4" title="Test 4">Function list-resources(), non-anonymous FTP</li>
+      <li id="tree-14" title="Test 14">Error for list-resources(), non-anonymous FTP, wrong directory</li>
+      <li id="tree-16" title="Test 16">Error for list-resources(), non-anonymous FTP, no rights directory</li>
+      <li id="tree-5" title="Test 5">Function retrieve-resource(), non-anonymous FTP, binary file</li>
+      <li id="tree-18" title="Test 18">Error for function retrieve-resource(), non-anonymous FTP, binary file, wrong name</li>
+      <li id="tree-19" title="Test 19">Error for function retrieve-resource(), non-anonymous FTP, binary file, no rights</li>
+      <li id="tree-9" title="Test 9">Function retrieve-resource(), non-anonymous FTP, text file</li>
+      <li id="tree-6" title="Test 6">Function store-resource(), non-anonymous FTP, binary file</li>
+      <li id="tree-10" title="Test 10">Function store-resource(), non-anonymous FTP, text file</li>
+      <li id="tree-22" title="Test 22">Error for connection closed by server, anonymous FTP</li>
+    </ul>
+  </kert:test-tree>
+</kert:test-plan>

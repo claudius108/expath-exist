@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-plan>
+    <description>Test results for WebDAV client XQuery extension module of eXist XMLDB</description>
+    <results>
+	    <result xml:id="passed" id="passed" font-color="white" background-color="green" score="0">Passed</result>
+	    <result xml:id="partial" id="partial" font-color="white" background-color="yellow" score="0">Partial</result>
+	    <result xml:id="failed" id="failed" font-color="white" background-color="red" score="0">Failed</result>
+	    <result xml:id="unknown" id="unknown" font-color="black" background-color="white" score="0">Unknown</result>
+	    <result xml:id="deprecated" id="deprecated" font-color="white" background-color="green" score="0">Deprecated</result>
+	    <result xml:id="timeout" id="timeout" font-color="white" background-color="green" score="0">Timeout</result>
+	    <!--start of standard results - do not remove them-->
+	    <result xml:id="unfound" id="unfound" font-color="white" background-color="black" score="0">Unfound</result>
+	    <result xml:id="undefined" id="undefined" font-color="white" background-color="black" score="0">Undefined result token</result>
+	    <!--end of standard results - do not remove them-->	    
+    </results>
+    <test-unit id="1" xml:id="1">
+	    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/01.xql</unit-url>
+        <source-url>units/01.xql</source-url>
+        <description>List resources of root collection in eXist XMLDB.</description>
+	<evaluation>div[id = 'result']</evaluation>
+	<timeout></timeout>
+	<status timestamp=""/>
+	<log/>
+    </test-unit>
+    <test-unit id="2" xml:id="2">
+	    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/02.xql</unit-url>
+        <source-url>units/02.xql</source-url>
+        <description>Get resource.</description>
+	<evaluation>div[id = 'result']</evaluation>
+	<timeout></timeout>
+	<status timestamp=""/>
+	<log/>
+    </test-unit>
+    <test-unit id="3" xml:id="3">
+	    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/03.xql</unit-url>
+        <source-url>units/03.xql</source-url>
+        <description>Put resource.</description>
+	<evaluation>div[id = 'result']</evaluation>
+	<timeout></timeout>
+	<status timestamp=""/>
+	<log/>
+    </test-unit>
+    <test-unit id="4" xml:id="4">
+	    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/04.xql</unit-url>
+        <source-url>units/04.xql</source-url>
+        <description>Move resource.</description>
+	<evaluation>div[id = 'result']</evaluation>
+	<timeout></timeout>
+	<status timestamp=""/>
+	<log/>
+    </test-unit>
+    <test-unit id="5" xml:id="5">
+	    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://demo.danmccreary.com/rest/db/dma/apps/index.xq</unit-url>
+        <source-url>units/05.xql</source-url>
+	<description>Get Dan's demo apps page :)</description>
+	<evaluation>div[id='footer-text']</evaluation>
+	<timeout></timeout>
+	<status timestamp=""/>
+	<log/>
+    </test-unit>
+    <collections>
+	    <test-unit id="0" xml:id="0">
+		    <title>Test 1</title>
+		    <description>Preliminary test</description>		    
+		    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/01.xql</unit-url>
+		    <source-url>units/01.xql</source-url>
+		    <evaluation>div[id = 'result']</evaluation>
+		    <timeout></timeout>
+		    <status timestamp=""/>
+		    <log/>
+    		</test-unit>	    
+	    <collection id="col1">
+		    <title>Collection 1</title>
+		    <description>Test collection for eXist WebDAV module</description>
+		    <collection id="col1.1">
+			    <title>Collection 1.1</title>
+			    <description>General tests</description>
+			    <test-unit id="1" xml:id="1">
+				    <title>Test 1</title>
+				    <description>List resources of root collection in eXist XMLDB</description>		    
+				    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/01.xql</unit-url>
+				    <source-url>units/01.xql</source-url>
+				    <evaluation>div[id = 'result']</evaluation>
+				    <timeout></timeout>
+				    <status timestamp=""/>
+				    <log/>
+			    </test-unit>			    			    
+		    </collection>			    
+		    <collection id="col1.2">
+			    <title>Collection 1.2</title>
+			    <description>Tests for operations on files</description>
+			    <test-unit id="2" xml:id="2">
+				    <title>Test 2</title>
+				    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/02.xql</unit-url>
+				    <source-url>units/02.xql</source-url>
+				    <description>Get resource.</description>
+				    <evaluation>div[id = 'result']</evaluation>
+				    <timeout></timeout>
+				    <status timestamp=""/>
+				    <log/>
+			    </test-unit>
+			    <test-unit id="3" xml:id="3">
+				    <title>Test 3</title>
+				    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/03.xql</unit-url>
+				    <source-url>units/03.xql</source-url>
+				    <description>Put resource.</description>
+				    <evaluation>div[id = 'result']</evaluation>
+				    <timeout></timeout>
+				    <status timestamp=""/>
+				    <log/>
+			    </test-unit>
+			    <test-unit id="4" xml:id="4">
+				    <title>Test 4</title>
+				    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/04.xql</unit-url>
+				    <source-url>units/04.xql</source-url>
+				    <description>Move resource</description>
+				    <evaluation>div[id = 'result']</evaluation>
+				    <timeout></timeout>
+				    <status timestamp=""/>
+				    <log/>
+			    </test-unit>
+		    </collection>		    
+	    </collection>
+	    <collection id="col2">
+		    <title>Collection 2</title>
+		    <description>Test collection for eXist FTP module</description>
+			    <test-unit id="5" xml:id="5">
+				    <title>Test 5</title>
+				    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/02.xql</unit-url>
+				    <source-url>units/02.xql</source-url>
+				    <description>List resources</description>
+				    <evaluation>div[id = 'result']</evaluation>
+				    <timeout></timeout>
+				    <status timestamp=""/>
+				    <log/>
+			    </test-unit>
+			    <test-unit id="6" xml:id="6">
+				    <title>Test 6</title>
+				    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://89.33.60.139:8080/tests/webdav-client/units/03.xql</unit-url>
+				    <source-url>units/03.xql</source-url>
+				    <description>Get resource.</description>
+				    <evaluation>div[id = 'result']</evaluation>
+				    <timeout></timeout>
+				    <status timestamp=""/>
+				    <log/>
+			    </test-unit>
+	    </collection>
+	    <collection id="col3">
+		    <title>Collection 3</title>
+		    <description>Miscellaneous tests</description>
+			    <test-unit id="7" xml:id="7">
+				    <title>Test 7</title>
+				    <unit-url>http://89.33.60.139/tests/proxy.php?url=http://demo.danmccreary.com/rest/db/dma/apps/index.xq</unit-url>
+				    <source-url>units/05.xql</source-url>
+				    <description>Get Dan's demo apps page :)</description>
+				    <evaluation>div[id='footer-text']</evaluation>
+				    <timeout></timeout>
+				    <status timestamp=""/>
+					<log/>
+			    </test-unit>		    
+	    </collection>
+    </collections>
+    <test-tree>
+	    <ul id="data" style="display: none;">
+		    <li id="1" title="Test 1">Preliminary test</li>	    
+		    <li id="id0xa3d9f760" class="folder" title="Collection 1">Test collection for eXist WebDAV module
+			    <ul>Test collection for eXist WebDAV module
+				    <li id="id0xa3d9f820" class="folder" title="Collection 1.1">General tests
+					    <ul>General tests
+						    <li id="id0xa3d9f900" title="Test 1">List resources of root collection in eXist XMLDB</li>			    			    
+					    </ul>
+				    </li>			    
+				    <li id="id0xa3d9fb80" class="folder" title="Collection 1.2">Tests for operations on files
+					    <ul>
+						    <li id="id0xa3d9fc60" title="Test 2">Get resource.</li>
+						    <li id="id0xa3d9fee0" title="Test 3">Put resource.</li>
+						    <li id="id0xa3da7640" title="Test 4">Move resource</li>
+					    </ul>
+				    </li>		    
+			    </ul>
+		    </li>
+		    <li id="id0xa3dbf1a0" class="folder" title="Collection 2">Test collection for eXist FTP module
+			    <ul>
+				    <li id="id0xa3dbf2a0" title="Test 5">List resources</li>
+				    <li id="id0xa3dbf660" title="Test 6">Get resource.</li>
+			    </ul>
+		    </li>
+		    <li id="id0xa3dbf9c0" class="folder" title="Collection 3">Miscellaneous tests
+			    <ul>
+				    <li id="id0xa3dbfae0" title="Test 7">Get Dan's demo apps page :)</li>		    
+			    </ul>
+		    </li>
+    		</ul>	    
+    </test-tree>
+</test-plan>

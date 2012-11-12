@@ -1,50 +1,45 @@
 <?xml version="1.0"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
-		<groupId>org.expath</groupId>
-		<artifactId>expath-modules</artifactId>
+		<groupId>org.expath.exist</groupId>
+		<artifactId>expath-exist</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>org.expath.crypto</groupId>
-	<artifactId>expath-ft-client</artifactId>
+
+	<artifactId>expath-exist-ft-client</artifactId>
 	<version>1.1.2</version>
-	<name>expath-ft-client</name>
+	<name>eXist wrapper for EXPath File Transfer Client module</name>
 	<url>http://expath.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>exist-db-repo</id>
-			<url>http://cloud1.cggh.org/maven2/</url>
-		</repository>
-	</repositories>
-
 	<dependencies>
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-pool</groupId>
-			<artifactId>commons-pool</artifactId>
-			<version>1.5.6</version>
-		</dependency>
-		<dependency>
-			<groupId>xmldb</groupId>
-			<artifactId>xmldb-api</artifactId>
-			<version>20021118</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.1</version>
+			<groupId>org.expath.modules</groupId>
+			<artifactId>expath-ft-client</artifactId>
+			<version>1.1.2</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xml-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>

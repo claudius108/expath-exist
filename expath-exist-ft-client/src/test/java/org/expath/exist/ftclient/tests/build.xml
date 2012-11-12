@@ -1,0 +1,20 @@
+<project name="teian" basedir="." default="build">
+	<property file="../../commons/workspace.properties" />
+	<property name="project.dir" value="${kuberam.web-apps.dir}/tests/expath-ft-client" />
+
+	<target name="clean" description="Clean up">
+		<echo>Cleaning up...</echo>
+		<delete>
+			<fileset dir="${kuberam.temp.dir}" />
+		</delete>
+	</target>
+				
+	<target name="generate-test-plan.html" description="Generate the test-plan file" depends="clean">
+		<echo>Generating test-plan.html...</echo>
+		<xslt in="${project.dir}/test-plan.xml" destdir="." out="${project.dir}/test-plan.html" style="${kuberam.web-apps.dir}/utils/kert/resources/xsl/generate-tests-presentation.xsl" />
+	</target>
+
+	<target name="build" depends="generate-test-plan.html" description="Build project">
+
+	</target>
+</project>
