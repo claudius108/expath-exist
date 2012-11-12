@@ -69,7 +69,11 @@ public class EncryptionFunctions extends BasicFunction {
 
             if ("encrypt".equals(functionName)) {
                 if ("symmetric".equals(args[1].getStringValue())) {
-                    result = SymmetricEncryption.encryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue());
+                    try {
+						result = SymmetricEncryption.encryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue());
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
                 } else if ("asymmetric".equals(args[1].getStringValue())) {
                     
                 } else {
@@ -77,7 +81,11 @@ public class EncryptionFunctions extends BasicFunction {
                 }
             } else if("decrypt".equals(functionName)) {
                 if ("symmetric".equals(args[1].getStringValue())) {
-                    result = SymmetricEncryption.decryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue());
+                    try {
+						result = SymmetricEncryption.decryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue());
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
                 } else if ("asymmetric".equals(args[1].getStringValue())) {
 
                 } else {
