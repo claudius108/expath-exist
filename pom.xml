@@ -14,13 +14,6 @@
 		<module>expath-exist-ft-client</module>
 	</modules>
 
-	<repositories>
-		<repository>
-			<id>exist-db-repo</id>
-			<url>http://cloud1.cggh.org/maven2/</url>
-		</repository>
-	</repositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>log4j</groupId>
