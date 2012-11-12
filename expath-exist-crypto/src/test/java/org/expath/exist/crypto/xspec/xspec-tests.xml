@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:scenario label="when capitalising a string">
+  <x:context href="source/test.xml" select="/doc/body/p[1]" />
+
+  <x:call function="eg:capital-case">
+    <x:param select="'an example string'" />
+    <x:param select="true()" />
+  </x:call>
+  <x:expect label="it should capitalise every word in the string" select="'An Example String'" />
+
+</x:scenario>

@@ -85,13 +85,13 @@ public class HashFunction extends BasicFunction {
     	String hashAlgorithm = args[1].getStringValue();
     	String provider = args[2].getStringValue();
     	
-        if (inputType == 22) {//xs:string
+        if (inputType == Type.STRING) {//xs:string
         	try {
 				resultBytes = Hash.hashString(args[0].getStringValue(), hashAlgorithm, provider);
 			} catch (Exception ex) {
 				throw new XPathException(ex.getMessage());
 			}
-        } else if (inputType == 26 || inputType == 27) {//xs:base64Binary or xs:hexBinary
+        } else if (inputType == Type.BASE64_BINARY || inputType == Type.HEX_BINARY) {//xs:base64Binary or xs:hexBinary
         	try {
         		byte[] binary = (byte[]) ((BinaryValue) args[0].itemAt(0)).toJavaObject(byte[].class);
         		BinaryValue data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(), new ByteArrayInputStream(binary));
