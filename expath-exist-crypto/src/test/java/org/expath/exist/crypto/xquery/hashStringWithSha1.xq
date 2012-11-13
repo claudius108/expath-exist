@@ -2,7 +2,7 @@ xquery version "1.0";
 
 let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest/db", ""), '/')
 , $expected-result :=
-	<expected-result>715db0c75eefa3c787d9368546f08822f26336a5</expected-result>
+	<expected-result>cV2wx17vo8eH2TaFRvCIIvJjNqU=</expected-result>
 , $actual-result :=
 	<actual-result>
 		{crypto:hash("Short string for tests.", "SHA-1", "SUN")}

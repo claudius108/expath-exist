@@ -3,7 +3,7 @@ xquery version "1.0";
 let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest/db", ""), '/')
 let $input := util:binary-doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/keystore'))
 let $expected-result :=
-	<expected-result>dfb262341ca6db9d327b7694274e1169983748548fd37a89f0547f23525c9152</expected-result>
+	<expected-result>37JiNBym250ye3aUJ04RaZg3SFSP03qJ8FR/I1JckVI=</expected-result>
 let $actual-result :=
 	<actual-result>
 		{crypto:hash($input, "SHA-256", "SUN")}

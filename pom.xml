@@ -77,19 +77,24 @@
 							<forceCreation>true</forceCreation>
 							<transformationSets>
 								<transformationSet>
-									<dir>../../expath-specs/${project.artifactId}</dir>
+									<dir>../../expath-specs/${expath-spec-id}</dir>
 									<includes>
-										<include>${project.artifactId}.xml</include>
+										<include>${expath-spec-id}.xml</include>
 									</includes>
 									<stylesheet>../utils/generate-xar-descriptors.xsl</stylesheet>
 									<parameters>
 										<parameter>
-											<name>module-version</name>
+											<name>package-version</name>
 											<value>${project.version}</value>
 										</parameter>
 										<parameter>
-											<name>eXist-main-class-name</name>
-											<value>${eXist-main-class-name}</value>
+											<name>target-dir</name>
+											<value>target/files</value>
+										</parameter>										
+										
+										<parameter>
+											<name>package-main-class</name>
+											<value>${package-main-class}</value>
 										</parameter>
 									</parameters>
 								</transformationSet>
@@ -161,7 +166,7 @@
 								<!-- </xslt> -->
 								<!-- <delete file="${kuberam.temp.dir}/files/a.xml" /> -->
 
-								<zip destfile="${project.build.directory}/expath-${project.artifactId}-${project.version}.xar">
+								<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.xar">
 									<fileset dir="${project.build.directory}/files">
 										<include name="**/*.*" />
 										<exclude name="*-tests.jar" />

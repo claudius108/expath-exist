@@ -2,7 +2,7 @@ xquery version "1.0";
 
 let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest/db", ""), '/')
 , $expected-result :=
-	<expected-result>978318e98a2c8e8ed6eb454979707f3d</expected-result>
+	<expected-result>l4MY6Yosjo7W60VJeXB/PQ==</expected-result>
 , $private-key :=
 	util:binary-to-string(util:binary-doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/private-key.pem')))
 , $actual-result :=

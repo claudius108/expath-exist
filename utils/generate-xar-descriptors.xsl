@@ -3,8 +3,9 @@
 
 	<xsl:output method="xml" />
 
-	<xsl:param name="module-version" />
-	<xsl:param name="eXist-main-class-name" />
+	<xsl:param name="package-version" />
+	<xsl:param name="target-dir" />	
+	<xsl:param name="package-main-class" />
 
 	<xsl:template match="/">
 		<xsl:variable name="module-namespace">
@@ -20,9 +21,9 @@
 			<xsl:copy-of select="//element()[local-name() = 'author'][1]/element()[1]" />
 		</xsl:variable>
 
-		<xsl:result-document href="target/files/expath-pkg.xml">
+		<xsl:result-document href="{concat($target-dir, '/expath-pkg.xml')}">
 			<package xmlns="http://expath.org/ns/pkg" name="http://expath.org/lib/{$module-prefix}" abbrev="{concat('expath-', $module-prefix)}"
-				version="{$module-version}" spec="1.0">
+				version="{$package-version}" spec="1.0">
 				<title>
 					<xsl:value-of select="$spec-title" />
 				</title>
@@ -30,7 +31,7 @@
 			</package>
 		</xsl:result-document>
 
-		<xsl:result-document href="target/files/repo.xml">
+		<xsl:result-document href="{concat($target-dir, '/repo.xml')}">
 			<meta xmlns="http://exist-db.org/xquery/repo">
 				<description>
 					<xsl:value-of select="$spec-title" />
@@ -46,7 +47,7 @@
 			</meta>
 		</xsl:result-document>
 
-		<xsl:result-document href="target/files/exist.xml">
+		<xsl:result-document href="{concat($target-dir, '/exist.xml')}">
 			<package xmlns="http://exist-db.org/ns/expath-pkg">
 				<jar>
 					<xsl:value-of select="concat('expath-', $module-prefix, '.jar')" />
@@ -56,15 +57,15 @@
 						<xsl:value-of select="$module-namespace" />
 					</namespace>
 					<class>
-						<xsl:value-of select="concat('org.expath.exist.', $eXist-main-class-name)" />
+						<xsl:value-of select="$package-main-class" />
 					</class>
 				</java>
 			</package>
 		</xsl:result-document>
 
-		<xsl:result-document href="target/files/cxan.xml">
+		<xsl:result-document href="{concat($target-dir, '/cxan.xml')}">
 			<package xmlns="http://cxan.org/ns/package" id="{concat('expath-', $module-prefix, '-exist')}" name="http://expath.org/lib/{$module-prefix}"
-				version="{$module-version}">
+				version="{$package-version}">
 				<author id="{$author/element()/@id}">
 					<xsl:value-of select="$author" />
 				</author>

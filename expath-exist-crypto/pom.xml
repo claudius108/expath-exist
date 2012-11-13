@@ -10,14 +10,15 @@
 	</parent>
 
 	<artifactId>expath-exist-crypto</artifactId>
-	<version>0.2</version>
+	<version>0.2.3</version>
 	<name>eXist wrapper for EXPath Cryptographic module</name>
 	<url>http://expath.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<eXist-main-class-name>crypto.ExistExpathCryptoModule</eXist-main-class-name>
-		<dependency-list>expath-crypto</dependency-list>		
+		<package-main-class>org.expath.exist.crypto.ExistExpathCryptoModule</package-main-class>
+		<dependency-list>expath-crypto</dependency-list>
+		<expath-spec-id>crypto</expath-spec-id>		
 	</properties>
 
 	<dependencies>
