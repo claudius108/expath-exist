@@ -6,7 +6,7 @@
  *
  */
 
-package org.expath.exist.crypto;
+package org.expath.exist.crypto.encrypt;
 
 import org.apache.log4j.Logger;
 import org.exist.dom.QName;
@@ -23,6 +23,7 @@ import org.exist.xquery.value.FunctionReturnSequenceType;
 import org.exist.xquery.value.StringValue;
 import org.expath.crypto.ErrorMessages;
 import org.expath.crypto.encrypt.SymmetricEncryption;
+import org.expath.exist.crypto.ExistExpathCryptoModule;
 
 
 
@@ -74,7 +75,7 @@ public class EncryptionFunctions extends BasicFunction {
                     try {
 						result = SymmetricEncryption.encryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue(), args[4].getStringValue());
 					} catch (Exception ex) {
-						ex.printStackTrace();
+						throw new XPathException(ex.getMessage());
 					}
                 } else if ("asymmetric".equals(args[1].getStringValue())) {
                     
@@ -86,7 +87,7 @@ public class EncryptionFunctions extends BasicFunction {
                     try {
 						result = SymmetricEncryption.decryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue(), args[4].getStringValue());
 					} catch (Exception ex) {
-						ex.printStackTrace();
+						throw new XPathException(ex.getMessage());
 					}
                 } else if ("asymmetric".equals(args[1].getStringValue())) {
 
