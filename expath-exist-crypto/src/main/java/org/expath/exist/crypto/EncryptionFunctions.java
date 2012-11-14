@@ -42,7 +42,8 @@ public class EncryptionFunctions extends BasicFunction {
                                 new FunctionParameterSequenceType("data", Type.STRING, Cardinality.EXACTLY_ONE, "The data to be encrypted. This parameter can be of type xs:string, xs:base64Binary, or xs:hexBinary."),
                                 new FunctionParameterSequenceType("encryption-type", Type.STRING, Cardinality.EXACTLY_ONE, "The type of encryption. Legal values: 'symmetric', and 'asymmetric'."),
                                 new FunctionParameterSequenceType("secret-key", Type.STRING, Cardinality.EXACTLY_ONE, "The secret key used for encryption, as string."),
-                                new FunctionParameterSequenceType("cryptographic-algorithm", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic algorithm used for encryption.")
+                                new FunctionParameterSequenceType("cryptographic-algorithm", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic algorithm used for encryption."),
+                                new FunctionParameterSequenceType("provider", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic provider.")
                             },
                             new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE, "the encrypted data.")
                     ),
@@ -53,7 +54,8 @@ public class EncryptionFunctions extends BasicFunction {
                                 new FunctionParameterSequenceType("data", Type.STRING, Cardinality.EXACTLY_ONE, "The data to be decrypted."),
                                 new FunctionParameterSequenceType("decryption-type", Type.STRING, Cardinality.EXACTLY_ONE, "The type of decryption. Legal values: 'symmetric', and 'asymmetric'."),
                                 new FunctionParameterSequenceType("secret-key", Type.STRING, Cardinality.EXACTLY_ONE, "The secret key used for decryption, as string."),
-                                new FunctionParameterSequenceType("cryptographic-algorithm", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic algorithm used for decryption.")
+                                new FunctionParameterSequenceType("cryptographic-algorithm", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic algorithm used for decryption."),
+                                new FunctionParameterSequenceType("provider", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic provider.")
                             },
                             new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE, "the decrypted data.")
                     )
@@ -70,7 +72,7 @@ public class EncryptionFunctions extends BasicFunction {
             if ("encrypt".equals(functionName)) {
                 if ("symmetric".equals(args[1].getStringValue())) {
                     try {
-						result = SymmetricEncryption.encryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue());
+						result = SymmetricEncryption.encryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue(), args[4].getStringValue());
 					} catch (Exception ex) {
 						ex.printStackTrace();
 					}
@@ -82,7 +84,7 @@ public class EncryptionFunctions extends BasicFunction {
             } else if("decrypt".equals(functionName)) {
                 if ("symmetric".equals(args[1].getStringValue())) {
                     try {
-						result = SymmetricEncryption.decryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue());
+						result = SymmetricEncryption.decryptString(args[0].getStringValue(), args[2].getStringValue(), args[3].getStringValue(), args[4].getStringValue());
 					} catch (Exception ex) {
 						ex.printStackTrace();
 					}
