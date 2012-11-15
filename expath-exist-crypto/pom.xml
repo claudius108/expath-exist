@@ -16,7 +16,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<package-main-class>org.expath.exist.crypto.ExistExpathCryptoModule</package-main-class>
+		<java-package-name>crypto</java-package-name>
+		<java-package-main-class>org.expath.exist.crypto.ExistExpathCryptoModule</java-package-main-class>
 		<dependency-list>expath-crypto</dependency-list>
 		<expath-spec-id>crypto</expath-spec-id>		
 	</properties>
