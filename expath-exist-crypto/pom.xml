@@ -19,7 +19,9 @@
 		<java-package-name>crypto</java-package-name>
 		<java-package-main-class>org.expath.exist.crypto.ExistExpathCryptoModule</java-package-main-class>
 		<dependency-list>expath-crypto</dependency-list>
-		<expath-spec-id>crypto</expath-spec-id>		
+		<expath-spec-id>crypto</expath-spec-id>
+		<module-prefix>crypto</module-prefix>
+		<module-namespace>http://expath.org/ns/crypto</module-namespace>
 	</properties>
 
 	<dependencies>

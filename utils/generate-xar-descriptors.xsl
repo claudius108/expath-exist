@@ -3,17 +3,15 @@
 
 	<xsl:output method="xml" />
 
+	<xsl:param name="cxan.org-id" />
+	<xsl:param name="module-prefix" />
+	<xsl:param name="module-namespace" />
 	<xsl:param name="package-version" />
-	<xsl:param name="target-dir" />	
+	<xsl:param name="target-dir" />
 	<xsl:param name="package-main-class" />
+	<xsl:param name="jar-name" />
 
 	<xsl:template match="/">
-		<xsl:variable name="module-namespace">
-			<xsl:copy-of select="//element()[@id = 'module-namespace']" />
-		</xsl:variable>
-		<xsl:variable name="module-prefix">
-			<xsl:copy-of select="//element()[@id = 'module-prefix']" />
-		</xsl:variable>
 		<xsl:variable name="spec-title">
 			<xsl:copy-of select="concat('EXPath ', //element()[local-name() = 'title'])" />
 		</xsl:variable>
@@ -50,7 +48,7 @@
 		<xsl:result-document href="{concat($target-dir, '/exist.xml')}">
 			<package xmlns="http://exist-db.org/ns/expath-pkg">
 				<jar>
-					<xsl:value-of select="concat('expath-', $module-prefix, '.jar')" />
+					<xsl:value-of select="$jar-name" />
 				</jar>
 				<java>
 					<namespace>
@@ -66,7 +64,7 @@
 		<xsl:result-document href="{concat($target-dir, '/cxan.xml')}">
 			<package xmlns="http://cxan.org/ns/package" id="{concat('expath-', $module-prefix, '-exist')}" name="http://expath.org/lib/{$module-prefix}"
 				version="{$package-version}">
-				<author id="{$author/element()/@id}">
+				<author id="{$cxan.org-id}">
 					<xsl:value-of select="$author" />
 				</author>
 				<category id="libs">Libraries</category>

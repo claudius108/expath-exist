@@ -20,6 +20,8 @@
 		<java-package-main-class>org.expath.exist.ftclient.ExistExpathFTClientModule</java-package-main-class>
 		<dependency-list>expath-ft-client,jsch</dependency-list>
 		<expath-spec-id>ft-client</expath-spec-id>
+		<module-prefix>ft-client</module-prefix>
+		<module-namespace>http://expath.org/ns/ft-client</module-namespace>
 	</properties>
 
 	<dependencies>
