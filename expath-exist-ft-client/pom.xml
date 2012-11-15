@@ -16,6 +16,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java-package-name>ftclient</java-package-name>
+		<java-package-main-class>org.expath.exist.ftclient.ExistExpathFTClientModule</java-package-main-class>
+		<dependency-list>expath-ft-client,jsch</dependency-list>
+		<expath-spec-id>ft-client</expath-spec-id>
 	</properties>
 
 	<dependencies>
