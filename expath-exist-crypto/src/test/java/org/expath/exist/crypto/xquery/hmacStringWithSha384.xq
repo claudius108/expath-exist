@@ -1,15 +1,15 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest//db", ""), '/')
-, $expected-result :=
+import module namespace xut = "http://kuberam.ro/ns/xquery-unit-tests" at "../../xquery-unit-tests.xqm";
+
+let $private-key := util:binary-to-string(util:binary-doc(concat($xut:resources-collection, 'private-key.pem')))
+let $expected-result :=
 	<expected-result>RRirKZTmx+cG8EXvgrRnpYFPEPYXaZBirY+LFmiUBAK61LCryDsL4clFRG5/BcBr</expected-result>
-, $private-key :=
-	util:binary-to-string(util:binary-doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/private-key.pem')))
-, $actual-result :=
+let $actual-result :=
 	<actual-result>
 		{crypto:hmac("Short string for tests.", $private-key, "HmacSha384", "SunJCE")}
 	</actual-result>
-, $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
+let $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	
 
 return

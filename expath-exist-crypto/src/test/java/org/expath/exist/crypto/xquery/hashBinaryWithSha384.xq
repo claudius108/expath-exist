@@ -1,7 +1,8 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest//db", ""), '/')
-let $input := util:binary-doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/keystore'))
+import module namespace xut = "http://kuberam.ro/ns/xquery-unit-tests" at "../../xquery-unit-tests.xqm";
+
+let $input := util:binary-doc(concat($xut:resources-collection, 'keystore'))
 let $expected-result :=
 	<expected-result>DcQ3caBftiQCIQn96Pr8PC2vzs17Re0tZ8/CZnOoucu/N+818uqAXxR7l9oxYgoW</expected-result>
 let $actual-result :=

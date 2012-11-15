@@ -1,11 +1,13 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest//db", ""), '/')
+import module namespace xut = "http://kuberam.ro/ns/xquery-unit-tests" at "../../xquery-unit-tests.xqm";
+
+let $input := doc(concat($xut:resources-collection, 'doc-1.xml'))
 let $expected-result :=
 	<expected-result>xMpCOKC5I4INzFCab3WEmw==</expected-result>
 let $actual-result :=
 	<actual-result>
-		{crypto:hash(doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/doc-1.xml'))/*/*[1], "MD5", "SUN")}
+		{crypto:hash($input/*/*[1], "MD5", "SUN")}
 	</actual-result>	
 let $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	

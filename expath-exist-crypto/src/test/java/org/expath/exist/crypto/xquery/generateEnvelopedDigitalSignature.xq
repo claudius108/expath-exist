@@ -1,18 +1,19 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest//db", ""), '/')
+import module namespace xut = "http://kuberam.ro/ns/xquery-unit-tests" at "../../xquery-unit-tests.xqm";
+
 let $expected-result :=
 	<expected-result>/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9
 	xD7nN1kuFw==
 	</expected-result>
-let $sample-doc := doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/doc-1.xml'))
+let $sample-doc := doc(concat($xut:resources-collection, 'doc-1.xml'))
 , $certificate-details :=
 	<digital-certificate>
 		<keystore-type>JKS</keystore-type>
 		<keystore-password>ab987c</keystore-password>
 		<key-alias>eXist</key-alias>
 		<private-key-password>kpi135</private-key-password>
-		<keystore-uri>{concat(substring-before($script-collection, 'unit-tests/'), 'resources/keystore')}</keystore-uri>
+		<keystore-uri>{concat($xut:unit-tests-collection, 'keystore')}</keystore-uri>
 	</digital-certificate>
 , $actual-result :=
 	<actual-result>
