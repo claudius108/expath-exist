@@ -1,8 +1,8 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest/db", ""), '/')
-, $expected-result :=
-	<expected-result>+YpeZRBrctlL1xr6plZOScp/6ArUw3GihjtKys1e3qQ6/aWLFjoOFEfuiUJA3uLIkebH1OG+rDdM\r\nFZ0+/JFK2g==</expected-result>
+let $expected-result :=
+	<expected-result>+YpeZRBrctlL1xr6plZOScp/6ArUw3GihjtKys1e3qQ6/aWLFjoOFEfuiUJA3uLIkebH1OG+rDdM
+	FZ0+/JFK2g==</expected-result>
 , $actual-result :=
 	<actual-result>
 		{crypto:hash("Short string for tests.", "SHA-512", "SUN")}

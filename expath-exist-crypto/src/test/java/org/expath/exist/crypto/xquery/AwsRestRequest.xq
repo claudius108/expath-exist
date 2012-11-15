@@ -13,7 +13,7 @@ x-amz-meta-author:foo@bar.com
 , $private-key :='OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV'
 , $actual-result :=
 	<actual-result>
-		{crypto:hmac($string-to-hash, $private-key, "SHA-1", "base64")}
+		{crypto:hmac($string-to-hash, $private-key, "HmacSha1", "SunJCE")}
 	</actual-result>
 , $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	

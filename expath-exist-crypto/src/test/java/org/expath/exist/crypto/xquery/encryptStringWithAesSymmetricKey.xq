@@ -1,11 +1,11 @@
 xquery version "1.0";
 
 let $expected-result :=
-	<expected-result>195-222-168-136-219-30-67-109-140-47-163-70-57-42-195-86</expected-result>
+	<expected-result>222-157-20-54-132-99-46-30-73-43-253-148-61-155-86-141-51-56-40-42-31-168-189-56-236-102-58-237-175-171-9-87</expected-result>
 , $actual-result :=
 	<actual-result>
 		{
-			crypto:encrypt("<a>Test!</a>", "symmetric", "1234567890123456", "AES")				
+			crypto:encrypt("Short string for tests.", "symmetric", "1234567890123456", "AES", "SunJCE")				
 		}
 	</actual-result>
 , $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())

@@ -1,6 +1,6 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest/db", ""), '/')
+let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest//db", ""), '/')
 let $input := util:binary-doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/keystore'))
 let $expected-result :=
 	<expected-result>37JiNBym250ye3aUJ04RaZg3SFSP03qJ8FR/I1JckVI=</expected-result>

@@ -7,7 +7,7 @@ let $expected-result :=
 		{
 			util:catch(
 				"java.lang.Exception",
-				crypto:encrypt("&lt;a&gt;Test!&lt;/a&gt;", "symmetric", "12345678901234567", "AES"),
+				crypto:encrypt("&lt;a&gt;Test!&lt;/a&gt;", "symmetric", "12345678901234567", "AES", "SunJCE"),
 				<error>{substring-before($util:exception-message, ' [')}</error>
 			)				
 		}

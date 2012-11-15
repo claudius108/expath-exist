@@ -1,6 +1,6 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest/db", ""), '/')
+let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest//db", ""), '/')
 , $expected-result :=
 	<expected-result>l4MY6Yosjo7W60VJeXB/PQ==</expected-result>
 , $private-key :=

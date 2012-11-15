@@ -1,7 +1,6 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest/db", ""), '/')
-, $expected-result :=
+let $expected-result :=
 	<expected-result>use1oAoe8vIgnFgygz2OKw==</expected-result>
 , $actual-result :=
 	<actual-result>

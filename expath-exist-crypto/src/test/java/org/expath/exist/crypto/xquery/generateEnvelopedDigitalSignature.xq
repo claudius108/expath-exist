@@ -1,11 +1,11 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest/db", ""), '/')
-, $expected-result :=
+let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest//db", ""), '/')
+let $expected-result :=
 	<expected-result>/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9
 	xD7nN1kuFw==
 	</expected-result>
-, $sample-doc := doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/doc-1.xml'))
+let $sample-doc := doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/doc-1.xml'))
 , $certificate-details :=
 	<digital-certificate>
 		<keystore-type>JKS</keystore-type>
