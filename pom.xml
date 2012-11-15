@@ -90,8 +90,8 @@
 										<parameter>
 											<name>target-dir</name>
 											<value>target/files</value>
-										</parameter>										
-										
+										</parameter>
+
 										<parameter>
 											<name>package-main-class</name>
 											<value>${package-main-class}</value>
@@ -142,30 +142,18 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target name="copy-module-jar" description="Copy module jar">
+							<target>
 								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
 								<copy file="${project.build.directory}/${project.artifactId}-${project.version}.jar" todir="${project.build.directory}/files/${project.artifactId}/"
 									overwrite="true" />
-								<!-- </target> -->
-								<!-- <target name="deploy-module-to-local-eXist-server" description="Deploy module jars and its dependencies to local 
-									eXist server"> -->
-								<!-- <echo>Deploy module jar and its dependencies to local eXist server...</echo> -->
-								<!-- <copy todir="/home/claudius/eXist/webapp/WEB-INF/expathrepo/${ant.project.name}-${module-version}" -->
-								<!-- overwrite="true"> -->
-								<!-- <fileset dir="${kuberam.temp.dir}/files"> -->
-								<!-- <include name="**/*.*" /> -->
-								<!-- </fileset> -->
-								<!-- </copy> -->
-								<!-- </target> -->
-								<!-- <target name="generate-xar" description="Generate xar archive"> -->
+								<echo>Deploy module jar and its dependencies to local eXist server...</echo>
+								<!-- ${eXist.test.server.dir}/webapp/WEB-INF/expathrepo/${ant.project.name}-${module-version} -->
+								<copy todir="${eXist.test.server.dir}/lib/extensions" overwrite="true">
+									<fileset dir="${project.build.directory}/files/${project.artifactId}/">
+										<include name="**/*.jar" />
+									</fileset>
+								</copy>
 								<echo>Making ${project.artifactId}-${project.version}.xar...</echo>
-								<!-- <xslt force="true" style="${kuberam.web.specs.dir}/utils/generate-module/generate-xar-descriptors.xsl" in="${kuberam.web.specs.dir}/${ant.project.name}/${ant.project.name}.xml" -->
-								<!-- out="${kuberam.temp.dir}/files/a.xml"> -->
-								<!-- <param name="module-version" expression="${module-version}" /> -->
-								<!-- <param name="eXist-main-class-name" expression="${eXist-main-class-name}" /> -->
-								<!-- </xslt> -->
-								<!-- <delete file="${kuberam.temp.dir}/files/a.xml" /> -->
-
 								<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.xar">
 									<fileset dir="${project.build.directory}/files">
 										<include name="**/*.*" />
