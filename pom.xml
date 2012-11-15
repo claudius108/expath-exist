@@ -160,6 +160,7 @@
 										<exclude name="*-tests.jar" />
 									</fileset>
 								</zip>
+<!-- 								<antcall target="restart-exist-local-server" /> -->
 							</target>
 						</configuration>
 					</execution>
