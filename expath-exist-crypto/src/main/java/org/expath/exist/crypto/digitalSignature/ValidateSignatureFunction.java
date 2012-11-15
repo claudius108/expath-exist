@@ -108,8 +108,8 @@ public class ValidateSignatureFunction extends BasicFunction {
             //validate the signature
             Boolean isValid = false;
             try {
-//                isValid = ValidateXmlSignature.validate(inputDOMDoc);
-            	isValid = ValidateXmlSignature.validate((Document)args[0].itemAt(0));
+                isValid = ValidateXmlSignature.validate(inputDOMDoc);
+//            	isValid = ValidateXmlSignature.validate((Document)args[0].itemAt(0));
             } catch (Exception ex) {
                 throw new XPathException(ex.getMessage());
             }
