@@ -12,16 +12,11 @@ let $certificate-details :=
 		<private-key-password>kpi135</private-key-password>
 		<keystore-uri>{concat($resources-dir-path, 'keystore')}</keystore-uri>
 	</digital-certificate>
-	
-	
-return $input
-(:
-	
+let $signed-doc := crypto:generate-signature($input, "inclusive", "SHA1", "DSA_SHA1", "dsig", "enveloped")	
 let $actual-result :=
 	<actual-result>
 		{
-		let $signed-doc := crypto:generate-signature($input, "inclusive", "SHA1", "DSA_SHA1", "dsig", "enveloped")
-		return crypto:validate-signature($signed-doc)
+		crypto:validate-signature($signed-doc)
 		}
 	</actual-result>
 let $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
@@ -37,4 +32,4 @@ return
 		, $actual-result
 		)
 		}
-	</result>	:)
+	</result>
