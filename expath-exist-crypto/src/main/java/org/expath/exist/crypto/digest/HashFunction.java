@@ -85,7 +85,9 @@ public class HashFunction extends BasicFunction {
     	String hashAlgorithm = args[1].getStringValue();
     	String provider = args[2].getStringValue();
     	
-        if (inputType == Type.STRING) {//xs:string
+    	log.info("Claudius: " + inputType);
+    	
+        if (inputType == Type.STRING || inputType == Type.ELEMENT || inputType == Type.DOCUMENT) {//xs:string or document() or element()
         	try {
 				resultBytes = Hash.hashString(args[0].getStringValue(), hashAlgorithm, provider);
 			} catch (Exception ex) {
