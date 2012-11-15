@@ -31,6 +31,7 @@ import org.expath.exist.crypto.digest.HashFunction;
 import org.expath.exist.crypto.digest.HmacFunction;
 import org.expath.exist.crypto.digitalSignature.GenerateSignatureFunction;
 import org.expath.exist.crypto.digitalSignature.ValidateSignatureFunction;
+import org.expath.exist.crypto.encrypt.EncryptionFunctions;
 
 /**
  * Implements the module definition.
