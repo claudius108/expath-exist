@@ -19,7 +19,8 @@
 		<java-package-name>ftclient</java-package-name>
 		<java-package-main-class>org.expath.exist.ftclient.ExistExpathFTClientModule</java-package-main-class>
 		<dependency-list>expath-ft-client,jsch</dependency-list>
-		<expath-spec-id>ft-client</expath-spec-id>
+		<expath-spec-id>${ft-client-spec-id}</expath-spec-id>
+		<!-- TODO: to remove these next two properties -->
 		<module-prefix>ft-client</module-prefix>
 		<module-namespace>http://expath.org/ns/ft-client</module-namespace>
 	</properties>

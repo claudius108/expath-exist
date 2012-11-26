@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>ro.kuberam</groupId>
-		<artifactId>models</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<groupId>org.expath</groupId>
+		<artifactId>expath</artifactId>
+		<version>0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.expath.exist</groupId>
@@ -59,10 +59,10 @@
 			<version>2.0-tech-preview</version>
 		</dependency>
 	</dependencies>
-	
+
 	<properties>
 		<jar-name>${project.build.finalName}.jar</jar-name>
-	</properties>	
+	</properties>
 
 	<build>
 		<plugins>
@@ -98,7 +98,7 @@
 										<parameter>
 											<name>module-namespace</name>
 											<value>${module-namespace}</value>
-										</parameter>										
+										</parameter>
 										<parameter>
 											<name>package-version</name>
 											<value>${project.version}</value>
@@ -114,7 +114,7 @@
 										<parameter>
 											<name>jar-name</name>
 											<value>${jar-name}</value>
-										</parameter>										
+										</parameter>
 									</parameters>
 								</transformationSet>
 							</transformationSets>
@@ -193,7 +193,7 @@
 									<property name="eXist.test.server.admin-password" value="${eXist.test.server.admin-password}" />
 									<property name="source-folder" value="${basedir}/src/test/resources/org/expath/exist/${java-package-name}/tests/resources" />
 									<property name="target-collection" value="/web/tests/expath-${expath-spec-id}/resources" />
-								</ant>								
+								</ant>
 								<echo>Making ${project.build.finalName}-tests.xar...</echo>
 								<echo>Making ${basedir}-tests.xar...</echo>
 							</target>

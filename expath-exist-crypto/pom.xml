@@ -11,7 +11,7 @@
 
 	<artifactId>expath-exist-crypto</artifactId>
 	<version>0.2.3</version>
-	<name>eXist wrapper for EXPath Cryptographic module</name>
+	<name>eXist wrapper for EXPath Cryptographic library</name>
 	<url>http://expath.org</url>
 
 	<properties>
@@ -19,14 +19,15 @@
 		<java-package-name>crypto</java-package-name>
 		<java-package-main-class>org.expath.exist.crypto.ExistExpathCryptoModule</java-package-main-class>
 		<dependency-list>expath-crypto</dependency-list>
-		<expath-spec-id>crypto</expath-spec-id>
+		<expath-spec-id>${crypto-spec-id}</expath-spec-id>
+		<!-- TODO: to remove these next two properties -->
 		<module-prefix>crypto</module-prefix>
 		<module-namespace>http://expath.org/ns/crypto</module-namespace>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.expath.modules</groupId>
+			<groupId>org.expath.libs</groupId>
 			<artifactId>expath-crypto</artifactId>
 			<version>0.2.3</version>
 		</dependency>
