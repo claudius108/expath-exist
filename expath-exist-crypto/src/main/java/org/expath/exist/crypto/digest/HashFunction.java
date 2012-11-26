@@ -68,9 +68,9 @@ public class HashFunction extends BasicFunction {
                             new SequenceType[] {
                                 new FunctionParameterSequenceType("data", Type.ANY_TYPE, Cardinality.EXACTLY_ONE, "The data to be hashed."),
                                 new FunctionParameterSequenceType("algorithm", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic hashing algorithm."),
-                                new FunctionParameterSequenceType("provider", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic provider.")
+                                new FunctionParameterSequenceType("provider", Type.STRING, Cardinality.ZERO_OR_ONE, "The cryptographic provider's name. If the provider is not specified, the implementation will use the default provider.")
                             },
-                            new FunctionReturnSequenceType(Type.BYTE, Cardinality.ONE_OR_MORE, "resulting hash value.")
+                            new FunctionReturnSequenceType(Type.BYTE, Cardinality.ONE_OR_MORE, "resulting hash value, as base64 string.")
                             );
     
    public HashFunction(XQueryContext context, FunctionSignature signature) {
@@ -84,8 +84,6 @@ public class HashFunction extends BasicFunction {
     	int inputType = args[0].itemAt(0).getType();
     	String hashAlgorithm = args[1].getStringValue();
     	String provider = args[2].getStringValue();
-    	
-    	log.info("Claudius: " + inputType);
     	
         if (inputType == Type.STRING || inputType == Type.ELEMENT || inputType == Type.DOCUMENT) {//xs:string or document() or element()
         	try {

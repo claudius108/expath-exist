@@ -68,11 +68,11 @@ public class HmacFunction extends BasicFunction {
 							Cardinality.EXACTLY_ONE,
 							"The cryptographic hashing algorithm."),
 					new FunctionParameterSequenceType("provider", Type.STRING,
-							Cardinality.EXACTLY_ONE,
-							"The cryptographic provider's name."), },
+							Cardinality.ZERO_OR_ONE,
+							"The cryptographic provider's name. If the provider is not specified, the implementation will use the default provider."), },
 			new FunctionReturnSequenceType(Type.STRING,
 					Cardinality.EXACTLY_ONE,
-					"hash-based message authentication code."));
+					"hash-based message authentication code, as base64 string."));
 
 	public HmacFunction(XQueryContext context, FunctionSignature signature) {
 		super(context, signature);
