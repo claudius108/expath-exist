@@ -2,12 +2,13 @@ xquery version "1.0";
 
 import module namespace xut = "http://kuberam.ro/ns/xquery-unit-tests" at "../../xquery-unit-tests.xqm";
 
-let $private-key := util:binary-to-string(util:binary-doc(concat($xut:resources-collection, 'private-key.pem')))
+let $input := util:binary-doc(concat($xut:resources-collection, 'keystore'))
 let $expected-result :=
-	<expected-result>RRirKZTmx+cG8EXvgrRnpYFPEPYXaZBirY+LFmiUBAK61LCryDsL4clFRG5/BcBr</expected-result>
+	<expected-result>Be+hlGy9TNibbaE+6DA2gu6kNj2GS+7b4egFcJDMzQSFQiGgFtTh/mD61ta4pDvc+jqHFlqOyJLH
+	irkROd86Mw==</expected-result>
 let $actual-result :=
 	<actual-result>
-		{crypto:hmac("Short string for tests.", $private-key, "HMAC-SHA-384", ())}
+		{crypto:hash($input, "SHA-512", ())}
 	</actual-result>
 let $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	

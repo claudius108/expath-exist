@@ -4,10 +4,10 @@ import module namespace xut = "http://kuberam.ro/ns/xquery-unit-tests" at "../..
 
 let $private-key := util:binary-to-string(util:binary-doc(concat($xut:resources-collection, 'private-key.pem')))
 let $expected-result :=
-	<expected-result>RRirKZTmx+cG8EXvgrRnpYFPEPYXaZBirY+LFmiUBAK61LCryDsL4clFRG5/BcBr</expected-result>
+	<expected-result>55LyDq7GFnqijauK4CQWR4AqyZk=</expected-result>
 let $actual-result :=
 	<actual-result>
-		{crypto:hmac("Short string for tests.", $private-key, "HMAC-SHA-384", ())}
+		{crypto:hmac("Short string for tests.", $private-key, "HMAC-SHA-1", ())}
 	</actual-result>
 let $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	
