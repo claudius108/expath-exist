@@ -7,10 +7,11 @@
 		<groupId>org.expath.exist</groupId>
 		<artifactId>expath-exist</artifactId>
 		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>expath-exist-crypto</artifactId>
-	<version>0.2.3</version>
+	<version>0.2.4</version>
 	<name>eXist wrapper for EXPath Cryptographic library</name>
 	<url>http://expath.org</url>
 
@@ -29,7 +30,8 @@
 		<dependency>
 			<groupId>org.expath.libs</groupId>
 			<artifactId>expath-crypto</artifactId>
-			<version>0.2.3</version>
+			<version>0.2.4</version>
+			<type>jar</type>
 		</dependency>
 	</dependencies>
 
