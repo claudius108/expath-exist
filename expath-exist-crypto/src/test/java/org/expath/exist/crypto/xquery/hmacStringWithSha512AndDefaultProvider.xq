@@ -11,4 +11,14 @@ let $actual-result :=
 let $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	
 
-return $private-key
+return
+	<result>
+		{
+		(
+		if ($condition)
+			then <result-token>passed</result-token>
+			else <result-token>failed</result-token>
+		, $actual-result
+		)
+		}
+	</result>
