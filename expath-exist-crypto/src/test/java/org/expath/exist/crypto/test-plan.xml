@@ -11,10 +11,8 @@
 			score="0">Failed</kert:result>
 		<kert:result id="unfound" icon-url="" font-color="white" background-color="black" score="0">Unfound
 		</kert:result>
-		<kert:result id="undefined" icon-url="" font-color="white" background-color="black" score="0">Undefined
-			result
-			token
-		</kert:result>
+		<kert:result id="undefined" icon-url="" font-color="white" background-color="black" score="0">Undefined result
+			token</kert:result>
 		<!--end of standard results - do not remove them -->
 		<kert:result id="partial" icon-url="" font-color="white" background-color="yellow" score="0">Partial
 		</kert:result>
@@ -737,7 +735,8 @@
 		<kert:title>Hash binary with wrong algorithm, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary with a wrong algorithm and the default provider. Test will pass if the correct
-			error is thrown.</kert:description>
+			error is thrown.
+		</kert:description>
 		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq
 		</kert:source-url>
@@ -786,7 +785,7 @@
 		<kert:total-test-time />
 		<kert:type>unattended</kert:type>
 		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>	
+	</kert:test>
 	<kert:traceability-matrix />
 	<kert:test-tree>
 		<ul id="tree-data">
