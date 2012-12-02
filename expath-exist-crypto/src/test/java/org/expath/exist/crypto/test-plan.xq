@@ -62,7 +62,7 @@ return
         return
              <div class="test-summary">
                 <div class="test-summary-title">
-                    {$unit-test/kert:title} (status: <span class="test-status-{$unit-test-status}">{$unit-test-status}</span>)
+                    {$unit-test/kert:title} (status: <span class="test-status-{$unit-test-status}">{$unit-test-status/text()}</span>)
                     <span class="test-summary-operations"><a href="{$unit-test/kert:test-url}">Run test</a></span>
                 </div>
             <div class="test-summary-description">{$unit-test/kert:description}</div>             
