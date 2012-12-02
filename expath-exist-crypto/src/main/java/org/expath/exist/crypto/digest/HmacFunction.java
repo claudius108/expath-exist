@@ -14,19 +14,8 @@ package org.expath.exist.crypto.digest;
  * @author Claudius Teodorescu <claudius.teodorescu@gmail.com>
  */
 
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.util.Arrays;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-
 import org.apache.log4j.Logger;
 import org.exist.dom.QName;
-import org.exist.util.Base64Encoder;
 import org.exist.xquery.BasicFunction;
 import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
@@ -38,14 +27,10 @@ import org.exist.xquery.value.Sequence;
 import org.exist.xquery.value.SequenceType;
 import org.exist.xquery.value.StringValue;
 import org.exist.xquery.value.Type;
-import org.expath.crypto.ErrorMessages;
 import org.expath.crypto.digest.Hmac;
 import org.expath.exist.crypto.ExistExpathCryptoModule;
 
 public class HmacFunction extends BasicFunction {
-
-	private static final String[] supportedHashAlgorithms = { "HmacMD5",
-			"HmacSHA1", "HmacSHA256", "HmacSHA384", "HmacSHA512" };
 
 	private final static Logger log = Logger.getLogger(HmacFunction.class);
 
@@ -67,7 +52,9 @@ public class HmacFunction extends BasicFunction {
 					new FunctionParameterSequenceType("algorithm", Type.STRING,
 							Cardinality.EXACTLY_ONE,
 							"The cryptographic hashing algorithm."),
-					new FunctionParameterSequenceType("provider", Type.STRING,
+					new FunctionParameterSequenceType(
+							"provider",
+							Type.STRING,
 							Cardinality.ZERO_OR_ONE,
 							"The cryptographic provider's name. If the provider is not specified, the implementation will use the default provider."), },
 			new FunctionReturnSequenceType(Type.STRING,
