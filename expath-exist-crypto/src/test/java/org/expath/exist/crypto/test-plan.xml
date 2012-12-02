@@ -2,7 +2,7 @@
 <kert:test-plan xmlns="http://www.w3.org/1999/xhtml" xmlns:kert="http://kuberam.ro/ns/kert"
 	test-plan-version="0.4">
 	<kert:description>Test plan for cryptographic XQuery extension module of eXist XMLDB</kert:description>
-	<kert:version>0.2</kert:version>
+	<kert:version>0.3</kert:version>
 	<kert:results>
 		<!--start of standard results - do not remove them -->
 		<kert:result id="passed" icon-url="../resources/images/passed.png" font-color="white" background-color="green"
