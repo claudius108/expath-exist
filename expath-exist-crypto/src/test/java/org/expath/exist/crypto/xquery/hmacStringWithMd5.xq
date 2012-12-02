@@ -1,8 +1,6 @@
 xquery version "1.0";
 
-import module namespace xut = "http://kuberam.ro/ns/xquery-unit-tests" at "../../xquery-unit-tests.xqm";
-
-let $private-key := util:binary-to-string(util:binary-doc(concat($xut:resources-collection, 'private-key.pem')))
+let $private-key := util:binary-doc(concat('xmldb:', resolve-uri('../resources/private-key.pem', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/'))))
 let $expected-result :=
 	<expected-result>l4MY6Yosjo7W60VJeXB/PQ==</expected-result>
 let $actual-result :=
