@@ -1,16 +1,14 @@
 xquery version "1.0";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest//db", ""), '/')
 let $expected-result := <expected-result>true</expected-result>
-let $resources-dir-path := concat(substring-before($script-collection, 'unit-tests/'), 'resources/')
-let $input := doc(concat($resources-dir-path, 'doc-1.xml'))
+let $input := doc('../resources/doc-1.xml')
 let $certificate-details :=
 	<digital-certificate>
 		<keystore-type>JKS</keystore-type>
 		<keystore-password>ab987c</keystore-password>
 		<key-alias>eXist</key-alias>
 		<private-key-password>kpi135</private-key-password>
-		<keystore-uri>{concat($resources-dir-path, 'keystore')}</keystore-uri>
+		<keystore-uri>{concat('xmldb:', resolve-uri('../resources/keystore', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/')))}</keystore-uri>
 	</digital-certificate>
 let $signed-doc := crypto:generate-signature($input, "inclusive", "SHA1", "DSA_SHA1", "dsig", "enveloped")	
 let $actual-result :=

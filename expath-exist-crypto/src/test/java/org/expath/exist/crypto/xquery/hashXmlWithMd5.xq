@@ -2,7 +2,7 @@ xquery version "1.0";
 
 import module namespace xut = "http://kuberam.ro/ns/xquery-unit-tests" at "../../xquery-unit-tests.xqm";
 
-let $input := doc(concat($xut:resources-collection, 'doc-1.xml'))
+let $input := doc('../resources/doc-1.xml')
 let $expected-result :=
 	<expected-result>xMpCOKC5I4INzFCab3WEmw==</expected-result>
 let $actual-result :=
