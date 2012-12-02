@@ -33,7 +33,7 @@
 			'dsig' signature namespace prefix, and an X509
 			certificate.
 		</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/generateEnvelopedDigitalSignature.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/generateEnvelopedDigitalSignature.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/generateEnvelopedDigitalSignature.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -56,7 +56,7 @@
 			'dsig' signature namespace prefix, and an X509
 			certificate.
 		</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/validateEnvelopedDigitalSignature.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/validateEnvelopedDigitalSignature.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/validateEnvelopedDigitalSignature.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -78,7 +78,7 @@
 			<kert:a>Test!</kert:a>
 			' with AES algorithm and 128 key.
 		</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/encryptStringWithAesSymmetricKey.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/encryptStringWithAesSymmetricKey.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKey.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -98,7 +98,7 @@
 		<kert:description>Symmetric decryption of string '195-222-168-136-219-30-67-109-140-47-163-70-57-42-195-86' with AES
 			algorithm and 128 key.
 		</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/decryptStringWithAesSymmetricKey.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/decryptStringWithAesSymmetricKey.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKey.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -120,7 +120,7 @@
 			<kert:a>Test!</kert:a>
 			' with AES algorithm and 136 key (testing with a wrong key, to see the error message).
 		</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKey.xq
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/encryptStringWithAesWrongSymmetricKey.xq
 		</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKey.xq
 		</kert:source-url>
@@ -139,7 +139,7 @@
 		<kert:title>'SHA-512' HMAC for string</kert:title>
 		<kert:version>0.3</kert:version>
 		<kert:description>HMAC for a string by using 'SHA-512' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithSha512.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithSha512.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -157,7 +157,7 @@
 		<kert:title>'SHA-512' HMAC for string, default provider</kert:title>
 		<kert:version>0.3</kert:version>
 		<kert:description>HMAC for a string by using 'SHA-512' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithSha512AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithSha512AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -175,7 +175,7 @@
 		<kert:title>'MD5' hashing for string</kert:title>
 		<kert:version>0.3</kert:version>
 		<kert:description>Hashing a string by using 'MD5' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithMd5.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithMd5.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithMd5.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -193,7 +193,7 @@
 		<kert:title>'MD5' hashing for string, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a string by using 'MD5' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithMd5AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithMd5AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithMd5AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -211,7 +211,7 @@
 		<kert:title>'SHA-1' hashing for string</kert:title>
 		<kert:version>0.3</kert:version>
 		<kert:description>Hashing a string by using 'SHA-1' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithSha1.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithSha1.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha1.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -229,7 +229,7 @@
 		<kert:title>'SHA-1' hashing for string, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a string by using 'SHA-1' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithSha1AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithSha1AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha1AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -247,7 +247,7 @@
 		<kert:title>'MD5' HMAC for string</kert:title>
 		<kert:version>0.3</kert:version>
 		<kert:description>HMAC for a string by using 'MD5' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithMd5.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithMd5.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -265,7 +265,7 @@
 		<kert:title>'MD5' HMAC for string, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>HMAC for a string by using 'MD5' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithMd5AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithMd5AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -283,7 +283,7 @@
 		<kert:title>'SHA-1' HMAC for string</kert:title>
 		<kert:version>0.3</kert:version>
 		<kert:description>HMAC for a string by using 'SHA-1' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithSha1.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithSha1.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -301,7 +301,7 @@
 		<kert:title>'SHA-1' HMAC for string, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>HMAC for a string by using 'SHA-1' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithSha1AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithSha1AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -319,7 +319,7 @@
 		<kert:title>'SHA-256' HMAC for string</kert:title>
 		<kert:version>0.3</kert:version>
 		<kert:description>HMAC for a string by using 'SHA-256' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithSha256.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithSha256.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -337,7 +337,7 @@
 		<kert:title>'SHA-256' HMAC for string, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>HMAC for a string by using 'SHA-256' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithSha256AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithSha256AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -355,7 +355,7 @@
 		<kert:title>'SHA-384' HMAC for string</kert:title>
 		<kert:version>0.3</kert:version>
 		<kert:description>HMAC for a string by using 'SHA-384' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithSha384.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithSha384.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -373,7 +373,7 @@
 		<kert:title>'SHA-384' HMAC for string, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>HMAC for a string by using 'SHA-384' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hmacStringWithSha384AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hmacStringWithSha384AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -391,7 +391,7 @@
 		<kert:title>AWS REST request</kert:title>
 		<kert:version>0.3</kert:version>
 		<kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/AwsRestRequest.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/AwsRestRequest.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequest.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -410,7 +410,7 @@
 		<kert:version>0.1</kert:version>
 		<kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service with default provider
 		</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/AwsRestRequestWithDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/AwsRestRequestWithDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequestWithDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -428,7 +428,7 @@
 		<kert:title>'SHA-256' hashing for string</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a string by using 'SHA-256' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithSha256.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithSha256.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha256.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -446,7 +446,7 @@
 		<kert:title>'SHA-256' hashing for string, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a string by using 'SHA-256' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithSha256AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithSha256AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha256AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -464,7 +464,7 @@
 		<kert:title>'SHA-384' hashing for string</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a string by using 'SHA-384' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithSha384.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithSha384.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha384.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -482,7 +482,7 @@
 		<kert:title>'SHA-384' hashing for string, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a string by using 'SHA-384' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithSha384AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithSha384AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha384AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -500,7 +500,7 @@
 		<kert:title>'SHA-512' hashing for string</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a string by using 'SHA-512' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithSha512.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithSha512.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha512.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -518,7 +518,7 @@
 		<kert:title>'SHA-512' hashing for string, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a string by using 'SHA-512' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashStringWithSha512AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashStringWithSha512AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha512AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -536,7 +536,7 @@
 		<kert:title>'MD5' hashing for binary</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary by using 'MD5' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithMd5.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithMd5.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithMd5.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -554,7 +554,7 @@
 		<kert:title>'MD5' hashing for binary, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary by using 'MD5' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithMd5AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithMd5AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithMd5AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -572,7 +572,7 @@
 		<kert:title>'SHA-1' hashing for binary</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary by using 'SHA-1' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithSha1.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithSha1.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha1.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -590,7 +590,7 @@
 		<kert:title>'SHA-1' hashing for binary, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary by using 'SHA-1' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithSha1AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithSha1AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha1AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -608,7 +608,7 @@
 		<kert:title>'SHA-256' hashing for binary</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary by using 'SHA-256' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithSha256.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithSha256.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha256.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -626,7 +626,7 @@
 		<kert:title>'SHA-256' hashing for binary, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary by using 'SHA-256' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithSha256AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithSha256AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha256AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -644,7 +644,7 @@
 		<kert:title>'SHA-384' hashing for binary</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary by using 'SHA-384' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithSha384.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithSha384.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha384.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -662,7 +662,7 @@
 		<kert:title>'SHA-384' hashing for binary, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a string by using 'SHA-384' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithSha384AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithSha384AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha384AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -680,7 +680,7 @@
 		<kert:title>'SHA-512' hashing for binary</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary by using 'SHA-512' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithSha512.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithSha512.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha512.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -698,7 +698,7 @@
 		<kert:title>'SHA-512' hashing for binary, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary by using 'SHA-512' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithSha512AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithSha512AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha512AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -717,7 +717,7 @@
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing a binary with a wrong algorithm. Test will pass if the correct error is thrown.
 		</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -737,7 +737,7 @@
 		<kert:description>Hashing a binary with a wrong algorithm and the default provider. Test will pass if the correct
 			error is thrown.
 		</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -755,7 +755,7 @@
 		<kert:title>'MD5' hashing for XML file</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing an XML file with 'MD5' algorithm.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashXmlWithMd5.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashXmlWithMd5.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashXmlWithMd5.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
@@ -773,7 +773,7 @@
 		<kert:title>'MD5' hashing for XML file, default provider</kert:title>
 		<kert:version>0.1</kert:version>
 		<kert:description>Hashing an XML file with 'MD5' algorithm and the default provider.</kert:description>
-		<kert:test-url>http://127.0.0.1:8080/tests/crypto/unit-tests/hashXmlWithMd5AndDefaultProvider.xq</kert:test-url>
+		<kert:test-url>http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/unit-tests/hashXmlWithMd5AndDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashXmlWithMd5AndDefaultProvider.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
