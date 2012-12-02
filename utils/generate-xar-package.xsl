@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:spec="http://expath.org/ns/xmlspec" version="2.0">
 
 	<xsl:output method="xml" />
 
@@ -82,11 +82,36 @@
 			<xqdoc xmlns="http://www.xqdoc.org/1.0">
 				<control>
 					<date>2012-11-26T11:59:12.124+02:00</date>
-					<version><xsl:value-of select="$author" /></version>
+					<version>
+						<xsl:value-of select="$package-version" />
+					</version>
 				</control>
-
-
-
+				<module type="library">
+					<uri>
+						<xsl:value-of select="$module-namespace" />
+					</uri>
+					<name>
+						<xsl:value-of select="$spec-title" />
+					</name>
+					<comment>
+						<description>
+							<xsl:value-of select="concat('A ', //element()[@id = 'module-description'])" />
+						</description>
+						<since>eXist-1.5</since>
+					</comment>
+				</module>
+				<functions>
+					<xsl:for-each select="//spec:function">
+						<function>
+							<comment>
+								<description><xsl:value-of select="parent::*/preceding-sibling::*[local-name() = 'p']" /></description>
+								<param>$data The data to GZip</param>
+							</comment>
+							<name><xsl:value-of select="substring-after(., ':')" /></name>
+							<signature><xsl:value-of select="parent::*" /></signature>
+						</function>
+					</xsl:for-each>
+				</functions>
 			</xqdoc>
 		</xsl:result-document>
 
