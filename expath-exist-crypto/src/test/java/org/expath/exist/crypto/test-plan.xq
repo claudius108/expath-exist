@@ -53,7 +53,7 @@ return
         </style>
     </head>
     <body>
-        <h2>Test plan for managing content for Pearson Education</h2>
+        <h2>{$test-plan/kert:description}</h2>
         {
         for $unit-test-name in $unit-test-names
         let $unit-test := $test-plan//kert:test[ends-with(kert:test-url, $unit-test-name)]
