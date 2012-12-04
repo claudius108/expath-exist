@@ -12,7 +12,7 @@ let $expected-result :=
 let $private-key :='OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV'
 let $actual-result :=
 	<actual-result>
-		{crypto:hmac($string-to-hash, $private-key, "HMAC-SHA1", "SunJCE")}
+		{crypto:hmac($string-to-hash, $private-key, "HMAC-SHA-1", "SunJCE")}
 	</actual-result>
 let $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	
