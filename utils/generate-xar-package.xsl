@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:spec="http://expath.org/ns/xmlspec" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:spec="http://expath.org/ns/xmlspec"
+	version="2.0">
 
 	<xsl:output method="xml" />
 
@@ -42,7 +43,46 @@
 				<license>GNU-LGPL</license>
 				<copyright>true</copyright>
 				<type>library</type>
+				<target>
+					<xsl:value-of select="concat('/db/apps/expath/expath-', $module-prefix)" />
+				</target>
+				<prepare>pre-install.xql</prepare>
 			</meta>
+		</xsl:result-document>
+
+		<xsl:result-document href="{concat($target-dir, '/pre-install.xql')}" method="text">
+			xquery version "1.0";
+			
+			import module namespace xdb="http://exist-db.org/xquery/xmldb";
+			
+			(: The following external variables are set by the repo:deploy function :)
+			
+			(: file path pointing to the exist installation directory :)
+			declare variable $home external;
+			(: path to the directory containing the unpacked .xar package :)
+			declare variable $dir external;
+			(: the target collection into which the app is deployed :)
+			declare variable $target external;
+			
+			declare function local:mkcol-recursive($collection, $components) {
+			    if (exists($components)) then
+			        let $newColl := concat($collection, "/", $components[1])
+			        return (
+			            xdb:create-collection($collection, $components[1]),
+			            local:mkcol-recursive($newColl, subsequence($components, 2))
+			        )
+			    else
+			        ()
+			};
+			
+			(: Helper function to recursively create a collection hierarchy. :)
+			declare function local:mkcol($collection, $path) {
+			    local:mkcol-recursive($collection, tokenize($path, "/"))
+			};
+			
+			(: store the collection configuration :)
+			local:mkcol("/db/system/config", $target),
+			xdb:store-files-from-pattern(concat("/system/config", $target), $dir, "*.xconf")
 		</xsl:result-document>
 
 		<xsl:result-document href="{concat($target-dir, '/exist.xml')}">
@@ -104,11 +144,17 @@
 					<xsl:for-each select="//spec:function">
 						<function>
 							<comment>
-								<description><xsl:value-of select="parent::*/preceding-sibling::*[local-name() = 'p']" /></description>
+								<description>
+									<xsl:value-of select="parent::*/preceding-sibling::*[local-name() = 'p']" />
+								</description>
 								<param>$data The data to GZip</param>
 							</comment>
-							<name><xsl:value-of select="substring-after(., ':')" /></name>
-							<signature><xsl:value-of select="parent::*" /></signature>
+							<name>
+								<xsl:value-of select="substring-after(., ':')" />
+							</name>
+							<signature>
+								<xsl:value-of select="parent::*" />
+							</signature>
 						</function>
 					</xsl:for-each>
 				</functions>
