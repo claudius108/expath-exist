@@ -21,13 +21,24 @@
 		</xsl:variable>
 
 		<xsl:result-document href="{concat($target-dir, '/expath-pkg.xml')}">
-			<package xmlns="http://expath.org/ns/pkg" name="http://expath.org/lib/{$module-prefix}" abbrev="{concat('expath-', $module-prefix)}"
-				version="{$package-version}" spec="1.0">
-				<title>
-					<xsl:value-of select="$spec-title" />
-				</title>
-				<dependency processor="http://exist-db.org/" />
+			<package xmlns="http://expath.org/ns/pkg">
+				<module name="http://expath.org/lib/{$module-prefix}" version="{$package-version}">
+					<title>
+						<xsl:value-of select="$spec-title" />
+					</title>
+					<exist>
+						<java>
+							<namespace>
+								<xsl:value-of select="$module-namespace" />
+							</namespace>
+							<class>
+								<xsl:value-of select="$package-main-class" />
+							</class>
+						</java>
+					</exist>
+				</module>
 			</package>
+
 		</xsl:result-document>
 
 		<xsl:result-document href="{concat($target-dir, '/repo.xml')}">
@@ -46,59 +57,55 @@
 				<target>
 					<xsl:value-of select="concat('/db/apps/expath/expath-', $module-prefix)" />
 				</target>
-				<prepare>pre-install.xql</prepare>
+				<prepare />
+				<finish />
+				<permissions user="admin" password="" group="dba" mode="0775" />
 			</meta>
 		</xsl:result-document>
 
 		<xsl:result-document href="{concat($target-dir, '/pre-install.xql')}" method="text">
 			xquery version "1.0";
-			
+
 			import module namespace xdb="http://exist-db.org/xquery/xmldb";
-			
-			(: The following external variables are set by the repo:deploy function :)
-			
+
+			(: The following external
+			variables are set by the repo:deploy function :)
+
 			(: file path pointing to the exist installation directory :)
-			declare variable $home external;
-			(: path to the directory containing the unpacked .xar package :)
-			declare variable $dir external;
-			(: the target collection into which the app is deployed :)
+			declare
+			variable $home external;
+			(: path to the directory
+			containing the unpacked .xar package :)
+			declare variable $dir
+			external;
+			(: the target collection into which the app is
+			deployed :)
 			declare variable $target external;
-			
-			declare function local:mkcol-recursive($collection, $components) {
-			    if (exists($components)) then
-			        let $newColl := concat($collection, "/", $components[1])
-			        return (
-			            xdb:create-collection($collection, $components[1]),
-			            local:mkcol-recursive($newColl, subsequence($components, 2))
-			        )
-			    else
-			        ()
+
+			declare function
+			local:mkcol-recursive($collection, $components) {
+			if (exists($components)) then
+			let $newColl := concat($collection,
+			"/", $components[1])
+			return (
+			xdb:create-collection($collection, $components[1]),
+			local:mkcol-recursive($newColl,
+			subsequence($components, 2))
+			)
+			else
+			()
 			};
-			
+
 			(: Helper function to recursively create a collection hierarchy. :)
-			declare function local:mkcol($collection, $path) {
-			    local:mkcol-recursive($collection, tokenize($path, "/"))
+			declare
+			function local:mkcol($collection, $path) {
+			local:mkcol-recursive($collection, tokenize($path, "/"))
 			};
-			
-			(: store the collection configuration :)
+
+			(: store the
+			collection configuration :)
 			local:mkcol("/db/system/config", $target),
 			xdb:store-files-from-pattern(concat("/system/config", $target), $dir, "*.xconf")
-		</xsl:result-document>
-
-		<xsl:result-document href="{concat($target-dir, '/exist.xml')}">
-			<package xmlns="http://exist-db.org/ns/expath-pkg">
-				<jar>
-					<xsl:value-of select="$jar-name" />
-				</jar>
-				<java>
-					<namespace>
-						<xsl:value-of select="$module-namespace" />
-					</namespace>
-					<class>
-						<xsl:value-of select="$package-main-class" />
-					</class>
-				</java>
-			</package>
 		</xsl:result-document>
 
 		<xsl:result-document href="{concat($target-dir, '/cxan.xml')}">
@@ -116,49 +123,6 @@
 				<tag>library</tag>
 				<tag>exist</tag>
 			</package>
-		</xsl:result-document>
-
-		<xsl:result-document href="{concat($target-dir, '/expath-', $module-prefix, '-xqdoc.xml')}">
-			<xqdoc xmlns="http://www.xqdoc.org/1.0">
-				<control>
-					<date>2012-11-26T11:59:12.124+02:00</date>
-					<version>
-						<xsl:value-of select="$package-version" />
-					</version>
-				</control>
-				<module type="library">
-					<uri>
-						<xsl:value-of select="$module-namespace" />
-					</uri>
-					<name>
-						<xsl:value-of select="$spec-title" />
-					</name>
-					<comment>
-						<description>
-							<xsl:value-of select="concat('A ', //element()[@id = 'module-description'])" />
-						</description>
-						<since>eXist-1.5</since>
-					</comment>
-				</module>
-				<functions>
-					<xsl:for-each select="//spec:function">
-						<function>
-							<comment>
-								<description>
-									<xsl:value-of select="parent::*/preceding-sibling::*[local-name() = 'p']" />
-								</description>
-								<param>$data The data to GZip</param>
-							</comment>
-							<name>
-								<xsl:value-of select="substring-after(., ':')" />
-							</name>
-							<signature>
-								<xsl:value-of select="parent::*" />
-							</signature>
-						</function>
-					</xsl:for-each>
-				</functions>
-			</xqdoc>
 		</xsl:result-document>
 
 	</xsl:template>
