@@ -44,7 +44,7 @@ public class EncryptionFunctions extends BasicFunction {
                                 new FunctionParameterSequenceType("encryption-type", Type.STRING, Cardinality.EXACTLY_ONE, "The type of encryption. Legal values: 'symmetric', and 'asymmetric'."),
                                 new FunctionParameterSequenceType("secret-key", Type.STRING, Cardinality.EXACTLY_ONE, "The secret key used for encryption, as string."),
                                 new FunctionParameterSequenceType("cryptographic-algorithm", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic algorithm used for encryption."),
-                                new FunctionParameterSequenceType("provider", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic provider.")
+                                new FunctionParameterSequenceType("provider", Type.STRING, Cardinality.ZERO_OR_ONE, "The cryptographic provider.")
                             },
                             new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE, "the encrypted data.")
                     ),
@@ -56,7 +56,7 @@ public class EncryptionFunctions extends BasicFunction {
                                 new FunctionParameterSequenceType("decryption-type", Type.STRING, Cardinality.EXACTLY_ONE, "The type of decryption. Legal values: 'symmetric', and 'asymmetric'."),
                                 new FunctionParameterSequenceType("secret-key", Type.STRING, Cardinality.EXACTLY_ONE, "The secret key used for decryption, as string."),
                                 new FunctionParameterSequenceType("cryptographic-algorithm", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic algorithm used for decryption."),
-                                new FunctionParameterSequenceType("provider", Type.STRING, Cardinality.EXACTLY_ONE, "The cryptographic provider.")
+                                new FunctionParameterSequenceType("provider", Type.STRING, Cardinality.ZERO_OR_ONE, "The cryptographic provider.")
                             },
                             new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE, "the decrypted data.")
                     )
