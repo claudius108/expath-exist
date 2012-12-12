@@ -9,7 +9,7 @@
 			<li>crypto:hash()</li>
 			<li>crypto:hmac() (only for xs:string data for now)</li>
 			<li>crypto:encrypt() (only for xs:string data and symmetric encryption for now)</li>
-			<li>crypto:decrypt() (only for xs:string data for now)</li>
+			<li>crypto:decrypt() (only for xs:string data and symmetric decryption for now)</li>
 			<li>crypto:generate-signature() (only for XML data for now)</li>
 			<li>crypto:validate-signature() (only for XML data for now)</li>
 		</ul>
@@ -20,6 +20,6 @@
 		<p>For examples of usage, see section Unit Tests.</p>
 		<h3>Unit Tests</h3>
 		<p>Unit Tests can be found in /apps/expath-crypto/tests/unit-tests' collection (when this library is installed in eXist).</p>
-		<p>For a simple test runner, showing description and status (passed / failed) for each unit test, go <a href="tests/unit-tests/test-plan.xq">here</a>.</p>
+		<p>For a simple test runner, showing description and status (passed / failed) for each unit test, go <a href="tests/test-plan.xq">here</a>.</p>
 	</body>
 </html>
