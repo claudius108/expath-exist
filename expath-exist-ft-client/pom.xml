@@ -27,9 +27,10 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.expath.modules</groupId>
+			<groupId>org.expath.libs</groupId>
 			<artifactId>expath-ft-client</artifactId>
 			<version>1.1.2</version>
+			<type>jar</type>
 		</dependency>
 	</dependencies>
 
