@@ -16,11 +16,6 @@
 	<name>eXist wrappers for EXPath modules</name>
 	<url>http://expath.org</url>
 
-	<modules>
-		<module>expath-exist-crypto</module>
-		<module>expath-exist-ft-client</module>
-	</modules>
-
 	<dependencies>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -72,7 +67,7 @@
 				<version>1.0</version>
 				<executions>
 					<execution>
-						<id>generate-xar-descriptors</id>
+						<id>generate-xar-package</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>transform</goal>
@@ -85,7 +80,7 @@
 									<includes>
 										<include>${expath-spec-id}.xml</include>
 									</includes>
-									<stylesheet>../utils/generate-xar-descriptors.xsl</stylesheet>
+									<stylesheet>../utils/generate-xar/generate-xar-package.xsl</stylesheet>
 									<parameters>
 										<parameter>
 											<name>cxan.org-id</name>
@@ -105,7 +100,7 @@
 										</parameter>
 										<parameter>
 											<name>target-dir</name>
-											<value>target/files</value>
+											<value>target</value>
 										</parameter>
 										<parameter>
 											<name>java-package-main-class</name>
@@ -140,7 +135,7 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/files/${project.artifactId}/</outputDirectory>
+							<outputDirectory>${project.build.directory}/package-files/${project.artifactId}-lib/</outputDirectory>
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>false</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
@@ -162,40 +157,59 @@
 						<configuration>
 							<target>
 								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-								<copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${project.build.directory}/files/${project.artifactId}/"
+								<copy file="${project.build.directory}/${project.build.finalName}.jar"
+									tofile="${project.build.directory}/package-files/${project.artifactId}-lib/${project.artifactId}-lib.jar"
 									overwrite="true" />
-								<echo>Deploy module jar and its dependencies to local eXist server...</echo>
-								<!-- ${eXist.test.server.dir}/webapp/WEB-INF/expathrepo/${ant.project.name}-${module-version} -->
-								<copy todir="${eXist.test.server.dir}/lib/extensions" overwrite="true">
-									<fileset dir="${project.build.directory}/files/${project.artifactId}/">
-										<include name="**/*.jar" />
-									</fileset>
+
+								<echo>Copy icon...</echo>
+								<copy file="${basedir}/src/main/resources/icon.png" tofile="${project.build.directory}/package-files/icon.png"
+									overwrite="true" />
+
+								<echo>Copy XQuery unit tests and resources...</echo>
+								<copy file="../utils/generate-xar/test-plan.xq" todir="${project.build.directory}/package-files/tests"
+									overwrite="true" />
+								<copy todir="${project.build.directory}/package-files/tests" overwrite="true">
+									<fileset dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}" includes="*.*" />
 								</copy>
-								<echo>Making ${project.artifactId}-${project.version}.xar...</echo>
-								<zip destfile="${project.build.directory}/${project.build.finalName}.xar">
-									<fileset dir="${project.build.directory}/files">
-										<include name="**/*.*" />
-										<exclude name="*-tests.jar" />
+								<copy todir="${project.build.directory}/package-files/tests/unit-tests" overwrite="true">
+									<fileset dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}/xquery" />
+								</copy>
+								<copy todir="${project.build.directory}/package-files/tests/resources" overwrite="true">
+									<fileset dir="${basedir}/src/test/resources/org/expath/exist/${java-package-name}/tests/resources" />
+								</copy>
+
+								<echo>Making ${project.build.finalName}-lib.xar...</echo>
+								<zip destfile="${project.build.directory}/${project.artifactId}-lib-${project.version}.xar">
+									<fileset dir="${project.build.directory}/package-files">
+										<exclude name="tests/" />
 									</fileset>
+									<fileset dir="${project.build.directory}/library-package-descriptors" />
 								</zip>
-								<echo>Restarting eXist local instance...</echo>
+
+								<echo>Making ${project.build.finalName}-docs.xar...</echo>
+								<zip destfile="${project.build.directory}/${project.artifactId}-demos-${project.version}.xar">
+									<fileset dir="${project.build.directory}/package-files">
+										<exclude name="exist.xml" />
+										<exclude name="${project.artifactId}-lib/" />
+									</fileset>
+									<fileset dir="${project.build.directory}/application-package-descriptors" />
+									<zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" />
+								</zip>
+
+								<echo>Deploying files to eXist local folder...</echo>
+								<!-- <ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server"> -->
+								<!-- <property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}-lib/" /> -->
+								<!-- </ant> -->
+								<!-- <ant antfile="${local-eXist-management-build-file}" target="deploy-xars-to-local-eXist-server"> -->
+								<!-- <property name="source-folder" value="${project.build.directory}/" /> -->
+								<!-- </ant> -->
+
+								<echo>Deploying XQuery unit tests and resources to eXist local instance...</echo>
 								<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
-								<echo>Deploying XQuery tests to eXist local instance...</echo>
 								<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
-									<property name="eXist.test.server.admin-username" value="${eXist.test.server.admin-username}" />
-									<property name="eXist.test.server.admin-password" value="${eXist.test.server.admin-password}" />
-									<property name="source-folder" value="${basedir}/src/test/java/org/expath/exist/${java-package-name}/xquery" />
-									<property name="target-collection" value="/web/tests/expath-${expath-spec-id}/unit-tests" />
+									<property name="source-folder" value="${project.build.directory}/package-files/tests" />
+									<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" />
 								</ant>
-								<echo>Deploying resources for XQuery tests to eXist local instance...</echo>
-								<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
-									<property name="eXist.test.server.admin-username" value="${eXist.test.server.admin-username}" />
-									<property name="eXist.test.server.admin-password" value="${eXist.test.server.admin-password}" />
-									<property name="source-folder" value="${basedir}/src/test/resources/org/expath/exist/${java-package-name}/tests/resources" />
-									<property name="target-collection" value="/web/tests/expath-${expath-spec-id}/resources" />
-								</ant>
-								<echo>Making ${project.build.finalName}-tests.xar...</echo>
-								<echo>Making ${basedir}-tests.xar...</echo>
 							</target>
 						</configuration>
 					</execution>
