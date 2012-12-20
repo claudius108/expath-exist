@@ -1,4 +1,4 @@
-xquery version "1.0";
+xquery version "3.0";
 
 import module "http://expath.org/ns/crypto";
 
@@ -8,14 +8,15 @@ let $expected-result :=
 let $actual-result :=
 	<actual-result>
         {
-            util:catch(
-            "java.lang.Exception",
-            crypto:hash($input, "SHA-17", "SUN"),
-            <error>{$util:exception-message}</error>
-            )               
+	  try {
+	    crypto:hash($input, "SHA-17", "SUN")
+	  }
+	  catch * {
+	    <error>{$err:description}</error>
+	  }
         }	
 	</actual-result>
-let $condition := contains(normalize-space($actual-result/error/text()), normalize-space($expected-result/text()))
+let $condition := contains(normalize-space($actual-result/element()/text()), normalize-space($expected-result/element()/text()))
 	
 
 return
