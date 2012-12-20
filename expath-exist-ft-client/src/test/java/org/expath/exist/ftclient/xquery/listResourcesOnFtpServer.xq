@@ -1,4 +1,4 @@
-xquery version "1.0";
+xquery version "3.0";
 
 let $input := util:binary-doc(concat('xmldb:', resolve-uri('../resources/keystore', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/'))))
 

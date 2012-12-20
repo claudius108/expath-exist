@@ -1,4 +1,4 @@
-xquery version "1.0";
+xquery version "3.0";
 
 let $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
 , $expected-result :=

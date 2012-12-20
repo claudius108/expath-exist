@@ -1,4 +1,4 @@
-xquery version "1.0";
+xquery version "3.0";
 
 let $script-collection := concat(replace(replace(request:get-effective-uri(), "tests/(\w)+.xql$", ""), "/rest//db", ""), 'data/')
 , $private-key := util:binary-doc(concat($script-collection, 'Open-Private-Key'))

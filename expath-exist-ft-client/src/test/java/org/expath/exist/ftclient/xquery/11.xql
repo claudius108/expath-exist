@@ -1,4 +1,4 @@
-xquery version "1.0";
+xquery version "3.0";
 
 let $title := 'Get Information about the File Transfer Client Module Status'
 , $expected-result :=
