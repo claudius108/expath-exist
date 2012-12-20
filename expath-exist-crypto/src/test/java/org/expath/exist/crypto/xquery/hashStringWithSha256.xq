@@ -1,5 +1,7 @@
 xquery version "1.0";
 
+import module "http://expath.org/ns/crypto";
+
 let $expected-result :=
 	<expected-result>E+B0JzLRgxm2+1rB8qIZoQ2Qn+JLxwJCWORv46fKhMM=</expected-result>
 , $actual-result :=

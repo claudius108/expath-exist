@@ -1,5 +1,7 @@
 xquery version "1.0";
 
+import module "http://expath.org/ns/crypto";
+
 let $expected-result := <expected-result>true</expected-result>
 let $input := doc('../resources/doc-1.xml')
 let $certificate-details :=

@@ -1,5 +1,7 @@
 xquery version "1.0";
 
+import module "http://expath.org/ns/crypto";
+
 let $expected-result :=
 	<expected-result><error>Invalid AES key length: 17 bytes</error></expected-result>
 , $actual-result :=

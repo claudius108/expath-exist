@@ -1,5 +1,7 @@
 xquery version "1.0";
 
+import module "http://expath.org/ns/crypto";
+
 let $input := doc('../resources/doc-1.xml')
 let $expected-result :=
 	<expected-result>xMpCOKC5I4INzFCab3WEmw==</expected-result>

@@ -1,5 +1,7 @@
 xquery version "1.0";
 
+import module "http://expath.org/ns/crypto";
+
 let $string-to-hash := 'PUT
 c8fdb181845a4ca6b8fec737b3581d76
 text/html
