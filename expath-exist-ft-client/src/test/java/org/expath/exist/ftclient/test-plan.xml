@@ -12,7 +12,8 @@
 		<kert:result id="unfound" icon-url="" font-color="white" background-color="black" score="0">Unfound
 		</kert:result>
 		<kert:result id="undefined" icon-url="" font-color="white" background-color="black" score="0">Undefined
-			result token
+			result
+			token
 		</kert:result>
 		<!--end of standard results - do not remove them -->
 		<kert:result id="partial" icon-url="" font-color="white" background-color="yellow" score="0">Partial
@@ -29,12 +30,13 @@
 		<kert:title>Function list-resources(), FTP</kert:title>
 		<kert:version>0.2</kert:version>
 		<kert:description>
-			This test verifies the function list-resources() with an FTP connection. The evaluation of test is based on the listing
+			This test verifies the function list-resources() with an FTP connection. The evaluation of test is
+			based on the listing
 			of a directory having contents.
-			If list contains something (files or directories), the test is passed.
+			If list contains something (files or directories), the test is
+			passed.
 		</kert:description>
-		<kert:test-url>unit-tests/listResourcesOnFtpServer.xq
-		</kert:test-url>
+		<kert:test-url>unit-tests/listResourcesOnFtpServer.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/listResourcesOnFtpServer.xq
 		</kert:source-url>
 		<kert:assertion>//result-token</kert:assertion>
@@ -52,14 +54,16 @@
 		<kert:title>Function retrieve-resource(), FTP, binary file</kert:title>
 		<kert:version>0.2</kert:version>
 		<kert:description>
-			This test verifies the function retrieve-resource() for a binary file, with a FTP connection. The evaluation of test is
+			This test verifies the function retrieve-resource() for a binary file, with a FTP connection. The
+			evaluation of test is
 			based on the content of the file.
-			If the file exists and has content, the test is passed. Note that this test depends of this file; in case when that
+			If the file exists and has content, the test is passed. Note
+			that this test depends of this file; in case when that
 			file will cease to exist on the remote
-			host, the test has to be modified accordingly.
+			host, the test has to be
+			modified accordingly.
 		</kert:description>
-		<kert:test-url>unit-tests/retrieveResourceFromFtpServer.xq
-		</kert:test-url>
+		<kert:test-url>unit-tests/retrieveResourceFromFtpServer.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/retrieveResourceFromFtpServer.xq
 		</kert:source-url>
 		<kert:assertion>//result-token</kert:assertion>
@@ -79,8 +83,7 @@
 		<kert:description>
 			This test verifies the function store-resource() for a binary file, with an FTP connection.
 		</kert:description>
-		<kert:test-url>unit-tests/storeResourceOnFtpServer.xq
-		</kert:test-url>
+		<kert:test-url>unit-tests/storeResourceOnFtpServer.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/storeResourceOnFtpServer.xq
 		</kert:source-url>
 		<kert:assertion>//result-token</kert:assertion>
@@ -98,14 +101,16 @@
 		<kert:title>Function retrieve-resource(), FTP, text file</kert:title>
 		<kert:version>0.2</kert:version>
 		<kert:description>
-			This test verifies the function retrieve-resource() for a text file, with a FTP connection. The evaluation of test is
+			This test verifies the function retrieve-resource() for a text file, with a FTP connection. The
+			evaluation of test is
 			based on the content of the file.
-			If the file exists and has content, the test is passed. Note that this test depends of this file; in case when that
+			If the file exists and has content, the test is passed. Note
+			that this test depends of this file; in case when that
 			file will cease to exist on server,
-			the test has to be modified accordingly.
+			the test has to be modified
+			accordingly.
 		</kert:description>
-		<kert:test-url>unit-tests/retrieveTextResourceFromFtpServer.xq
-		</kert:test-url>
+		<kert:test-url>unit-tests/retrieveTextResourceFromFtpServer.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/08.xql
 		</kert:source-url>
 		<kert:assertion>//result-token</kert:assertion>
@@ -176,9 +181,11 @@
 			connection.
 			The evaluation of test is based on the contents of the file. If the file exists
 			and has contents, the
-			test is passed. Note that this test depends of this file; in
+			test
+			is passed. Note that this test depends of this file; in
 			case when that file will cease to exist on the remote
-			host, the test has to be modified
+			host, the
+			test has to be modified
 			accordingly.
 		</kert:description>
 		<kert:test-url>unit-tests/05.xql</kert:test-url>
@@ -204,9 +211,11 @@
 			connection.
 			The evaluation of test is based on the contents of the file. If the file exists
 			and has contents, the
-			test is passed. Note that this test depends of this file; in
+			test
+			is passed. Note that this test depends of this file; in
 			case when that file will cease to exist on server, the
-			test has to be modified
+			test has
+			to be modified
 			accordingly.
 		</kert:description>
 		<kert:test-url>unit-tests/09.xql</kert:test-url>
@@ -278,7 +287,8 @@
 			the file exists
 			and logged user have no read rights, the test is passed. Note that this test depends
 			on this file;
-			in case when that file will cease to exist on server, the test has
+			in case when that
+			file will cease to exist on server, the test has
 			to be modified accordingly.
 		</kert:description>
 		<kert:test-url>unit-tests/02.xql</kert:test-url>
@@ -321,7 +331,8 @@
 		<kert:description>
 			This test verifies raising of error when using the function list-resources() with an
 			FTP
-			connection in order to list a non-existent directory.
+			connection in
+			order to list a non-existent directory.
 		</kert:description>
 		<kert:test-url>unit-tests/13.xql</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/13.xql
@@ -343,7 +354,8 @@
 		<kert:description>
 			This test verifies raising of error when using the function list-resources() with a
 
-			FTP connection in order to list a non-existent directory.
+			FTP connection in
+			order to list a non-existent directory.
 		</kert:description>
 		<kert:test-url>unit-tests/14.xql</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/14.xql
@@ -365,7 +377,8 @@
 		<kert:description>
 			This test verifies raising of error when using the function list-resources() with a
 			FTP
-			connection in order to list a directory the user has no access.
+			connection in
+			order to list a directory the user has no access.
 		</kert:description>
 		<kert:test-url>unit-tests/15.xql</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/15.xql
@@ -387,7 +400,8 @@
 		<kert:description>
 			This test verifies raising of error when using the function list-resources() with a
 
-			FTP connection in order to list a directory the user has no access.
+			FTP connection in
+			order to list a directory the user has no access.
 		</kert:description>
 		<kert:test-url>unit-tests/16.xql</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/16.xql
@@ -414,7 +428,8 @@
 			the file name
 			does not exists, the test is passed. Note that this test depends on this file name;
 			in case when that
-			file name will start to exist on server, the test has to be modified
+			file name will
+			start to exist on server, the test has to be modified
 			accordingly.
 		</kert:description>
 		<kert:test-url>unit-tests/17.xql</kert:test-url>
@@ -437,12 +452,15 @@
 		<kert:description>
 			This test verifies the function retrieve-resource() for a wrong name
 			of a binary file, with an
-			FTP connection.
+			FTP
+			connection.
 			The evaluation of test is based on the non-existence of the file name. If the file
 			name
-			does not exists, the test is passed. Note that this test depends on this file name;
+			does not exists, the
+			test is passed. Note that this test depends on this file name;
 			in case when that file name
-			will start to exist on server, the test has to be modified
+			will start to exist on
+			server, the test has to be modified
 			accordingly.
 		</kert:description>
 		<kert:test-url>unit-tests/18.xql</kert:test-url>
@@ -470,7 +488,8 @@
 			If the file exists
 			and logged user have no read rights, the test is passed. Note that this test depends
 			on this
-			file; in case when that file will cease to exist on server, the test has
+			file; in case when that
+			file will cease to exist on server, the test has
 			to be modified accordingly.
 		</kert:description>
 		<kert:test-url>unit-tests/19.xql</kert:test-url>
@@ -515,7 +534,8 @@
 		<kert:description>
 			This test verifies the error raising for function store-resource() for a binary file
 			stored with a
-			no rights path, with an FTP connection.
+			no
+			rights path, with an FTP connection.
 		</kert:description>
 		<kert:test-url>unit-tests/21.xql</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/21.xql
@@ -537,9 +557,11 @@
 		<kert:description>
 			This test verifies the error raising for an FTP connection
 			that is unexpectedly closed by
-			the server. In order to simulate the closing
+			the server.
+			In order to simulate the closing
 			of connection, function disconnect() in called before the function
-			list-resources(), which raises the error.
+			list-resources(),
+			which raises the error.
 		</kert:description>
 		<kert:test-url>unit-tests/22.xql</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/22.xql
@@ -561,11 +583,14 @@
 		<kert:description>
 			This test verifies the function delete-resource() for a directory, with an
 			FTP
-			connection. The evaluation of test is based on the existence of the directory.
+			connection. The
+			evaluation of test is based on the existence of the directory.
 			If the directory exists, the test is
-			passed. Note that this test depends of this directory; in
+			passed. Note that
+			this test depends of this directory; in
 			case when that directory will cease to exist on the
-			remote host, the test has to be modified
+			remote host, the test has
+			to be modified
 			accordingly.
 		</kert:description>
 		<kert:test-url>unit-tests/23.xql</kert:test-url>
@@ -588,9 +613,11 @@
 		<kert:description>
 			This test verifies the function delete-resource() for a file, with an
 			FTP connection. The
-			evaluation of test is based on the existence of the file.
+			evaluation
+			of test is based on the existence of the file.
 			The tests generates itself a file (with
-			store-resource()), which is afterwards deleted.
+			store-resource()), which is
+			afterwards deleted.
 		</kert:description>
 		<kert:test-url>unit-tests/24.xql</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xql?url=/web-apps/tests/ft-client/tests/24.xql
