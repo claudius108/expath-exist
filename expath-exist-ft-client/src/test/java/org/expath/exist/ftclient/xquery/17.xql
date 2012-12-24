@@ -1,5 +1,7 @@
 xquery version "3.0";
 
+import module "http://expath.org/ns/ft-client";
+
 let $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
 , $expected-result :=
 	<expected-result>0</expected-result>

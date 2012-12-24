@@ -1,5 +1,7 @@
 xquery version "3.0";
 
+import module "http://expath.org/ns/ft-client";
+
 let $title := 'Get Information about the File Transfer Client Module Status'
 , $expected-result :=
 	<expected-result>0</expected-result>

@@ -1,5 +1,7 @@
 xquery version "3.0";
 
+import module "http://expath.org/ns/ft-client";
+
 let $script-collection := concat(replace(replace(request:get-effective-uri(), "/(\w)+.xql$", ""), "/rest/db", ""), '/')
 let $private-key := util:binary-doc(concat(substring-before($script-collection, 'unit-tests/'), 'resources/Open-Private-Key'))
 let $connection := ft-client:connect(xs:anyURI('sftp://ftp-user:ftp-pass@127.0.0.1'), util:binary-to-string($private-key))

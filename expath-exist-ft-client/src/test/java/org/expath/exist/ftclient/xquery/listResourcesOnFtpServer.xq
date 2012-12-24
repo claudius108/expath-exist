@@ -1,5 +1,7 @@
 xquery version "3.0";
 
+import module "http://expath.org/ns/ft-client";
+
 let $input := util:binary-doc(concat('xmldb:', resolve-uri('../resources/keystore', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/'))))
 
 let $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
