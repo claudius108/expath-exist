@@ -3,17 +3,17 @@ xquery version "3.0";
 import module "http://expath.org/ns/ft-client";
 
 let $script-collection := concat(replace(replace(request:get-effective-uri(), "tests/(\w)+.xql$", ""), "/rest//db", ""), 'data/')
-, $private-key := util:binary-to-string(util:binary-doc(concat($script-collection, 'Open-Private-Key')))
-, $connection := ft-client:connect(xs:anyURI('sftp://ftp-user:ftp-pass@127.0.0.1'), $private-key)
-, $expected-result :=
+let $private-key := util:binary-to-string(util:binary-doc(concat($script-collection, 'Open-Private-Key')))
+let $connection := ft-client:connect(xs:anyURI('sftp://ftp-user:ftp-pass@127.0.0.1'), $private-key)
+let $expected-result :=
 	<expected-result>0</expected-result>
-, $actual-result := 
+let $actual-result := 
 	<actual-result>
 		{
 		ft-client:list-resources($connection, "/home/ftp-user/dir-with-rights")
 		}
 	</actual-result>
-, $close-connection := ft-client:disconnect($connection)		
+let $close-connection := ft-client:disconnect($connection)		
 	
 
 return

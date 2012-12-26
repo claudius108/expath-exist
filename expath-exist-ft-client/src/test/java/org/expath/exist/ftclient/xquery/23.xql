@@ -3,18 +3,18 @@ xquery version "3.0";
 import module "http://expath.org/ns/ft-client";
 
 let $script-collection := concat(replace(replace(request:get-effective-uri(), "tests/(\w)+.xql$", ""), "/rest//db", ""), 'data/')
-, $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
-, $expected-result :=
+let $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
+let $expected-result :=
 	<expected-result/>
-, $directory-to-create-path := "/dir-with-rights/test"
+let $directory-to-create-path := "/dir-with-rights/test"
 (:, $store-file := ft-client:store-resource($connection, $file-to-store-path, $file-to-store):)
-, $actual-result :=
+let $actual-result :=
 	<actual-result>
 		{
 		ft-client:delete-resource($connection, $directory-to-create-path)
 		}
 	</actual-result>
-, $close-connection := ft-client:disconnect($connection)		
+let $close-connection := ft-client:disconnect($connection)		
 	
 
 return

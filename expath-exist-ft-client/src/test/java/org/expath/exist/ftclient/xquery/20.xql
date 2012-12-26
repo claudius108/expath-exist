@@ -3,11 +3,11 @@ xquery version "3.0";
 import module "http://expath.org/ns/ft-client";
 
 let $script-collection := concat(replace(replace(request:get-effective-uri(), "tests/(\w)+.xql$", ""), "/rest//db", ""), 'data/')
-, $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
-, $expected-result :=
+let $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
+let $expected-result :=
 	<expected-result/>
-, $resource := util:binary-doc(concat($script-collection, "bg.gif"))
-, $actual-result := 
+let $resource := util:binary-doc(concat($script-collection, "bg.gif"))
+let $actual-result := 
 	<actual-result>
 		{
 		util:catch(
@@ -17,7 +17,7 @@ let $script-collection := concat(replace(replace(request:get-effective-uri(), "t
 		)				
 		}		
 	</actual-result>
-, $close-connection := ft-client:disconnect($connection)		
+let $close-connection := ft-client:disconnect($connection)		
 	
 	
 return
