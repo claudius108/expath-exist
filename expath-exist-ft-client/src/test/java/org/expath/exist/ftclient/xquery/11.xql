@@ -19,7 +19,7 @@ return
 		{
 		(
 		$actual-result,
-		if ($actual-result/util-is-module-registered/text() = 'true')
+		if ($actual-result/element()[local-name() = 'util-is-module-registered']/text() = 'true')
 			then <result-token>passed</result-token>
 			else <result-token>failed</result-token>
 		)

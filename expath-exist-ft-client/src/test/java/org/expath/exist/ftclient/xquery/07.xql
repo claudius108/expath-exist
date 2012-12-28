@@ -2,11 +2,9 @@ xquery version "3.0";
 
 import module "http://expath.org/ns/ft-client";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "tests/(\w)+.xql$", ""), "/rest//db", ""), 'data/')
 let $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
-let $expected-result :=
-	<expected-result/>
-let $file-to-store := util:binary-to-string(util:binary-doc(concat($script-collection, "test.txt")))
+let $expected-result := <expected-result/>
+let $file-to-store := util:binary-to-string(util:binary-doc(concat('xmldb:', resolve-uri('../resources/test.txt', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/')))))
 let $actual-result := 
 	<actual-result>
 		{

@@ -9,13 +9,15 @@ let $close-connection := ft-client:disconnect($connection)
 let $actual-result := 
 	<actual-result>
 		{
-		util:catch(
-		"java.lang.Exception",
-		ft-client:list-resources($connection, "/"),
-		<error>{$util:exception-message}</error>
-		)				
+          try {
+            ft-client:list-resources($connection, "/")
+          }
+          catch * {
+            <error>{$err:description}</error>
+          }		
 		}		
 	</actual-result>
+let $condition := contains(normalize-space($actual-result/element()/text()), normalize-space($expected-result/element()/text()))	
 		
 	
 return
@@ -23,7 +25,7 @@ return
 		{
 		(
 		$actual-result,
-		if ($actual-result/error)
+		if ($condition)
 			then <result-token>passed</result-token>
 			else <result-token>failed</result-token>
 		)

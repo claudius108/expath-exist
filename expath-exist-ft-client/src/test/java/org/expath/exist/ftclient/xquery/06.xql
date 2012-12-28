@@ -2,12 +2,11 @@ xquery version "3.0";
 
 import module "http://expath.org/ns/ft-client";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "tests/(\w)+.xql$", ""), "/rest//db", ""), 'data/')
-let $private-key := util:binary-doc(concat($script-collection, 'Open-Private-Key'))
-let $connection := ft-client:connect(xs:anyURI('sftp://ftp-user:ftp-pass@127.0.0.1'), util:binary-to-string($private-key))
+let $private-key := util:binary-to-string(util:binary-doc(concat('xmldb:', resolve-uri('../resources/Open-Private-Key', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/')))))
+let $connection := ft-client:connect(xs:anyURI('sftp://ftp-user:ftp-pass@127.0.0.1'), $private-key)
 let $expected-result :=
 	<expected-result/>
-	, $resource := util:binary-doc(concat($script-collection, "bg.gif"))
+let $resource := util:binary-doc(concat('xmldb:', resolve-uri('../resources/bg.gif', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/'))))
 let $actual-result := 
 	<actual-result>
 		{
