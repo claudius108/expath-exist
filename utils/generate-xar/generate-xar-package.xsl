@@ -9,7 +9,7 @@
 	<xsl:param name="module-namespace" />
 	<xsl:param name="package-version" />
 	<xsl:param name="target-dir" />
-	<xsl:param name="package-main-class" />
+	<xsl:param name="java-package-main-class" />
 	<xsl:param name="jar-name" />
 	<xsl:param name="processor-name">
 		<xsl:text>exist</xsl:text>
@@ -80,14 +80,15 @@
 		<xsl:result-document href="{concat($target-dir, '/library-package-descriptors/exist.xml')}">
 			<package xmlns="http://exist-db.org/ns/expath-pkg">
 				<jar>
-					<xsl:value-of select="concat('expath-exist-', $module-prefix, '-lib/', $jar-name)" />
+<!-- 					<xsl:value-of select="concat('expath-', $module-prefix, '-exist-lib/', $jar-name)" /> -->
+					<xsl:value-of select="$jar-name" />
 				</jar>
 				<java>
 					<namespace>
 						<xsl:value-of select="$module-namespace" />
 					</namespace>
 					<class>
-						<xsl:value-of select="$package-main-class" />
+						<xsl:value-of select="$java-package-main-class" />
 					</class>
 				</java>
 			</package>
