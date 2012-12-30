@@ -54,10 +54,6 @@
 		</dependency>
 	</dependencies>
 
-	<properties>
-		<jar-name>${project.artifactId}-lib.jar</jar-name>
-	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -98,7 +94,7 @@
 											<value>${project.version}</value>
 										</parameter>
 										<parameter>
-											<name>target-dir</name>
+											<name>package-target-dir</name>
 											<value>target</value>
 										</parameter>
 										<parameter>
@@ -107,7 +103,7 @@
 										</parameter>
 										<parameter>
 											<name>jar-name</name>
-											<value>${jar-name}</value>
+											<value>${project.artifactId}.jar</value>
 										</parameter>
 										<parameter>
 											<name>package-type-dependencies</name>

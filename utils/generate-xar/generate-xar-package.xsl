@@ -7,7 +7,7 @@
 	<xsl:param name="module-prefix" />
 	<xsl:param name="module-namespace" />
 	<xsl:param name="package-version" />
-	<xsl:param name="target-dir" />
+	<xsl:param name="package-target-dir" />
 	<xsl:param name="java-package-main-class" />
 	<xsl:param name="jar-name" />
 	<xsl:param name="processor-name">
@@ -77,7 +77,7 @@
 			<xsl:with-param name="package-type" select="'application'" />
 		</xsl:call-template>
 
-		<xsl:result-document href="{concat($target-dir, '/library-package-descriptors/exist.xml')}">
+		<xsl:result-document href="{concat($package-target-dir, '/library-package-descriptors/exist.xml')}">
 			<package xmlns="http://exist-db.org/ns/expath-pkg">
 				<jar>
 					<!-- <xsl:value-of select="concat('expath-', $module-prefix, '-exist-lib/', $jar-name)" /> -->
@@ -94,7 +94,7 @@
 			</package>
 		</xsl:result-document>
 
-		<xsl:result-document href="{concat($target-dir, '/application-package-descriptors/controller.xql')}" omit-xml-declaration="yes">
+		<xsl:result-document href="{concat($package-target-dir, '/application-package-descriptors/controller.xql')}" omit-xml-declaration="yes">
 			xquery version "1.0";
 
 			declare variable $exist:path external;
@@ -137,7 +137,7 @@
 	<xsl:template name="generate-cxan-descriptor">
 		<xsl:param name="package-type" />
 		<xsl:variable name="package-description" select="$package-descriptions/element()/element()[@type = $package-type]" />
-		<xsl:result-document href="{concat($target-dir, '/', $package-type, '-package-descriptors/cxan.xml')}">
+		<xsl:result-document href="{concat($package-target-dir, '/', $package-type, '-package-descriptors/cxan.xml')}">
 			<package xmlns="http://cxan.org/ns/package" id="{$package-description/element()[local-name() = 'abbrev']}" name="{$package-description/element()[local-name() = 'name']}" version="{$package-version}">
 				<author id="{$cxan.org-id}">
 					<xsl:value-of select="$author" />
@@ -161,7 +161,7 @@
 	<xsl:template name="generate-expath-pkg-descriptor">
 		<xsl:param name="package-type" />
 		<xsl:variable name="package-description" select="$package-descriptions/element()/element()[@type = $package-type]" />
-		<xsl:result-document href="{concat($target-dir, '/', $package-type, '-package-descriptors/expath-pkg.xml')}">
+		<xsl:result-document href="{concat($package-target-dir, '/', $package-type, '-package-descriptors/expath-pkg.xml')}">
 			<package xmlns="http://expath.org/ns/pkg" name="{$package-description/element()[local-name() = 'name']}" abbrev="{$package-description/element()[local-name() = 'abbrev']}" version="{$package-version}"
 				spec="1.0">
 				<title>
@@ -180,7 +180,7 @@
 	<xsl:template name="generate-repo-descriptor">
 		<xsl:param name="package-type" />
 		<xsl:variable name="package-description" select="$package-descriptions/element()/element()[@type = $package-type]" />
-		<xsl:result-document href="{concat($target-dir, '/', $package-type, '-package-descriptors/repo.xml')}">
+		<xsl:result-document href="{concat($package-target-dir, '/', $package-type, '-package-descriptors/repo.xml')}">
 			<meta xmlns="http://exist-db.org/xquery/repo">
 				<description>
 					<xsl:value-of select="$package-description/element()[local-name() = 'title']" />
