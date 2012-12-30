@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -20,6 +19,7 @@
 		<java-package-main-class>org.expath.exist.ftclient.ExistExpathFTClientModule</java-package-main-class>
 		<dependency-list>expath-ft-client-lib,jsch</dependency-list>
 		<expath-spec-id>${ft-client-spec-id}</expath-spec-id>
+		<package-type-dependencies>http://expath.org/lib/ft-client</package-type-dependencies>
 		<!-- TODO: to remove these next two properties -->
 		<module-prefix>ft-client</module-prefix>
 		<module-namespace>http://expath.org/ns/ft-client</module-namespace>
