@@ -53,9 +53,42 @@
 			<version>2.0-tech-preview</version>
 		</dependency>
 	</dependencies>
+	
+	<properties>
+		<java-dependencies-list-url>${project.build.directory}/dependency-list.txt</java-dependencies-list-url>
+	</properties>	
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/package-files/${project.artifactId}/</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<includeArtifactIds>${dependency-list}</includeArtifactIds>
+						</configuration>
+					</execution>
+					<execution>
+						<id>list-dependencies</id>
+						<goals>
+							<goal>list</goal>
+						</goals>
+						<configuration>
+							<includeArtifactIds>${dependency-list}</includeArtifactIds>
+							<outputFile>${java-dependencies-list-url}</outputFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>xml-maven-plugin</artifactId>
@@ -108,6 +141,10 @@
 										<parameter>
 											<name>package-type-dependencies</name>
 											<value>${package-type-dependencies}</value>
+										</parameter>
+										<parameter>
+											<name>java-dependencies-list-url</name>
+											<value>file://${java-dependencies-list-url}</value>
 										</parameter>										
 									</parameters>
 								</transformationSet>
@@ -125,26 +162,6 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/package-files/${project.artifactId}/</outputDirectory>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>false</overWriteSnapshots>
-							<overWriteIfNewer>true</overWriteIfNewer>
-							<includeArtifactIds>${dependency-list}</includeArtifactIds>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.7</version>
 				<executions>
@@ -156,8 +173,7 @@
 						<configuration>
 							<target>
 								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-								<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar"
-									overwrite="true" />
+								<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
 
 								<echo>Copy icon...</echo>
 								<copy file="${basedir}/src/main/resources/icon.png" tofile="${project.build.directory}/package-files/icon.png" overwrite="true" />

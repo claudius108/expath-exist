@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:spec="http://expath.org/ns/xmlspec" exclude-result-prefixes="spec" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:spec="http://expath.org/ns/xmlspec" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="spec"
+	version="2.0">
 
 	<xsl:output method="xml" />
 
@@ -17,6 +18,7 @@
 		<xsl:text>http://exist-db.org/</xsl:text>
 	</xsl:param>
 	<xsl:param name="package-type-dependencies" />
+	<xsl:param name="java-dependencies-list-url" />
 
 	<xsl:variable name="spec-title">
 		<xsl:copy-of select="concat('EXPath ', //element()[local-name() = 'title'])" />
@@ -78,11 +80,18 @@
 		</xsl:call-template>
 
 		<xsl:result-document href="{concat($package-target-dir, '/library-package-descriptors/exist.xml')}">
+			<xsl:variable name="java-dependencies-list-entries" as="xs:string*" select="tokenize(unparsed-text($java-dependencies-list-url), '\r?\n')" />
 			<package xmlns="http://exist-db.org/ns/expath-pkg">
 				<jar>
 					<!-- <xsl:value-of select="concat('expath-', $module-prefix, '-exist-lib/', $jar-name)" /> -->
 					<xsl:value-of select="$jar-name" />
 				</jar>
+				<xsl:for-each select="$java-dependencies-list-entries[contains(., ':compile')]">
+					<xsl:variable name="tokens" as="xs:string*" select="tokenize(., ':')" />
+					<jar>
+						<xsl:value-of select="concat($tokens[2], '-', $tokens[4], '.jar')" />
+					</jar>
+				</xsl:for-each>
 				<java>
 					<namespace>
 						<xsl:value-of select="$module-namespace" />
