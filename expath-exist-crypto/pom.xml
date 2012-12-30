@@ -10,7 +10,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>expath-exist-crypto</artifactId>
+	<artifactId>expath-crypto-exist-lib</artifactId>
 	<version>0.2.4</version>
 	<name>eXist wrapper for EXPath Cryptographic library</name>
 	<url>http://expath.org</url>
@@ -19,8 +19,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-package-name>crypto</java-package-name>
 		<java-package-main-class>org.expath.exist.crypto.ExistExpathCryptoModule</java-package-main-class>
-		<dependency-list>expath-crypto</dependency-list>
+		<dependency-list>expath-crypto-lib</dependency-list>
 		<expath-spec-id>${crypto-spec-id}</expath-spec-id>
+		<package-type-dependencies>http://expath.org/lib/crypto, test</package-type-dependencies>
 		<!-- TODO: to remove these next two properties -->
 		<module-prefix>crypto</module-prefix>
 		<module-namespace>http://expath.org/ns/crypto</module-namespace>
@@ -29,8 +30,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.expath.libs</groupId>
-			<artifactId>expath-crypto</artifactId>
-			<version>0.2.4</version>
+			<artifactId>expath-crypto-lib</artifactId>
+			<version>0.2.5</version>
 			<type>jar</type>
 		</dependency>
 	</dependencies>
