@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -56,7 +55,7 @@
 	</dependencies>
 
 	<properties>
-		<jar-name>${project.build.finalName}.jar</jar-name>
+		<jar-name>${project.artifactId}-lib.jar</jar-name>
 	</properties>
 
 	<build>
@@ -67,7 +66,7 @@
 				<version>1.0</version>
 				<executions>
 					<execution>
-						<id>generate-xar-package</id>
+						<id>generate-lib-package</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>transform</goal>
@@ -110,6 +109,10 @@
 											<name>jar-name</name>
 											<value>${jar-name}</value>
 										</parameter>
+										<parameter>
+											<name>package-type-dependencies</name>
+											<value>${package-type-dependencies}</value>
+										</parameter>										
 									</parameters>
 								</transformationSet>
 							</transformationSets>
@@ -135,7 +138,7 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/package-files/${project.artifactId}-lib/</outputDirectory>
+							<outputDirectory>${project.build.directory}/package-files/${project.artifactId}/</outputDirectory>
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>false</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
@@ -157,17 +160,14 @@
 						<configuration>
 							<target>
 								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-								<copy file="${project.build.directory}/${project.build.finalName}.jar"
-									tofile="${project.build.directory}/package-files/${project.artifactId}-lib/${project.artifactId}-lib.jar"
+								<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar"
 									overwrite="true" />
 
 								<echo>Copy icon...</echo>
-								<copy file="${basedir}/src/main/resources/icon.png" tofile="${project.build.directory}/package-files/icon.png"
-									overwrite="true" />
+								<copy file="${basedir}/src/main/resources/icon.png" tofile="${project.build.directory}/package-files/icon.png" overwrite="true" />
 
 								<echo>Copy XQuery unit tests and resources...</echo>
-								<copy file="../utils/generate-xar/test-plan.xq" todir="${project.build.directory}/package-files/tests"
-									overwrite="true" />
+								<copy file="../utils/generate-xar/test-plan.xq" todir="${project.build.directory}/package-files/tests" overwrite="true" />
 								<copy todir="${project.build.directory}/package-files/tests" overwrite="true">
 									<fileset dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}" includes="*.*" />
 								</copy>
@@ -178,28 +178,28 @@
 									<fileset dir="${basedir}/src/test/resources/org/expath/exist/${java-package-name}/tests/resources" />
 								</copy>
 
-								<echo>Making ${project.build.finalName}-lib.xar...</echo>
-								<zip destfile="${project.build.directory}/${project.artifactId}-lib-${project.version}.xar">
+								<echo>Making ${project.artifactId}-lib.xar...</echo>
+								<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.xar">
 									<fileset dir="${project.build.directory}/package-files">
 										<exclude name="tests/" />
 									</fileset>
 									<fileset dir="${project.build.directory}/library-package-descriptors" />
 								</zip>
 
-								<echo>Making ${project.build.finalName}-docs.xar...</echo>
+								<echo>Making ${project.artifactId}-demos.xar...</echo>
 								<zip destfile="${project.build.directory}/${project.artifactId}-demos-${project.version}.xar">
 									<fileset dir="${project.build.directory}/package-files">
 										<exclude name="exist.xml" />
-										<exclude name="${project.artifactId}-lib/" />
+										<exclude name="${project.artifactId}/" />
 									</fileset>
 									<fileset dir="${project.build.directory}/application-package-descriptors" />
 									<zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" />
 								</zip>
 
 								<echo>Deploying files to eXist local folder...</echo>
-								<!-- <ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server"> -->
-								<!-- <property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}-lib/" /> -->
-								<!-- </ant> -->
+								<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
+									<property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}/" />
+								</ant>
 								<!-- <ant antfile="${local-eXist-management-build-file}" target="deploy-xars-to-local-eXist-server"> -->
 								<!-- <property name="source-folder" value="${project.build.directory}/" /> -->
 								<!-- </ant> -->
