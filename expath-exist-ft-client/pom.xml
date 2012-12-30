@@ -9,7 +9,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>expath-exist-ft-client</artifactId>
+	<artifactId>expath-ft-client-exist-lib</artifactId>
 	<version>1.1.2</version>
 	<name>eXist wrapper for EXPath File Transfer Client module</name>
 	<url>http://expath.org</url>
@@ -18,7 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-package-name>ftclient</java-package-name>
 		<java-package-main-class>org.expath.exist.ftclient.ExistExpathFTClientModule</java-package-main-class>
-		<dependency-list>expath-ft-client,jsch</dependency-list>
+		<dependency-list>expath-ft-client-lib,jsch</dependency-list>
 		<expath-spec-id>${ft-client-spec-id}</expath-spec-id>
 		<!-- TODO: to remove these next two properties -->
 		<module-prefix>ft-client</module-prefix>
@@ -28,7 +28,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.expath.libs</groupId>
-			<artifactId>expath-ft-client</artifactId>
+			<artifactId>expath-ft-client-lib</artifactId>
 			<version>1.1.2</version>
 			<type>jar</type>
 		</dependency>
