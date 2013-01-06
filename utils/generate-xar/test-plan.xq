@@ -20,27 +20,38 @@ return
           width: 100%;
           margin: 0;
           padding: 0;
-          background-color: #EFF5FB;
+          background-color: #fbfbef;
           }
           html {
           width: 100%;
-          margin: 5 0 0 0;
-          padding: 0;
+          padding: 5px;
+          }
+          .title {
+        margin-left: 3%;
           }
           .test-summary {
           width: 98%;
-          border: 1px solid black;
-          border-radius: 15px;
-          margin: 5 5 15 5;
+          }
+          .logo {
+            position: relative;
+            top: 2px;
+            width: 3%;
+            heigh: 100%;
+            float: left;
+            margin-top: 10px;
+          } 
+          .test-description {
+        float: left;
+            width: 95%;   
+            margin-top: 10px;            
           }
           .test-summary-title {
           margin: 0 0 10 22;
-          width: 100%;
           font-weight: bold;
+          width: 90%;
           }
           .test-summary-description {
-          margin-left:
-          12px;
+          width: 90%;          
           }
           .test-summary-operations {
           margin-left: 12px;
@@ -50,12 +61,13 @@ return
           }
           .test-status-failed {
           color: red;
-          }
+          }  
+          
           ]]>
         </style>
     </head>
     <body>
-        <h2>{$test-plan/kert:description/text()}</h2>
+        <h2 class="title">{$test-plan/kert:description/text()}</h2>
         {
         for $unit-test-name in $unit-test-names
         let $unit-test := $test-plan//kert:test[ends-with(kert:test-url, $unit-test-name)]
@@ -63,13 +75,20 @@ return
         order by $unit-test-name
         return
              <div class="test-summary">
-                <div class="test-summary-title">
-                    {$unit-test/kert:title/text()} (status: <span class="test-status-{$unit-test-status}">{$unit-test-status/text()}</span>)
-                    <span class="test-summary-operations"><a href="{$unit-test/kert:test-url}">Run test</a></span>
+                <div class="logo">
+                    <img src="../icon.png" width="24" height="24"/>
                 </div>
-            <div class="test-summary-description">{$unit-test/kert:description/text()}</div>             
-             </div>
- 
-        }
-    </body>
+                <div class="test-description">
+                    <div class="test-summary-title">
+                        {
+                        $unit-test/kert:title/text()
+                        }
+                        (status: <span class="test-status-{$unit-test-status}">{$unit-test-status/text()}</span>)
+                        <span class="test-summary-operations"><a href="{$unit-test/kert:test-url}">Run</a></span>
+                     </div>
+                     <div class="test-summary-description">{$unit-test/kert:description/text()}</div>
+                 </div>
+              </div>
+          }
+     </body>
 </html>
