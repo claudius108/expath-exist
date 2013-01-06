@@ -476,7 +476,7 @@
 		<kert:author>Joe Wicentowski</kert:author>
 		<kert:title>AWS REST request</kert:title>
 		<kert:version>0.3</kert:version>
-		<kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service</kert:description>
+		<kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service.</kert:description>
 		<kert:test-url>unit-tests/AwsRestRequest.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequest.xq
 		</kert:source-url>
@@ -494,8 +494,7 @@
 		<kert:author>Claudius Teodorescu</kert:author>
 		<kert:title>AWS REST request, default provider</kert:title>
 		<kert:version>0.1</kert:version>
-		<kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service with default provider
-		</kert:description>
+		<kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service with default provider.</kert:description>
 		<kert:test-url>unit-tests/AwsRestRequestWithDefaultProvider.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequestWithDefaultProvider.xq
 		</kert:source-url>
