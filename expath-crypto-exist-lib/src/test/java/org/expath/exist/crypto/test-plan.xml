@@ -79,7 +79,7 @@
 			' with AES algorithm and 128 key.
 		</kert:description>
 		<kert:test-url>unit-tests/encryptStringWithAesSymmetricKey.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKey.xq
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyCbcMode.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
 		<kert:timeout />
@@ -93,13 +93,12 @@
 	</kert:test>
 	<kert:test id="4">
 		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Symmetric decryption of string</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>Symmetric decryption of string '195-222-168-136-219-30-67-109-140-47-163-70-57-42-195-86' with AES
-			algorithm and 128 key.
+		<kert:title>Symmetric decryption of string, AES/CBC/PKCS5Padding transformation</kert:title>
+		<kert:version>0.4</kert:version>
+		<kert:description>Symmetric decryption of a string with AES/CBC/PKCS5Padding transformation, and 128 bytes key.
 		</kert:description>
-		<kert:test-url>unit-tests/decryptStringWithAesSymmetricKey.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKey.xq
+		<kert:test-url>unit-tests/decryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyCbcMode.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
 		<kert:timeout />
@@ -111,6 +110,25 @@
 		<kert:type>unattended</kert:type>
 		<kert:assertion-type>assert-xml</kert:assertion-type>
 	</kert:test>
+	<kert:test id="42">
+		<kert:author>Claudius Teodorescu</kert:author>
+		<kert:title>Symmetric decryption of string, AES/CBC/PKCS5Padding, default provider</kert:title>
+		<kert:version>0.1</kert:version>
+		<kert:description>Symmetric decryption of a string with AES/CBC/PKCS5Padding transformation, and 128 bytes key.
+		</kert:description>
+		<kert:test-url>unit-tests/decryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyCbcMode.xq
+		</kert:source-url>
+		<kert:assertion>/result/result-token</kert:assertion>
+		<kert:timeout />
+		<kert:run-status timestamp="" />
+		<kert:development-status timestamp="" />
+		<kert:log />
+		<kert:loops-number />
+		<kert:total-test-time />
+		<kert:type>unattended</kert:type>
+		<kert:assertion-type>assert-xml</kert:assertion-type>
+	</kert:test>	
 	<kert:test id="5">
 		<kert:author>Claudius Teodorescu</kert:author>
 		<kert:title>Error message for symmetric encryption of string</kert:title>
@@ -121,7 +139,7 @@
 			' with AES algorithm and 136 key (testing with a wrong key, to see the error message).
 		</kert:description>
 		<kert:test-url>unit-tests/encryptStringWithAesWrongSymmetricKey.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKey.xq
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
 		<kert:timeout />
@@ -790,7 +808,8 @@
 			<li id="tree-1" title="Test 1">Generate enveloped digital signature</li>
 			<li id="tree-2" title="Test 2">Validate enveloped digital signature</li>
 			<li id="tree-3" title="Test 3">Symmetric encryption of string</li>
-			<li id="tree-4" title="Test 4">Symmetric decryption of string</li>
+			<li id="tree-4" title="Test 4">Symmetric decryption of string, AES/CBC/PKCS5Padding</li>
+			<li id="tree-42" title="Test 42">Symmetric decryption of string, AES/CBC/PKCS5Padding, default provider</li>
 			<li id="tree-5" title="Test 5">Error message for symmetric encryption of string</li>
 			<li id="tree-9" title="Test 9">'MD5' HMAC for string</li>
 			<li id="tree-22" title="Test 22">'MD5' HMAC for string, default provider</li>
@@ -831,3 +850,12 @@
 		</ul>
 	</kert:test-tree>
 </kert:test-plan>
+
+decryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq
+decryptStringWithAesSymmetricKeyCbcMode.xq
+decryptStringWithAesSymmetricKeyEcbMode.xq
+encryptStringWithAesSymmetricKeyAndDefaultProviderCbcMode.xq
+encryptStringWithAesSymmetricKeyCbcMode.xq
+encryptStringWithAesSymmetricKeyEcbMode.xq
+encryptStringWithAesWrongSymmetricKeyAndDefaultProviderCbcMode.xq
+encryptStringWithAesWrongSymmetricKeyCbcMode.xq

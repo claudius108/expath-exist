@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:spec="http://expath.org/ns/xmlspec" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="spec"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:spec="http://expath.org/ns/xmlspec" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="spec xs"
 	version="2.0">
 
 	<xsl:output method="xml" />

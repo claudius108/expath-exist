@@ -55,7 +55,7 @@ return
         </style>
     </head>
     <body>
-        <h2>{$test-plan/kert:description}</h2>
+        <h2>{$test-plan/kert:description/text()}</h2>
         {
         for $unit-test-name in $unit-test-names
         let $unit-test := $test-plan//kert:test[ends-with(kert:test-url, $unit-test-name)]
@@ -64,10 +64,10 @@ return
         return
              <div class="test-summary">
                 <div class="test-summary-title">
-                    {$unit-test/kert:title} (status: <span class="test-status-{$unit-test-status}">{$unit-test-status/text()}</span>)
+                    {$unit-test/kert:title/text()} (status: <span class="test-status-{$unit-test-status}">{$unit-test-status/text()}</span>)
                     <span class="test-summary-operations"><a href="{$unit-test/kert:test-url}">Run test</a></span>
                 </div>
-            <div class="test-summary-description">{$unit-test/kert:description}</div>             
+            <div class="test-summary-description">{$unit-test/kert:description/text()}</div>             
              </div>
  
         }

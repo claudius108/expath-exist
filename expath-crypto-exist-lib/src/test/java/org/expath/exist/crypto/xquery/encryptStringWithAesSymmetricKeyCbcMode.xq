@@ -3,11 +3,12 @@ xquery version "3.0";
 import module "http://expath.org/ns/crypto";
 
 let $expected-result :=
-	<expected-result>222-157-20-54-132-99-46-30-73-43-253-148-61-155-86-141-51-56-40-42-31-168-189-56-236-102-58-237-175-171-9-87</expected-result>
-, $actual-result :=
+	<expected-result>51-143-171-200-187-20-34-252-231-243-254-42-36-13-9-123-191-251-243-42-3-238-193-13-155-168-139-67-135-3-143-54</expected-result>
+let $iv := crypto:hash("initialization vector", "MD5", "")
+let $actual-result :=
 	<actual-result>
 		{
-			crypto:encrypt("Short string for tests.", "symmetric", "1234567890123456", "AES", "SunJCE")				
+			crypto:encrypt("Short string for tests.", "symmetric", "1234567890123456", "AES/CBC/PKCS5Padding", $iv, "SunJCE")				
 		}
 	</actual-result>
 , $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())

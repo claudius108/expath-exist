@@ -3,17 +3,13 @@ xquery version "3.0";
 import module "http://expath.org/ns/crypto";
 
 let $expected-result :=
-	<expected-result><error>Invalid AES key length: 17 bytes</error></expected-result>
-, $actual-result :=
+	<expected-result>222-157-20-54-132-99-46-30-73-43-253-148-61-155-86-141-51-56-40-42-31-168-189-56-236-102-58-237-175-171-9-87</expected-result>
+let $actual-result :=
 	<actual-result>
 		{
-			util:catch(
-				"java.lang.Exception",
-				crypto:encrypt("&lt;a&gt;Test!&lt;/a&gt;", "symmetric", "12345678901234567", "AES", ()),
-				<error>{substring-before($util:exception-message, ' [')}</error>
-			)				
+			crypto:encrypt("Short string for tests.", "symmetric", "1234567890123456", "AES", (), "SunJCE")				
 		}
-			</actual-result>
+	</actual-result>
 , $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	
 
@@ -27,4 +23,4 @@ return
 		, $actual-result
 		)
 		}
-	</result>	
+	</result>
