@@ -53,10 +53,10 @@
 			<version>2.0-tech-preview</version>
 		</dependency>
 	</dependencies>
-	
+
 	<properties>
 		<java-dependencies-list-url>${project.build.directory}/dependency-list.txt</java-dependencies-list-url>
-	</properties>	
+	</properties>
 
 	<build>
 		<plugins>
@@ -145,7 +145,7 @@
 										<parameter>
 											<name>java-dependencies-list-url</name>
 											<value>file://${java-dependencies-list-url}</value>
-										</parameter>										
+										</parameter>
 									</parameters>
 								</transformationSet>
 							</transformationSets>
@@ -160,13 +160,81 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+
+
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sql-maven-plugin</artifactId>
+				<version>1.5</version>
+
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.22</version>
+					</dependency>
+				</dependencies>
+
+				<!-- common configuration shared by all executions -->
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
+					<url>jdbc:mysql://127.0.0.1:3306/redmine</url>
+					<username>root</username>
+					<password>iubitamea</password>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>get-changelog</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<url>jdbc:mysql://127.0.0.1:3306/redmine</url>
+							<autocommit>true</autocommit>
+							<!-- <sqlCommand>select * from wiki_pages where wiki_id = (select id from projects where identifier = 'expath-crypto-exist-lib');</sqlCommand> -->
+							<sqlCommand>select * from redmine.projects;</sqlCommand>
+							<outputFile>${project.build.directory}/package-files/changelog.txt</outputFile>
+						</configuration>
+					</execution>
+
+				</executions>
+			</plugin>
+
+
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.7</version>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<id>compile-and-deploy-jars-for-testing</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
+								<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
+
+								<echo>Deploying files to eXist local folder...</echo>
+								<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
+									<property name="package-name" value="${project.artifactId}" />
+									<property name="package-version" value="${project.version}" />
+									<property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}/" />
+								</ant>
+								
+								<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>deploy-files</id>
+						<phase>install</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -207,14 +275,6 @@
 									<fileset dir="${project.build.directory}/application-package-descriptors" />
 									<zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" />
 								</zip>
-
-								<echo>Deploying files to eXist local folder...</echo>
-								<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
-									<property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}/" />
-								</ant>
-								<!-- <ant antfile="${local-eXist-management-build-file}" target="deploy-xars-to-local-eXist-server"> -->
-								<!-- <property name="source-folder" value="${project.build.directory}/" /> -->
-								<!-- </ant> -->
 
 								<echo>Deploying XQuery unit tests and resources to eXist local instance...</echo>
 								<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
