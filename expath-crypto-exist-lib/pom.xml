@@ -11,7 +11,7 @@
 	</parent>
 
 	<artifactId>expath-crypto-exist-lib</artifactId>
-	<version>0.2.5</version>
+	<version>0.2.6</version>
 	<name>eXist wrapper for EXPath Cryptographic library</name>
 	<url>http://expath.org</url>
 
