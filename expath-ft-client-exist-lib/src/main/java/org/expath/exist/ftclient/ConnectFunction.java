@@ -49,24 +49,20 @@ import org.exist.xquery.value.Type;
  */
 
 public class ConnectFunction extends BasicFunction {
-	
+
 	private static final Logger log = Logger.getLogger(ConnectFunction.class);
 
-	private static final FunctionReturnSequenceType RETURN_TYPE = new FunctionReturnSequenceType(Type.LONG,
-			Cardinality.ZERO_OR_ONE, "an xs:long representing the connection handle.");
-	private static final FunctionParameterSequenceType REMOTE_HOST_URI = new FunctionParameterSequenceType(
-			"remote-host-uri", Type.ANY_URI, Cardinality.EXACTLY_ONE, "The URI of the host to connect to.");
+	private static final FunctionReturnSequenceType RETURN_TYPE = new FunctionReturnSequenceType(Type.LONG, Cardinality.ZERO_OR_ONE,
+			"an xs:long representing the connection handle.");
+	private static final FunctionParameterSequenceType REMOTE_HOST_URI = new FunctionParameterSequenceType("remote-host-uri", Type.ANY_URI, Cardinality.EXACTLY_ONE,
+			"The URI of the host to connect to.");
 
 	public final static FunctionSignature signatures[] = {
-			new FunctionSignature(new QName("connect", ExistExpathFTClientModule.NAMESPACE_URI,
-					ExistExpathFTClientModule.PREFIX), "This function is used to open a remote connection.",
-					new SequenceType[] { REMOTE_HOST_URI }, RETURN_TYPE),
-			new FunctionSignature(new QName("connect", ExistExpathFTClientModule.NAMESPACE_URI,
-					ExistExpathFTClientModule.PREFIX), "This function is used to open a remote connection.",
-					new SequenceType[] {
-							REMOTE_HOST_URI,
-							new FunctionParameterSequenceType("options", Type.ANY_TYPE, Cardinality.ZERO_OR_ONE,
-									"The options for connection.") }, RETURN_TYPE) };
+			new FunctionSignature(new QName("connect", ExistExpathFTClientModule.NAMESPACE_URI, ExistExpathFTClientModule.PREFIX),
+					"This function is used to open a remote connection.", new SequenceType[] { REMOTE_HOST_URI }, RETURN_TYPE),
+			new FunctionSignature(new QName("connect", ExistExpathFTClientModule.NAMESPACE_URI, ExistExpathFTClientModule.PREFIX),
+					"This function is used to open a remote connection.", new SequenceType[] { REMOTE_HOST_URI,
+							new FunctionParameterSequenceType("options", Type.ANY_TYPE, Cardinality.ZERO_OR_ONE, "The options for connection.") }, RETURN_TYPE) };
 
 	/**
 	 * ConnectFunction Constructor.
@@ -102,24 +98,31 @@ public class ConnectFunction extends BasicFunction {
 
 		Sequence result = Sequence.EMPTY_SEQUENCE;
 		Object remoteConnection = null;
-		URI remoteHostUri = ((AnyURIValue)args[0].itemAt(0)).toURI();
+		URI remoteHostUri = ((AnyURIValue) args[0].itemAt(0)).toURI();
 
-		InputStream options = null;
-		String optionsString = "";	
+		String optionsString = "";
 		if (args.length == 2) {
-            if ( args[1].itemAt(0).getType() == 22 ) {
-            	optionsString = args[1].getStringValue();
-            } else if ( args[1].itemAt(0).getType() == 6 ) {
-                Serializer serializer = context.getBroker().getSerializer();
-                NodeValue inputNode = (NodeValue) args[1].itemAt(0);
-                try {
-    				optionsString = serializer.serialize(inputNode);
-    			} catch (Exception ex) {
-    				throw new XPathException(ex.getMessage());
-    			}            	
-            }
-            //options = new ByteArrayInputStream(optionsString.getBytes());
-        }
+			int optionsType = args[1].itemAt(0).getType();
+			
+			switch (optionsType) {
+			case Type.EMPTY:
+				break;
+			case Type.STRING:
+				optionsString = args[1].getStringValue();
+				break;
+			case Type.DOCUMENT:
+				Serializer serializer = context.getBroker().getSerializer();
+				NodeValue inputNode = (NodeValue) args[1].itemAt(0);
+				try {
+					optionsString = serializer.serialize(inputNode);
+				} catch (Exception ex) {
+					throw new XPathException(ex.getMessage());
+				}
+				break;
+			}
+
+			// options = new ByteArrayInputStream(optionsString.getBytes());
+		}
 
 		// get the connection object
 		try {
