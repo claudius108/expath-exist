@@ -4,14 +4,14 @@
 
 	<parent>
 		<groupId>org.expath</groupId>
-		<artifactId>expath</artifactId>
-		<version>0.1-SNAPSHOT</version>
+		<artifactId>expath-base</artifactId>
+		<version>0.2-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.expath.exist</groupId>
-	<artifactId>expath-exist</artifactId>
-	<packaging>pom</packaging>
+	<artifactId>exist-base</artifactId>
 	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>eXist wrappers for EXPath modules</name>
 	<url>http://expath.org</url>
 
@@ -59,234 +59,234 @@
 	</properties>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/package-files/${project.artifactId}/</outputDirectory>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>false</overWriteSnapshots>
-							<overWriteIfNewer>true</overWriteIfNewer>
-							<includeArtifactIds>${dependency-list}</includeArtifactIds>
-						</configuration>
-					</execution>
-					<execution>
-						<id>list-dependencies</id>
-						<goals>
-							<goal>list</goal>
-						</goals>
-						<configuration>
-							<includeArtifactIds>${dependency-list}</includeArtifactIds>
-							<outputFile>${java-dependencies-list-url}</outputFile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>xml-maven-plugin</artifactId>
-				<version>1.0</version>
-				<executions>
-					<execution>
-						<id>generate-lib-package</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>transform</goal>
-						</goals>
-						<configuration>
-							<forceCreation>true</forceCreation>
-							<transformationSets>
-								<transformationSet>
-									<dir>../../expath-specs/${expath-spec-id}</dir>
-									<includes>
-										<include>${expath-spec-id}.xml</include>
-									</includes>
-									<stylesheet>../utils/generate-xar/generate-xar-package.xsl</stylesheet>
-									<parameters>
-										<parameter>
-											<name>cxan.org-id</name>
-											<value>cteodorescu</value>
-										</parameter>
-										<parameter>
-											<name>module-prefix</name>
-											<value>${module-prefix}</value>
-										</parameter>
-										<parameter>
-											<name>module-namespace</name>
-											<value>${module-namespace}</value>
-										</parameter>
-										<parameter>
-											<name>package-version</name>
-											<value>${project.version}</value>
-										</parameter>
-										<parameter>
-											<name>package-target-dir</name>
-											<value>target</value>
-										</parameter>
-										<parameter>
-											<name>java-package-main-class</name>
-											<value>${java-package-main-class}</value>
-										</parameter>
-										<parameter>
-											<name>jar-name</name>
-											<value>${project.artifactId}.jar</value>
-										</parameter>
-										<parameter>
-											<name>package-type-dependencies</name>
-											<value>${package-type-dependencies}</value>
-										</parameter>
-										<parameter>
-											<name>java-dependencies-list-url</name>
-											<value>file://${java-dependencies-list-url}</value>
-										</parameter>
-									</parameters>
-								</transformationSet>
-							</transformationSets>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>net.sf.saxon</groupId>
-						<artifactId>Saxon-HE</artifactId>
-						<version>9.4</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${project.build.directory}/package-files/${project.artifactId}/</outputDirectory>
+								<overWriteReleases>false</overWriteReleases>
+								<overWriteSnapshots>false</overWriteSnapshots>
+								<overWriteIfNewer>true</overWriteIfNewer>
+								<includeArtifactIds>${dependency-list}</includeArtifactIds>
+							</configuration>
+						</execution>
+						<execution>
+							<id>list-dependencies</id>
+							<goals>
+								<goal>list</goal>
+							</goals>
+							<configuration>
+								<includeArtifactIds>${dependency-list}</includeArtifactIds>
+								<outputFile>${java-dependencies-list-url}</outputFile>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>xml-maven-plugin</artifactId>
+					<version>1.0</version>
+					<executions>
+						<execution>
+							<id>generate-lib-package</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>transform</goal>
+							</goals>
+							<configuration>
+								<forceCreation>true</forceCreation>
+								<transformationSets>
+									<transformationSet>
+										<dir>../../expath-specs/${expath-spec-id}</dir>
+										<includes>
+											<include>${expath-spec-id}.xml</include>
+										</includes>
+										<stylesheet>../utils/generate-xar/generate-xar-package.xsl</stylesheet>
+										<parameters>
+											<parameter>
+												<name>cxan.org-id</name>
+												<value>cteodorescu</value>
+											</parameter>
+											<parameter>
+												<name>module-prefix</name>
+												<value>${module-prefix}</value>
+											</parameter>
+											<parameter>
+												<name>module-namespace</name>
+												<value>${module-namespace}</value>
+											</parameter>
+											<parameter>
+												<name>package-version</name>
+												<value>${project.version}</value>
+											</parameter>
+											<parameter>
+												<name>package-target-dir</name>
+												<value>target</value>
+											</parameter>
+											<parameter>
+												<name>java-package-main-class</name>
+												<value>${java-package-main-class}</value>
+											</parameter>
+											<parameter>
+												<name>jar-name</name>
+												<value>${project.artifactId}.jar</value>
+											</parameter>
+											<parameter>
+												<name>package-type-dependencies</name>
+												<value>${package-type-dependencies}</value>
+											</parameter>
+											<parameter>
+												<name>java-dependencies-list-url</name>
+												<value>file://${java-dependencies-list-url}</value>
+											</parameter>
+										</parameters>
+									</transformationSet>
+								</transformationSets>
+							</configuration>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>net.sf.saxon</groupId>
+							<artifactId>Saxon-HE</artifactId>
+							<version>9.4</version>
+						</dependency>
+					</dependencies>
+				</plugin>
 
 
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sql-maven-plugin</artifactId>
-				<version>1.5</version>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sql-maven-plugin</artifactId>
+					<version>1.5</version>
+					<dependencies>
+						<dependency>
+							<groupId>mysql</groupId>
+							<artifactId>mysql-connector-java</artifactId>
+							<version>5.1.22</version>
+						</dependency>
+					</dependencies>
+					<!-- common configuration shared by all executions -->
+					<configuration>
+						<driver>com.mysql.jdbc.Driver</driver>
+						<url>jdbc:mysql://127.0.0.1:3306/redmine</url>
+						<username>root</username>
+						<password>iubitamea</password>
+					</configuration>
+					<executions>
+						<execution>
+							<id>get-changelog</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>execute</goal>
+							</goals>
+							<configuration>
+								<url>jdbc:mysql://127.0.0.1:3306/redmine</url>
+								<autocommit>true</autocommit>
+								<!-- <sqlCommand>select * from wiki_pages where wiki_id = (select id from projects where identifier = 'expath-crypto-exist-lib');</sqlCommand> -->
+								<sqlCommand>select * from redmine.projects;</sqlCommand>
+								<outputFile>${project.build.directory}/package-files/changelog.txt</outputFile>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.22</version>
-					</dependency>
-				</dependencies>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+					<executions>
+						<execution>
+							<id>compile-and-deploy-jars-for-testing</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
+									<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
+									<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
 
-				<!-- common configuration shared by all executions -->
-				<configuration>
-					<driver>com.mysql.jdbc.Driver</driver>
-					<url>jdbc:mysql://127.0.0.1:3306/redmine</url>
-					<username>root</username>
-					<password>iubitamea</password>
-				</configuration>
+									<echo>Deploying files to eXist local folder...</echo>
+									<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
+										<property name="package-name" value="${project.artifactId}" />
+										<property name="package-version" value="${project.version}" />
+										<property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}/" />
+									</ant>
 
-				<executions>
-					<execution>
-						<id>get-changelog</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<url>jdbc:mysql://127.0.0.1:3306/redmine</url>
-							<autocommit>true</autocommit>
-							<!-- <sqlCommand>select * from wiki_pages where wiki_id = (select id from projects where identifier = 'expath-crypto-exist-lib');</sqlCommand> -->
-							<sqlCommand>select * from redmine.projects;</sqlCommand>
-							<outputFile>${project.build.directory}/package-files/changelog.txt</outputFile>
-						</configuration>
-					</execution>
+									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
+								</target>
+							</configuration>
+						</execution>
+						<execution>
+							<id>deploy-files</id>
+							<phase>install</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
+									<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
+									<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
 
-				</executions>
-			</plugin>
+									<echo>Copy icon...</echo>
+									<copy file="${basedir}/src/main/resources/icon.png" tofile="${project.build.directory}/package-files/icon.png" overwrite="true" />
 
+									<echo>Copy XQuery unit tests and resources...</echo>
+									<copy file="../utils/generate-xar/test-plan.xq" todir="${project.build.directory}/package-files/tests" overwrite="true" />
+									<copy file="../utils/generate-xar/update-unit-tests-statuses.xsl" todir="${project.build.directory}/package-files/tests" overwrite="true" />
+									<get src="http://kert.sourceforge.net/latest/resources/xsl/generate-tests-presentation.xsl" dest="${project.build.directory}/package-files/tests/generate-tests-presentation.xsl" />
 
+									<copy todir="${project.build.directory}/package-files/tests" overwrite="true">
+										<fileset dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}" includes="*.*" />
+									</copy>
+									<copy todir="${project.build.directory}/package-files/tests/unit-tests" overwrite="true">
+										<fileset dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}/xquery" />
+									</copy>
+									<copy todir="${project.build.directory}/package-files/tests/resources" overwrite="true">
+										<fileset dir="${basedir}/src/test/resources/org/expath/exist/${java-package-name}/tests/resources" />
+									</copy>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<id>compile-and-deploy-jars-for-testing</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-								<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
+									<echo>Making ${project.artifactId}-lib.xar...</echo>
+									<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.xar">
+										<fileset dir="${project.build.directory}/package-files">
+											<exclude name="tests/" />
+										</fileset>
+										<fileset dir="${project.build.directory}/library-package-descriptors" />
+									</zip>
 
-								<echo>Deploying files to eXist local folder...</echo>
-								<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
-									<property name="package-name" value="${project.artifactId}" />
-									<property name="package-version" value="${project.version}" />
-									<property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}/" />
-								</ant>
-								
-								<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
-							</target>
-						</configuration>
-					</execution>
-					<execution>
-						<id>deploy-files</id>
-						<phase>install</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-								<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
+									<echo>Making ${project.artifactId}-demos.xar...</echo>
+									<zip destfile="${project.build.directory}/${project.artifactId}-demos-${project.version}.xar">
+										<fileset dir="${project.build.directory}/package-files">
+											<exclude name="exist.xml" />
+											<exclude name="${project.artifactId}/" />
+										</fileset>
+										<fileset dir="${project.build.directory}/application-package-descriptors" />
+										<zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" />
+									</zip>
 
-								<echo>Copy icon...</echo>
-								<copy file="${basedir}/src/main/resources/icon.png" tofile="${project.build.directory}/package-files/icon.png" overwrite="true" />
-
-								<echo>Copy XQuery unit tests and resources...</echo>
-								<copy file="../utils/generate-xar/test-plan.xq" todir="${project.build.directory}/package-files/tests" overwrite="true" />
-								<copy todir="${project.build.directory}/package-files/tests" overwrite="true">
-									<fileset dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}" includes="*.*" />
-								</copy>
-								<copy todir="${project.build.directory}/package-files/tests/unit-tests" overwrite="true">
-									<fileset dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}/xquery" />
-								</copy>
-								<copy todir="${project.build.directory}/package-files/tests/resources" overwrite="true">
-									<fileset dir="${basedir}/src/test/resources/org/expath/exist/${java-package-name}/tests/resources" />
-								</copy>
-
-								<echo>Making ${project.artifactId}-lib.xar...</echo>
-								<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.xar">
-									<fileset dir="${project.build.directory}/package-files">
-										<exclude name="tests/" />
-									</fileset>
-									<fileset dir="${project.build.directory}/library-package-descriptors" />
-								</zip>
-
-								<echo>Making ${project.artifactId}-demos.xar...</echo>
-								<zip destfile="${project.build.directory}/${project.artifactId}-demos-${project.version}.xar">
-									<fileset dir="${project.build.directory}/package-files">
-										<exclude name="exist.xml" />
-										<exclude name="${project.artifactId}/" />
-									</fileset>
-									<fileset dir="${project.build.directory}/application-package-descriptors" />
-									<zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" />
-								</zip>
-
-								<echo>Deploying XQuery unit tests and resources to eXist local instance...</echo>
-								<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
-								<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
-									<property name="source-folder" value="${project.build.directory}/package-files/tests" />
-									<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" />
-								</ant>
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+									<echo>Deploying XQuery unit tests and resources to eXist local instance...</echo>
+									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
+									<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
+										<property name="source-folder" value="${project.build.directory}/package-files/tests" />
+										<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" />
+									</ant>
+								</target>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
+
 </project>
