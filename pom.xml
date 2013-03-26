@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.expath</groupId>
-		<artifactId>expath-base</artifactId>
-		<version>0.2-SNAPSHOT</version>
+		<groupId>ro.kuberam.maven</groupId>
+		<artifactId>base</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.expath.exist</groupId>
