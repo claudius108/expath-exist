@@ -93,7 +93,6 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>xml-maven-plugin</artifactId>
-					<version>1.0</version>
 					<executions>
 						<execution>
 							<id>generate-lib-package</id>
@@ -153,13 +152,6 @@
 							</configuration>
 						</execution>
 					</executions>
-					<dependencies>
-						<dependency>
-							<groupId>net.sf.saxon</groupId>
-							<artifactId>Saxon-HE</artifactId>
-							<version>9.4</version>
-						</dependency>
-					</dependencies>
 				</plugin>
 
 
@@ -203,7 +195,6 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-antrun-plugin</artifactId>
-					<version>1.7</version>
 					<executions>
 						<execution>
 							<id>compile-and-deploy-jars-for-testing</id>
