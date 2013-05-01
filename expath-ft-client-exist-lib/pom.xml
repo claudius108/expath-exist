@@ -24,6 +24,7 @@
 		<!-- TODO: to remove these next two properties -->
 		<module-prefix>ft-client</module-prefix>
 		<module-namespace>http://expath.org/ns/ft-client</module-namespace>
+		<spec-title>EXPath File Transfer Module</spec-title>
 	</properties>
 
 	<dependencies>

@@ -19,11 +19,12 @@
 		<java-package-name>crypto</java-package-name>
 		<java-package-main-class>org.expath.exist.crypto.ExistExpathCryptoModule</java-package-main-class>
 		<dependency-list>expath-crypto-lib</dependency-list>
-		<expath-spec-id>${crypto-spec-id}</expath-spec-id>
+		<expath-spec-id>crypto</expath-spec-id>
 		<package-type-dependencies>http://expath.org/lib/crypto</package-type-dependencies>
 		<!-- TODO: to remove these next two properties -->
 		<module-prefix>crypto</module-prefix>
 		<module-namespace>http://expath.org/ns/crypto</module-namespace>
+		<spec-title>EXPath Cryptographic Module</spec-title>
 	</properties>
 
 	<dependencies>
@@ -48,6 +49,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>ro.kuberam.maven</groupId>
+				<artifactId>kuberam-xar-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
