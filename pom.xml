@@ -56,6 +56,7 @@
 					<executions>
 						<execution>
 							<id>copy-dependencies</id>
+							<phase>generate-sources</phase>
 							<goals>
 								<goal>copy-dependencies</goal>
 							</goals>
@@ -69,6 +70,7 @@
 						</execution>
 						<execution>
 							<id>list-dependencies</id>
+							<phase>generate-sources</phase>
 							<goals>
 								<goal>list</goal>
 							</goals>
@@ -186,30 +188,8 @@
 					<artifactId>maven-antrun-plugin</artifactId>
 					<executions>
 						<execution>
-							<id>compile-and-deploy-jars-for-testing</id>
-							<phase>pre-integration-test</phase>
-							<goals>
-								<goal>run</goal>
-							</goals>
-							<configuration>
-								<target>
-									<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-									<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
-
-									<echo>Deploying files to eXist local folder...</echo>
-									<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
-										<property name="package-name" value="${project.artifactId}" />
-										<property name="package-version" value="${project.version}" />
-										<property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}/" />
-									</ant>
-
-									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
-								</target>
-							</configuration>
-						</execution>
-						<execution>
-							<id>deploy-files</id>
-							<phase>install</phase>
+							<id>make-xar</id>
+							<phase>package</phase>
 							<goals>
 								<goal>run</goal>
 							</goals>
@@ -253,7 +233,39 @@
 										<fileset dir="${project.build.directory}/application-package-descriptors" />
 										<zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" />
 									</zip>
+								</target>
+							</configuration>
+						</execution>
+						<execution>
+							<id>compile-and-deploy-jars-for-testing</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
+									<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
+									<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
 
+									<echo>Deploying files to eXist local folder...</echo>
+									<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
+										<property name="package-name" value="${project.artifactId}" />
+										<property name="package-version" value="${project.version}" />
+										<property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}/" />
+									</ant>
+
+									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
+								</target>
+							</configuration>
+						</execution>
+						<execution>
+							<id>deploy-files</id>
+							<phase>install</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
 									<echo>Deploying XQuery unit tests and resources to eXist local instance...</echo>
 									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
 									<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
@@ -261,6 +273,26 @@
 										<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" />
 									</ant>
 								</target>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>ro.kuberam.maven</groupId>
+					<artifactId>kuberam-xar-plugin</artifactId>
+					<version>0.1</version>
+					<executions>
+						<execution>
+							<id>generate-lib-xar</id>
+							<phase>package</phase>
+							<goals>
+								<goal>make-xar</goal>
+							</goals>
+							<configuration>
+								<sourceDirectory>${project.build.directory}/package-files</sourceDirectory>
+								<descriptor>../lib-assembly.xml</descriptor>
+								<outputDirectory>${project.build.directory}</outputDirectory>
+								<finalName>${project.artifactId}-${project.version}-test</finalName>
 							</configuration>
 						</execution>
 					</executions>

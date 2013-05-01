@@ -1,0 +1,24 @@
+<package xmlns="http://expath.org/ns/pkg" xmlns:dc="http://dublincore.org/documents/dces/" xmlns:pkg="http://cxan.org/ns/package" name="http://exist-db.org/ns/expath-${module-prefix}" abbrev="expath-${module-prefix}-exist-lib" version="${project.version}"
+	spec="1.0">
+	<title>${spec-title} Implementation</title>
+	<dependency processor="http://exist-db.org/" />
+	<dependency package="http://expath.org/lib/${module-prefix}" />
+	<dc:creator id="cteodorescu">Claudius Teodorescu</dc:creator>
+	<dc:identifier></dc:identifier>
+	<dc:rights>GNU-LGPL</dc:rights>
+	<dc:type>application</dc:type>
+	<pkg:module-prefix>${module-prefix}</pkg:module-prefix>
+	<pkg:module-namespace>${module-namespace}</pkg:module-namespace>
+	<pkg:cxan-tags>${module-prefix},expath,application,exist</pkg:cxan-tags>
+	<pkg:cxan-category id="libs">Libraries</pkg:cxan-category>
+	<pkg:cxan-category id="exist">eXist extensions</pkg:cxan-category>
+	<jar xmlns="http://exist-db.org/ns/expath-pkg">expath-crypto-exist-lib.jar</jar>
+	<jar xmlns="http://exist-db.org/ns/expath-pkg">expath-crypto-lib-0.2.5.jar</jar>
+	<java xmlns="http://exist-db.org/ns/expath-pkg">
+		<namespace>http://expath.org/ns/crypto</namespace>
+		<class>${java-package-main-class}</class>
+	</java>
+	<status xmlns="http://exist-db.org/xquery/repo">stable</status>
+	<copyright xmlns="http://exist-db.org/xquery/repo">true</copyright>
+	<target xmlns="http://exist-db.org/xquery/repo">expath-${module-prefix}</target>
+</package>
