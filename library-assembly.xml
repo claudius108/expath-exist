@@ -1,4 +1,4 @@
-<package xmlns="http://expath.org/ns/pkg" xmlns:dc="http://dublincore.org/documents/dces/" xmlns:pkg="http://cxan.org/ns/package" name="http://exist-db.org/ns/expath-${module-prefix}" abbrev="expath-${module-prefix}-exist-lib" version="${project.version}"
+<package xmlns="http://expath.org/ns/pkg" xmlns:dc="http://dublincore.org/documents/dces/" xmlns:pkg="http://cxan.org/ns/package" name="http://expath.org/lib/${module-prefix}" abbrev="expath-${module-prefix}-exist-lib" version="${project.version}"
 	spec="1.0">
 	<title>${spec-title} Implementation</title>
 	<dependency processor="http://exist-db.org/" />
@@ -6,7 +6,7 @@
 	<dc:creator id="cteodorescu">Claudius Teodorescu</dc:creator>
 	<dc:identifier></dc:identifier>
 	<dc:rights>GNU-LGPL</dc:rights>
-	<dc:type>application</dc:type>
+	<dc:type>library</dc:type>
 	<pkg:module-prefix>${module-prefix}</pkg:module-prefix>
 	<pkg:module-namespace>${module-namespace}</pkg:module-namespace>
 	<pkg:cxan-tags>${module-prefix},expath,application,exist</pkg:cxan-tags>

@@ -283,7 +283,7 @@
 					<version>0.1</version>
 					<executions>
 						<execution>
-							<id>generate-lib-xar</id>
+							<id>generate-library-xar</id>
 							<phase>package</phase>
 							<goals>
 								<goal>make-xar</goal>
