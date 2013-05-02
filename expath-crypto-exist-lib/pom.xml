@@ -32,6 +32,7 @@
 			<groupId>org.expath.libs</groupId>
 			<artifactId>expath-crypto-lib</artifactId>
 			<version>0.2.5</version>
+			<scope>compile</scope>
 			<type>jar</type>
 		</dependency>
 	</dependencies>
@@ -51,7 +52,7 @@
 				<artifactId>maven-antrun-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>ro.kuberam.maven</groupId>
+				<groupId>ro.kuberam.maven.plugins</groupId>
 				<artifactId>kuberam-xar-plugin</artifactId>
 			</plugin>
 		</plugins>
