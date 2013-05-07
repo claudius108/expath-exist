@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kert:test-plan xmlns="http://www.w3.org/1999/xhtml" xmlns:kert="http://kuberam.ro/ns/kert" test-plan-version="0.5" xml:base="http://127.0.0.1:8080/rest//db/web/tests/expath-crypto/">
+<kert:test-plan xmlns="http://www.w3.org/1999/xhtml" xmlns:kert="http://kuberam.ro/ns/kert" test-plan-version="0.5" xml:base="http://127.0.0.1:8080/rest//db/apps/expath-crypto/tests/">
 	<kert:description>Test plan for EXPath Cryptographic Module</kert:description>
-	<kert:version>0.5</kert:version>
+	<kert:version>0.5.1</kert:version>
 	<kert:results>
 		<!--start of standard results - do not remove them -->
 		<kert:result id="passed" icon-url="../resources/images/passed.png" font-color="white" background-color="green" score="0">Passed</kert:result>
