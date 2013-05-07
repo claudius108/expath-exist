@@ -207,7 +207,7 @@
 			<kert:a>Test!</kert:a>
 			' with AES algorithm and 136 key (testing with a wrong key, to see the error message).
 		</kert:description>
-		<kert:test-url>encryptStringWithAesWrongSymmetricKey.xq</kert:test-url>
+		<kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:test-url>
 		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
