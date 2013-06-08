@@ -107,7 +107,6 @@ public class ExistExpathFTClientModule extends AbstractInternalModule {
      *
      * @return  DOCUMENT ME!
      */
-    @SuppressWarnings("empty-statement")
     public static Object retrieveRemoteConnection(XQueryContext context, long connectionUID) {
         return ModuleUtils.retrieveObjectFromContextMap(context, ExistExpathFTClientModule.CONNECTIONS_CONTEXTVAR, connectionUID);
     }

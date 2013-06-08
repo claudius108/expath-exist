@@ -9,13 +9,13 @@
 	<dc:type>library</dc:type>
 	<pkg:module-prefix>${module-prefix}</pkg:module-prefix>
 	<pkg:module-namespace>${module-namespace}</pkg:module-namespace>
-	<pkg:cxan-tags>${module-prefix},expath,application,exist</pkg:cxan-tags>
+	<pkg:cxan-tags>${module-prefix},expath,library,exist</pkg:cxan-tags>
 	<pkg:cxan-category id="libs">Libraries</pkg:cxan-category>
 	<pkg:cxan-category id="exist">eXist extensions</pkg:cxan-category>
 	<jar xmlns="http://exist-db.org/ns/expath-pkg">expath-crypto-exist-lib.jar</jar>
 	<jar xmlns="http://exist-db.org/ns/expath-pkg">expath-crypto-lib-0.2.5.jar</jar>
 	<java xmlns="http://exist-db.org/ns/expath-pkg">
-		<namespace>http://expath.org/ns/crypto</namespace>
+		<namespace>${module-namespace}</namespace>
 		<class>${java-package-main-class}</class>
 	</java>
 	<status xmlns="http://exist-db.org/xquery/repo">stable</status>

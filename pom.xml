@@ -9,7 +9,7 @@
 	</parent>
 
 	<groupId>org.expath.exist</groupId>
-	<artifactId>exist-base</artifactId>
+	<artifactId>base</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>eXist wrappers for EXPath modules</name>
@@ -20,26 +20,31 @@
 			<groupId>commons-pool</groupId>
 			<artifactId>commons-pool</artifactId>
 			<version>1.5.6</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.fabric3.fabric3-db-exist</groupId>
 			<artifactId>xmldb</artifactId>
 			<version>1.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.exist-db</groupId>
 			<artifactId>exist-modules</artifactId>
 			<version>2.0-tech-preview</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.exist-db</groupId>
 			<artifactId>exist</artifactId>
 			<version>2.0-tech-preview</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -75,8 +80,12 @@
 								<goal>list</goal>
 							</goals>
 							<configuration>
-								<includeArtifactIds>${dependency-list}</includeArtifactIds>
+								<!-- <includeArtifactIds>${dependency-list}</includeArtifactIds> -->
+								<!-- <excludeGroupIds>log4j,org.exist-db,org.codehaus.fabric3.fabric3-db-exist,commons-pool,commons-io</excludeGroupIds> -->
+
 								<outputFile>${java-dependencies-list-url}</outputFile>
+								<outputScope>false</outputScope>
+								<useJvmChmod>false</useJvmChmod>
 							</configuration>
 						</execution>
 					</executions>
@@ -217,22 +226,22 @@
 									</copy>
 
 									<echo>Making ${project.artifactId}-lib.xar...</echo>
-									<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.xar">
-										<fileset dir="${project.build.directory}/package-files">
-											<exclude name="tests/" />
-										</fileset>
-										<fileset dir="${project.build.directory}/library-package-descriptors" />
-									</zip>
+<!-- 									<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.xar"> -->
+<!-- 										<fileset dir="${project.build.directory}/package-files"> -->
+<!-- 											<exclude name="tests/" /> -->
+<!-- 										</fileset> -->
+<!-- 										<fileset dir="${project.build.directory}/library-package-descriptors" /> -->
+<!-- 									</zip> -->
 
 									<echo>Making ${project.artifactId}-demos.xar...</echo>
-									<zip destfile="${project.build.directory}/${project.artifactId}-demos-${project.version}.xar">
-										<fileset dir="${project.build.directory}/package-files">
-											<exclude name="exist.xml" />
-											<exclude name="${project.artifactId}/" />
-										</fileset>
-										<fileset dir="${project.build.directory}/application-package-descriptors" />
-										<zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" />
-									</zip>
+<!-- 									<zip destfile="${project.build.directory}/${project.artifactId}-demos-${project.version}.xar"> -->
+<!-- 										<fileset dir="${project.build.directory}/package-files"> -->
+<!-- 											<exclude name="exist.xml" /> -->
+<!-- 											<exclude name="${project.artifactId}/" /> -->
+<!-- 										</fileset> -->
+<!-- 										<fileset dir="${project.build.directory}/application-package-descriptors" /> -->
+<!-- 										<zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" /> -->
+<!-- 									</zip> -->
 								</target>
 							</configuration>
 						</execution>
@@ -278,7 +287,7 @@
 					</executions>
 				</plugin>
 				<plugin>
-					<groupId>ro.kuberam.maven</groupId>
+					<groupId>ro.kuberam.maven.plugins</groupId>
 					<artifactId>kuberam-xar-plugin</artifactId>
 					<version>0.1</version>
 					<executions>
@@ -289,10 +298,28 @@
 								<goal>make-xar</goal>
 							</goals>
 							<configuration>
-								<sourceDirectory>${project.build.directory}/package-files</sourceDirectory>
-								<descriptor>../lib-assembly.xml</descriptor>
+								<fileSets>
+									<fileSet>
+										<directory>${project.build.directory}</directory>
+										<includes>
+											<include>${project.build.finalName}.jar</include>
+										</includes>
+										<outputDirectory>${project.artifactId}</outputDirectory>
+									</fileSet>
+									<fileSet>
+										<directory>${project.build.directory}/package-files/${project.artifactId}</directory>
+										<outputDirectory>${project.artifactId}</outputDirectory>
+									</fileSet>
+									<fileSet>
+										<directory>${basedir}/src/main/resources</directory>
+										<includes>
+											<include>icon.png</include>
+										</includes>
+									</fileSet>
+								</fileSets>
+								<globalDescriptor>../library-assembly.xml</globalDescriptor>
 								<outputDirectory>${project.build.directory}</outputDirectory>
-								<finalName>${project.artifactId}-${project.version}-test</finalName>
+								<finalName>${project.artifactId}-${project.version}</finalName>
 							</configuration>
 						</execution>
 					</executions>
