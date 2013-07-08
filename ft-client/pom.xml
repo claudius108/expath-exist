@@ -30,7 +30,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.expath.libs</groupId>
-			<artifactId>expath-ft-client-lib</artifactId>
+			<artifactId>ft-client</artifactId>
 			<version>1.1.2</version>
 			<type>jar</type>
 		</dependency>

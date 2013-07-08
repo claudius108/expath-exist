@@ -30,7 +30,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.expath.libs</groupId>
-			<artifactId>expath-crypto-lib</artifactId>
+			<artifactId>crypto</artifactId>
 			<version>0.2.5</version>
 			<scope>compile</scope>
 			<type>jar</type>
