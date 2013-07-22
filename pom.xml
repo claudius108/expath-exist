@@ -292,33 +292,13 @@
 					<version>0.1</version>
 					<executions>
 						<execution>
-							<id>generate-library-xar</id>
+							<id>generate-xar</id>
 							<phase>package</phase>
 							<goals>
 								<goal>make-xar</goal>
 							</goals>
 							<configuration>
-								<fileSets>
-									<fileSet>
-										<directory>${project.build.directory}</directory>
-										<includes>
-											<include>${project.build.finalName}.jar</include>
-										</includes>
-										<outputDirectory>${project.artifactId}</outputDirectory>
-									</fileSet>
-									<fileSet>
-										<directory>${project.build.directory}/package-files/${project.artifactId}</directory>
-										<outputDirectory>${project.artifactId}</outputDirectory>
-									</fileSet>
-									<fileSet>
-										<directory>${basedir}/src/main/resources</directory>
-										<includes>
-											<include>icon.png</include>
-										</includes>
-									</fileSet>
-								</fileSets>
-								<globalDescriptor>../library-assembly.xml</globalDescriptor>
-								<outputDirectory>${project.build.directory}</outputDirectory>
+								<descriptor>../assembly.xml</descriptor>
 								<finalName>${project.artifactId}-${project.version}</finalName>
 							</configuration>
 						</execution>
