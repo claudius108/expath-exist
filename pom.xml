@@ -50,6 +50,7 @@
 
 	<properties>
 		<java-dependencies-list-url>${project.build.directory}/dependency-list.txt</java-dependencies-list-url>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<build>
@@ -226,22 +227,22 @@
 									</copy>
 
 									<echo>Making ${project.artifactId}-lib.xar...</echo>
-<!-- 									<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.xar"> -->
-<!-- 										<fileset dir="${project.build.directory}/package-files"> -->
-<!-- 											<exclude name="tests/" /> -->
-<!-- 										</fileset> -->
-<!-- 										<fileset dir="${project.build.directory}/library-package-descriptors" /> -->
-<!-- 									</zip> -->
+									<!-- <zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.xar"> -->
+									<!-- <fileset dir="${project.build.directory}/package-files"> -->
+									<!-- <exclude name="tests/" /> -->
+									<!-- </fileset> -->
+									<!-- <fileset dir="${project.build.directory}/library-package-descriptors" /> -->
+									<!-- </zip> -->
 
 									<echo>Making ${project.artifactId}-demos.xar...</echo>
-<!-- 									<zip destfile="${project.build.directory}/${project.artifactId}-demos-${project.version}.xar"> -->
-<!-- 										<fileset dir="${project.build.directory}/package-files"> -->
-<!-- 											<exclude name="exist.xml" /> -->
-<!-- 											<exclude name="${project.artifactId}/" /> -->
-<!-- 										</fileset> -->
-<!-- 										<fileset dir="${project.build.directory}/application-package-descriptors" /> -->
-<!-- 										<zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" /> -->
-<!-- 									</zip> -->
+									<!-- <zip destfile="${project.build.directory}/${project.artifactId}-demos-${project.version}.xar"> -->
+									<!-- <fileset dir="${project.build.directory}/package-files"> -->
+									<!-- <exclude name="exist.xml" /> -->
+									<!-- <exclude name="${project.artifactId}/" /> -->
+									<!-- </fileset> -->
+									<!-- <fileset dir="${project.build.directory}/application-package-descriptors" /> -->
+									<!-- <zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" /> -->
+									<!-- </zip> -->
 								</target>
 							</configuration>
 						</execution>
@@ -288,8 +289,8 @@
 				</plugin>
 				<plugin>
 					<groupId>ro.kuberam.maven.plugins</groupId>
-					<artifactId>kuberam-xar-plugin</artifactId>
-					<version>0.1</version>
+					<artifactId>kuberam-expath-plugin</artifactId>
+					<version>0.3</version>
 					<executions>
 						<execution>
 							<id>generate-xar</id>
