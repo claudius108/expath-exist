@@ -30,8 +30,8 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.fabric3.fabric3-db-exist</groupId>
-			<artifactId>xmldb</artifactId>
+			<groupId>org.exist-db</groupId>
+			<artifactId>xmldb-api</artifactId>
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
