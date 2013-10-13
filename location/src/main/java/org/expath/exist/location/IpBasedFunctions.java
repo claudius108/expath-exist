@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.exist.dom.QName;
 import org.exist.xquery.BasicFunction;
 import org.exist.xquery.Cardinality;
+import org.exist.xquery.FunctionDef;
 import org.exist.xquery.FunctionSignature;
 import org.exist.xquery.XPathException;
 import org.exist.xquery.XQueryContext;
@@ -22,7 +23,6 @@ import org.exist.xquery.value.Sequence;
 import org.exist.xquery.value.SequenceType;
 import org.exist.xquery.value.Type;
 import org.exist.xquery.value.StringValue;
-import com.maxmind.geoip.*;
 /**
  *
  * @author Claudius Teodorescu (claud108@yahoo.com)
@@ -44,35 +44,35 @@ public class IpBasedFunctions extends BasicFunction {
 
 	public final static FunctionSignature signatures[] = {
 		new FunctionSignature(
-			new QName("get-country-code", ModuleDescription.NAMESPACE_URI, ModuleDescription.PREFIX), getCountryCodeFunctionDescription,
+			new QName("get-country-code", org.expath.location.ModuleDescription.NAMESPACE_URI, org.expath.location.ModuleDescription.PREFIX), getCountryCodeFunctionDescription,
 			new SequenceType[] {
                             new FunctionParameterSequenceType("ip-address", Type.STRING, Cardinality.ZERO_OR_ONE, "The IP address.")
                         },
 			new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE, "the country code, as string.")
                 ),
 		new FunctionSignature(
-			new QName("get-country-name", keoModule.NAMESPACE_URI, keoModule.PREFIX), getCountryNameFunctionDescription,
+			new QName("get-country-name", org.expath.location.ModuleDescription.NAMESPACE_URI, org.expath.location.ModuleDescription.PREFIX), getCountryNameFunctionDescription,
 			new SequenceType[] {
                             new FunctionParameterSequenceType("ip-address", Type.STRING, Cardinality.ZERO_OR_ONE, "The IP address.")
                         },
 			new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE, "the country name, as string.")
                 ),
 		new FunctionSignature(
-			new QName("get-city", keoModule.NAMESPACE_URI, keoModule.PREFIX), "Returns city name based on an IP address.",
+			new QName("get-city", org.expath.location.ModuleDescription.NAMESPACE_URI, org.expath.location.ModuleDescription.PREFIX), "Returns city name based on an IP address.",
 			new SequenceType[] {
                             new FunctionParameterSequenceType("ip-address", Type.STRING, Cardinality.ZERO_OR_ONE, "The IP address.")
                         },
 			new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE, "the city name, as string.")
                 ),
 		new FunctionSignature(
-			new QName("get-time-zone", keoModule.NAMESPACE_URI, keoModule.PREFIX), "Returns time zone based on an IP address.",
+			new QName("get-time-zone", org.expath.location.ModuleDescription.NAMESPACE_URI, org.expath.location.ModuleDescription.PREFIX), "Returns time zone based on an IP address.",
 			new SequenceType[] {
                             new FunctionParameterSequenceType("ip-address", Type.STRING, Cardinality.ZERO_OR_ONE, "The IP address.")
                         },
 			new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE, "the time zone, as string.")
                 ),
 		new FunctionSignature(
-			new QName("get-distance", keoModule.NAMESPACE_URI, keoModule.PREFIX), "Returns distance between two points, based on their IP addresses.",
+			new QName("get-distance", org.expath.location.ModuleDescription.NAMESPACE_URI, org.expath.location.ModuleDescription.PREFIX), "Returns distance between two points, based on their IP addresses.",
 			new SequenceType[] {
                             new FunctionParameterSequenceType("first-ip-address", Type.STRING, Cardinality.EXACTLY_ONE, "First IP address."),
                             new FunctionParameterSequenceType("second-ip-address", Type.STRING, Cardinality.EXACTLY_ONE, "Second IP address.")
@@ -85,6 +85,18 @@ public class IpBasedFunctions extends BasicFunction {
 	public IpBasedFunctions(XQueryContext context, FunctionSignature signature) {
 		super(context, signature);
 	}
+	
+    private final static FunctionDef[] functions = {
+    	new FunctionDef(HashFunction.signature, HashFunction.class),
+        new FunctionDef(HmacFunction.signature, HmacFunction.class),   	
+		new FunctionDef(GenerateSignatureFunction.signatures[0], GenerateSignatureFunction.class),
+        new FunctionDef(GenerateSignatureFunction.signatures[1], GenerateSignatureFunction.class),
+        new FunctionDef(GenerateSignatureFunction.signatures[2], GenerateSignatureFunction.class),
+        new FunctionDef(GenerateSignatureFunction.signatures[3], GenerateSignatureFunction.class),
+        new FunctionDef(ValidateSignatureFunction.signature, ValidateSignatureFunction.class),
+        new FunctionDef(EncryptionFunctions.signatures[0], EncryptionFunctions.class),
+        new FunctionDef(EncryptionFunctions.signatures[1], EncryptionFunctions.class)
+    };
 
 	public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
             String result = null;

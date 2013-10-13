@@ -15,9 +15,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.kohsuke</groupId>
-			<artifactId>geoip</artifactId>
-			<version>1.2.5</version>
+			<groupId>org.expath.libs</groupId>
+			<artifactId>location</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 

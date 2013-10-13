@@ -19,34 +19,28 @@
  *
  *  $Id$
  */
-package org.expath.exist.crypto;
+package org.expath.exist.location;
 
 import java.util.List;
 import java.util.Map;
 
 import org.exist.xquery.AbstractInternalModule;
 import org.exist.xquery.FunctionDef;
-import org.expath.crypto.ExpathCryptoModule;
-import org.expath.exist.crypto.digest.HashFunction;
-import org.expath.exist.crypto.digest.HmacFunction;
-import org.expath.exist.crypto.digitalSignature.GenerateSignatureFunction;
-import org.expath.exist.crypto.digitalSignature.ValidateSignatureFunction;
-import org.expath.exist.crypto.encrypt.EncryptionFunctions;
 
 /**
  * Implements the module definition.
  * 
  * @author Claudius Teodorescu <claudius.teodorescu@gmail.com>
  */
-public class ExistExpathCryptoModule extends AbstractInternalModule {
+public class ModuleDescription extends AbstractInternalModule {
 
 	public static String NAMESPACE_URI = "";
 	static {
-		NAMESPACE_URI = ExpathCryptoModule.NAMESPACE_URI;
+		NAMESPACE_URI = org.expath.location.ModuleDescription.NAMESPACE_URI;
 	}
 	public static String PREFIX = "";
 	static {
-		PREFIX = ExpathCryptoModule.PREFIX;
+		PREFIX = org.expath.location.ModuleDescription.PREFIX;
 	}
 	public final static String INCLUSION_DATE = "2011-03-24";
 	public final static String RELEASED_IN_VERSION = "eXist-1.5";
@@ -59,7 +53,7 @@ public class ExistExpathCryptoModule extends AbstractInternalModule {
 			new FunctionDef(ValidateSignatureFunction.signature, ValidateSignatureFunction.class),
 			new FunctionDef(EncryptionFunctions.signatures[0], EncryptionFunctions.class), new FunctionDef(EncryptionFunctions.signatures[1], EncryptionFunctions.class) };
 
-	public ExistExpathCryptoModule(Map<String, List<? extends Object>> parameters) throws Exception {
+	public ModuleDescription(Map<String, List<? extends Object>> parameters) throws Exception {
 		super(functions, parameters);
 	}
 
@@ -75,7 +69,7 @@ public class ExistExpathCryptoModule extends AbstractInternalModule {
 
 	@Override
 	public String getDescription() {
-		return ExpathCryptoModule.MODULE_DESCRIPTION;
+		return org.expath.location.ModuleDescription.MODULE_DESCRIPTION;
 	}
 
 	@Override
