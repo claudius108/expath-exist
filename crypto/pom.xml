@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>crypto</artifactId>
-	<version>0.2.6</version>
+	<version>0.3.0</version>
 	<name>eXist wrapper for EXPath Cryptographic library</name>
 	<url>http://expath.org</url>
 

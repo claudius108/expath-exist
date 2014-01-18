@@ -51,13 +51,17 @@ public class ExistExpathCryptoModule extends AbstractInternalModule {
 	public final static String INCLUSION_DATE = "2011-03-24";
 	public final static String RELEASED_IN_VERSION = "eXist-1.5";
 
-	private final static FunctionDef[] functions = { new FunctionDef(HashFunction.signature, HashFunction.class),
-			new FunctionDef(HmacFunction.signature, HmacFunction.class), new FunctionDef(GenerateSignatureFunction.signatures[0], GenerateSignatureFunction.class),
+	private final static FunctionDef[] functions = {
+			new FunctionDef(HashFunction.signatures[0], HashFunction.class),
+			new FunctionDef(HashFunction.signatures[1], HashFunction.class),
+			new FunctionDef(HmacFunction.signature, HmacFunction.class),
+			new FunctionDef(GenerateSignatureFunction.signatures[0], GenerateSignatureFunction.class),
 			new FunctionDef(GenerateSignatureFunction.signatures[1], GenerateSignatureFunction.class),
 			new FunctionDef(GenerateSignatureFunction.signatures[2], GenerateSignatureFunction.class),
 			new FunctionDef(GenerateSignatureFunction.signatures[3], GenerateSignatureFunction.class),
 			new FunctionDef(ValidateSignatureFunction.signature, ValidateSignatureFunction.class),
-			new FunctionDef(EncryptionFunctions.signatures[0], EncryptionFunctions.class), new FunctionDef(EncryptionFunctions.signatures[1], EncryptionFunctions.class) };
+			new FunctionDef(EncryptionFunctions.signatures[0], EncryptionFunctions.class),
+			new FunctionDef(EncryptionFunctions.signatures[1], EncryptionFunctions.class) };
 
 	public ExistExpathCryptoModule(Map<String, List<? extends Object>> parameters) throws Exception {
 		super(functions, parameters);
