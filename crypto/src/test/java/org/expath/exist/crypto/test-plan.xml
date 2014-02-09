@@ -240,11 +240,11 @@
 	</kert:test>
 	<kert:test id="26">
 		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-512' HMAC for string, default provider</kert:title>
+		<kert:title>'SHA-512' HMAC for string, default format</kert:title>
 		<kert:version>0.3</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-512' algorithm and the default provider.</kert:description>
+		<kert:description>HMAC for a string by using 'SHA-512' algorithm and the default format.</kert:description>
 		<kert:test-url>hmacStringWithSha512AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512AndDefaultProvider.xq
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512AndDefaultFormat.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
 		<kert:timeout />
@@ -348,11 +348,11 @@
 	</kert:test>
 	<kert:test id="22">
 		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'MD5' HMAC for string, default provider</kert:title>
+		<kert:title>'MD5' HMAC for string, default format</kert:title>
 		<kert:version>0.1</kert:version>
-		<kert:description>HMAC for a string by using 'MD5' algorithm and the default provider.</kert:description>
+		<kert:description>HMAC for a string by using 'MD5' algorithm and the default format.</kert:description>
 		<kert:test-url>hmacStringWithMd5AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5AndDefaultProvider.xq
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5AndDefaultFormat.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
 		<kert:timeout />
@@ -384,11 +384,11 @@
 	</kert:test>
 	<kert:test id="23">
 		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-1' HMAC for string, default provider</kert:title>
+		<kert:title>'SHA-1' HMAC for string, default format</kert:title>
 		<kert:version>0.1</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-1' algorithm and the default provider.</kert:description>
+		<kert:description>HMAC for a string by using 'SHA-1' algorithm and the default format.</kert:description>
 		<kert:test-url>hmacStringWithSha1AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1AndDefaultProvider.xq
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1AndDefaultFormat.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
 		<kert:timeout />
@@ -420,11 +420,11 @@
 	</kert:test>
 	<kert:test id="24">
 		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-256' HMAC for string, default provider</kert:title>
+		<kert:title>'SHA-256' HMAC for string, default format</kert:title>
 		<kert:version>0.1</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-256' algorithm and the default provider.</kert:description>
+		<kert:description>HMAC for a string by using 'SHA-256' algorithm and the default format.</kert:description>
 		<kert:test-url>hmacStringWithSha256AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256AndDefaultProvider.xq
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256AndDefaultFormat.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
 		<kert:timeout />
@@ -456,11 +456,11 @@
 	</kert:test>
 	<kert:test id="25">
 		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-384' HMAC for string, default provider</kert:title>
+		<kert:title>'SHA-384' HMAC for string, default format</kert:title>
 		<kert:version>0.1</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-384' algorithm and the default provider.</kert:description>
+		<kert:description>HMAC for a string by using 'SHA-384' algorithm and the default format.</kert:description>
 		<kert:test-url>hmacStringWithSha384AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384AndDefaultProvider.xq
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384AndDefaultFormat.xq
 		</kert:source-url>
 		<kert:assertion>/result/result-token</kert:assertion>
 		<kert:timeout />
@@ -885,15 +885,15 @@
 			<li id="tree-43" title="Test 43">Symmetric decryption of string, AES</li>
 			<li id="tree-5" title="Test 5">Error message for symmetric encryption of string</li>
 			<li id="tree-9" title="Test 9">'MD5' HMAC for string</li>
-			<li id="tree-22" title="Test 22">'MD5' HMAC for string, default provider</li>
+			<li id="tree-22" title="Test 22">'MD5' HMAC for string, default format</li>
 			<li id="tree-10" title="Test 10">'SHA-1' HMAC for string</li>
-			<li id="tree-23" title="Test 23">'SHA-1' HMAC for string, default provider</li>
+			<li id="tree-23" title="Test 23">'SHA-1' HMAC for string, default format</li>
 			<li id="tree-11" title="Test 11">'SHA-256' HMAC for string</li>
-			<li id="tree-24" title="Test 24">'SHA-256' HMAC for string, default provider</li>
+			<li id="tree-24" title="Test 24">'SHA-256' HMAC for string, default format</li>
 			<li id="tree-12" title="Test 12">'SHA-384' HMAC for string</li>
-			<li id="tree-25" title="Test 25">'SHA-384' HMAC for string, default provider</li>
+			<li id="tree-25" title="Test 25">'SHA-384' HMAC for string, default format</li>
 			<li id="tree-6" title="Test 6">'SHA-512' HMAC for string</li>
-			<li id="tree-26" title="Test 26">'SHA-512' HMAC for string, default provider</li>
+			<li id="tree-26" title="Test 26">'SHA-512' HMAC for string, default format</li>
 			<li id="tree-7" title="Test 7">'MD5' hashing for string</li>
 			<li id="tree-27" title="Test 27">'MD5' hashing for string, default provider</li>
 			<li id="tree-8" title="Test 8">'SHA-1' hashing for string</li>
