@@ -35,30 +35,21 @@ public class HmacFunction extends BasicFunction {
 	private final static Logger log = Logger.getLogger(HmacFunction.class);
 
 	public final static FunctionSignature signature = new FunctionSignature(
-			new QName("hmac", ExistExpathCryptoModule.NAMESPACE_URI,
-					ExistExpathCryptoModule.PREFIX),
+			new QName("hmac", ExistExpathCryptoModule.NAMESPACE_URI, ExistExpathCryptoModule.PREFIX),
 			"Hashes the input message.",
 			new SequenceType[] {
-					new FunctionParameterSequenceType(
-							"data",
-							Type.STRING,
-							Cardinality.EXACTLY_ONE,
+					new FunctionParameterSequenceType("data", Type.STRING, Cardinality.EXACTLY_ONE,
 							"The data to be authenticated. This parameter can be of type xs:string, xs:base64Binary, or xs:hexBinary."),
 					new FunctionParameterSequenceType(
 							"secret-key",
 							Type.STRING,
 							Cardinality.EXACTLY_ONE,
 							"The secret key used for calculating the authentication code. This parameter can be of type xs:string, xs:base64Binary, or xs:hexBinary."),
-					new FunctionParameterSequenceType("algorithm", Type.STRING,
-							Cardinality.EXACTLY_ONE,
+					new FunctionParameterSequenceType("algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
 							"The cryptographic hashing algorithm."),
-					new FunctionParameterSequenceType(
-							"provider",
-							Type.STRING,
-							Cardinality.ZERO_OR_ONE,
-							"The cryptographic provider's name. If the provider is not specified, the implementation will use the default provider."), },
-			new FunctionReturnSequenceType(Type.STRING,
-					Cardinality.EXACTLY_ONE,
+					new FunctionParameterSequenceType("format", Type.STRING, Cardinality.EXACTLY_ONE,
+							"The format of the output. The legal values are \"hex\" and \"base64\". The default value is \"base64\".") },
+			new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE,
 					"hash-based message authentication code, as base64 string."));
 
 	public HmacFunction(XQueryContext context, FunctionSignature signature) {
@@ -66,17 +57,16 @@ public class HmacFunction extends BasicFunction {
 	}
 
 	@Override
-	public Sequence eval(Sequence[] args, Sequence contextSequence)
-			throws XPathException {
+	public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
 		String result = null;
 
 		String data = args[0].getStringValue();
 		String secretKey = args[1].getStringValue();
 		String algorithm = args[2].getStringValue();
-		String provider = args[3].getStringValue();
+		String format = args[3].getStringValue();
 
 		try {
-			result = Hmac.hmac(data, secretKey, algorithm, provider);
+			result = Hmac.hmac(data, secretKey, algorithm, format);
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}
