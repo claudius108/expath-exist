@@ -68,7 +68,7 @@ public class HashFunction extends BasicFunction {
 							new FunctionParameterSequenceType("algorithm", Type.STRING,
 									Cardinality.EXACTLY_ONE, "The cryptographic hashing algorithm."),
 							new FunctionParameterSequenceType("format", Type.STRING,
-									Cardinality.EXACTLY_ONE,
+									Cardinality.ZERO_OR_ONE,
 									"The format of the output. The legal values are \"hex\" and \"base64\". The default value is \"base64\".") },
 					new FunctionReturnSequenceType(Type.BYTE, Cardinality.ONE_OR_MORE,
 							"resulting hash value, as string.")) };

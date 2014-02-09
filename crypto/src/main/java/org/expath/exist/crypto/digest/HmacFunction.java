@@ -47,7 +47,7 @@ public class HmacFunction extends BasicFunction {
 							"The secret key used for calculating the authentication code. This parameter can be of type xs:string, xs:base64Binary, or xs:hexBinary."),
 					new FunctionParameterSequenceType("algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
 							"The cryptographic hashing algorithm."),
-					new FunctionParameterSequenceType("format", Type.STRING, Cardinality.EXACTLY_ONE,
+					new FunctionParameterSequenceType("format", Type.STRING, Cardinality.ZERO_OR_ONE,
 							"The format of the output. The legal values are \"hex\" and \"base64\". The default value is \"base64\".") },
 			new FunctionReturnSequenceType(Type.STRING, Cardinality.EXACTLY_ONE,
 					"hash-based message authentication code, as base64 string."));
