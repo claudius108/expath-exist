@@ -54,7 +54,8 @@ public class ExistExpathCryptoModule extends AbstractInternalModule {
 	private final static FunctionDef[] functions = {
 			new FunctionDef(HashFunction.signatures[0], HashFunction.class),
 			new FunctionDef(HashFunction.signatures[1], HashFunction.class),
-			new FunctionDef(HmacFunction.signature, HmacFunction.class),
+			new FunctionDef(HmacFunction.signatures[0], HmacFunction.class),
+			new FunctionDef(HmacFunction.signatures[1], HmacFunction.class),
 			new FunctionDef(GenerateSignatureFunction.signatures[0], GenerateSignatureFunction.class),
 			new FunctionDef(GenerateSignatureFunction.signatures[1], GenerateSignatureFunction.class),
 			new FunctionDef(GenerateSignatureFunction.signatures[2], GenerateSignatureFunction.class),
