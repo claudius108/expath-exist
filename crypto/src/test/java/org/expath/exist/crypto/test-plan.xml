@@ -1,925 +1,925 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kert:test-plan xmlns="http://www.w3.org/1999/xhtml" xmlns:kert="http://kuberam.ro/ns/kert" test-plan-version="0.5" xml:base="unit-tests/">
-	<kert:description>Test plan for EXPath Cryptographic Module</kert:description>
-	<kert:version>0.5.2</kert:version>
-	<kert:results>
+    <kert:description>Test plan for EXPath Cryptographic Module</kert:description>
+    <kert:version>0.5.2</kert:version>
+    <kert:results>
 		<!--start of standard results - do not remove them -->
-		<kert:result id="passed" icon-url="../resources/images/passed.png" font-color="white" background-color="green" score="0">Passed</kert:result>
-		<kert:result id="failed" icon-url="../resources/images/failed.png" font-color="white" background-color="red" score="0">Failed</kert:result>
-		<kert:result id="unfound" icon-url="" font-color="white" background-color="black" score="0">Unfound</kert:result>
-		<kert:result id="undefined" icon-url="" font-color="white" background-color="black" score="0">Undefined result token</kert:result>
+        <kert:result id="passed" icon-url="../resources/images/passed.png" font-color="white" background-color="green" score="0">Passed</kert:result>
+        <kert:result id="failed" icon-url="../resources/images/failed.png" font-color="white" background-color="red" score="0">Failed</kert:result>
+        <kert:result id="unfound" icon-url="" font-color="white" background-color="black" score="0">Unfound</kert:result>
+        <kert:result id="undefined" icon-url="" font-color="white" background-color="black" score="0">Undefined result token</kert:result>
 		<!--end of standard results - do not remove them -->
-		<kert:result id="partial" icon-url="" font-color="white" background-color="yellow" score="0">Partial</kert:result>
-		<kert:result id="unknown" icon-url="" font-color="black" background-color="white" score="0">Unknown</kert:result>
-		<kert:result id="deprecated" icon-url="" font-color="white" background-color="green" score="0">Deprecated</kert:result>
-		<kert:result id="timeout" icon-url="" font-color="white" background-color="green" score="0">Timeout</kert:result>
-	</kert:results>
-	<kert:test id="1">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Generate enveloped digital signature</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>
+        <kert:result id="partial" icon-url="" font-color="white" background-color="yellow" score="0">Partial</kert:result>
+        <kert:result id="unknown" icon-url="" font-color="black" background-color="white" score="0">Unknown</kert:result>
+        <kert:result id="deprecated" icon-url="" font-color="white" background-color="green" score="0">Deprecated</kert:result>
+        <kert:result id="timeout" icon-url="" font-color="white" background-color="green" score="0">Timeout</kert:result>
+    </kert:results>
+    <kert:test id="1">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Generate enveloped digital signature</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>
 			Generate an enveloped digital signature for an XML document by using the following parameters:
 			'SHA1' canonicalization algorithm, 'DSA_SHA1' signature algorithm,
 			'dsig' signature
 			namespace prefix, and an X509
 			certificate.
 		</kert:description>
-		<kert:test-url>generateEnvelopedDigitalSignature.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/generateEnvelopedDigitalSignature.xq
+        <kert:test-url>generateEnvelopedDigitalSignature.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/generateEnvelopedDigitalSignature.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="2">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Validate enveloped digital signature</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="2">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Validate enveloped digital signature</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>
 			Validate an enveloped digital signature, which is generated by using the following parameters:
 			'SHA1' canonicalization algorithm, 'DSA_SHA1' signature algorithm,
 			'dsig' signature
 			namespace prefix, and an X509
 			certificate.
 		</kert:description>
-		<kert:test-url>validateEnvelopedDigitalSignature.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/validateEnvelopedDigitalSignature.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="3">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding</kert:title>
-		<kert:version>0.4</kert:version>
-		<kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, and 128 bytes key.</kert:description>
-		<kert:test-url>encryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyCbcMode.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="44">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, 128 bytes key, and default provider.</kert:description>
-		<kert:test-url>encryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="45">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Symmetric encryption of string, AES</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Symmetric encryption of a string with AES transformation (implicit ECB mode), and 128 bytes key.</kert:description>
-		<kert:test-url>encryptStringWithAesSymmetricKeyEcbMode.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyEcbMode.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="46">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, and wrong key.</kert:description>
-		<kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="47">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, wrong key, and default provider.</kert:description>
-		<kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcModeDefaultProvider.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="4">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Symmetric decryption of string, AES/CBC/PKCS5Padding</kert:title>
-		<kert:version>0.4</kert:version>
-		<kert:description>Symmetric decryption of a string with AES/CBC/PKCS5Padding transformation, and 128 bytes key.</kert:description>
-		<kert:test-url>decryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyCbcMode.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="42">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Symmetric decryption of string, AES/CBC/PKCS5Padding, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Symmetric decryption of a string with AES/CBC/PKCS5Padding transformation, 128 bytes key, and default provider.</kert:description>
-		<kert:test-url>decryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="43">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Symmetric decryption of string, AES</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Symmetric decryption of a string with AES transformation (implicit ECB mode), and 128 bytes key.
+        <kert:test-url>validateEnvelopedDigitalSignature.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/validateEnvelopedDigitalSignature.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="3">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding</kert:title>
+        <kert:version>0.4</kert:version>
+        <kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, and 128 bytes key.</kert:description>
+        <kert:test-url>encryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyCbcMode.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="44">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding, default provider</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, 128 bytes key, and default provider.</kert:description>
+        <kert:test-url>encryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="45">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Symmetric encryption of string, AES</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Symmetric encryption of a string with AES transformation (implicit ECB mode), and 128 bytes key.</kert:description>
+        <kert:test-url>encryptStringWithAesSymmetricKeyEcbMode.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyEcbMode.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="46">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, and wrong key.</kert:description>
+        <kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="47">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key, default provider</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, wrong key, and default provider.</kert:description>
+        <kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcModeDefaultProvider.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="4">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Symmetric decryption of string, AES/CBC/PKCS5Padding</kert:title>
+        <kert:version>0.4</kert:version>
+        <kert:description>Symmetric decryption of a string with AES/CBC/PKCS5Padding transformation, and 128 bytes key.</kert:description>
+        <kert:test-url>decryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyCbcMode.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="42">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Symmetric decryption of string, AES/CBC/PKCS5Padding, default provider</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Symmetric decryption of a string with AES/CBC/PKCS5Padding transformation, 128 bytes key, and default provider.</kert:description>
+        <kert:test-url>decryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="43">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Symmetric decryption of string, AES</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Symmetric decryption of a string with AES transformation (implicit ECB mode), and 128 bytes key.
 		</kert:description>
-		<kert:test-url>decryptStringWithAesSymmetricKeyEcbMode.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyEcbMode.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="5">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Error message for symmetric encryption of string</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>
+        <kert:test-url>decryptStringWithAesSymmetricKeyEcbMode.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyEcbMode.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="5">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Error message for symmetric encryption of string</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>
 			Symmetric encryption of string '
 			<kert:a>Test!</kert:a>
 			' with AES algorithm and 136 key (testing with a wrong key, to see the error message).
 		</kert:description>
-		<kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq
+        <kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="6">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-512' HMAC for string</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-512' algorithm.</kert:description>
-		<kert:test-url>hmacStringWithSha512.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="6">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-512' HMAC for string</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>HMAC for a string by using 'SHA-512' algorithm.</kert:description>
+        <kert:test-url>hmacStringWithSha512.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="26">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-512' HMAC for string, default format</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-512' algorithm and the default format.</kert:description>
-		<kert:test-url>hmacStringWithSha512AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512AndDefaultFormat.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="26">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-512' HMAC for string, default format</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>HMAC for a string by using 'SHA-512' algorithm and the default format.</kert:description>
+        <kert:test-url>hmacStringWithSha512AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="7">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'MD5' hashing for string</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>Hashing a string by using 'MD5' algorithm.</kert:description>
-		<kert:test-url>hashStringWithMd5.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithMd5.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="7">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'MD5' hashing for string</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>Hashing a string by using 'MD5' algorithm.</kert:description>
+        <kert:test-url>hashStringWithMd5.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithMd5.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="27">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'MD5' hashing for string, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a string by using 'MD5' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashStringWithMd5AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithMd5AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="27">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'MD5' hashing for string, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a string by using 'MD5' algorithm and the default format.</kert:description>
+        <kert:test-url>hashStringWithMd5AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithMd5AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="8">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-1' hashing for string</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>Hashing a string by using 'SHA-1' algorithm.</kert:description>
-		<kert:test-url>hashStringWithSha1.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha1.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="8">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-1' hashing for string</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>Hashing a string by using 'SHA-1' algorithm.</kert:description>
+        <kert:test-url>hashStringWithSha1.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha1.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="28">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-1' hashing for string, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a string by using 'SHA-1' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashStringWithSha1AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha1AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="28">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-1' hashing for string, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a string by using 'SHA-1' algorithm and the default format.</kert:description>
+        <kert:test-url>hashStringWithSha1AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha1AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="9">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'MD5' HMAC for string</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>HMAC for a string by using 'MD5' algorithm.</kert:description>
-		<kert:test-url>hmacStringWithMd5.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="9">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'MD5' HMAC for string</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>HMAC for a string by using 'MD5' algorithm.</kert:description>
+        <kert:test-url>hmacStringWithMd5.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="22">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'MD5' HMAC for string, default format</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>HMAC for a string by using 'MD5' algorithm and the default format.</kert:description>
-		<kert:test-url>hmacStringWithMd5AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5AndDefaultFormat.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="22">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'MD5' HMAC for string, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>HMAC for a string by using 'MD5' algorithm and the default format.</kert:description>
+        <kert:test-url>hmacStringWithMd5AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="10">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-1' HMAC for string</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-1' algorithm.</kert:description>
-		<kert:test-url>hmacStringWithSha1.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="10">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-1' HMAC for string</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>HMAC for a string by using 'SHA-1' algorithm.</kert:description>
+        <kert:test-url>hmacStringWithSha1.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="23">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-1' HMAC for string, default format</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-1' algorithm and the default format.</kert:description>
-		<kert:test-url>hmacStringWithSha1AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1AndDefaultFormat.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="23">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-1' HMAC for string, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>HMAC for a string by using 'SHA-1' algorithm and the default format.</kert:description>
+        <kert:test-url>hmacStringWithSha1AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="11">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-256' HMAC for string</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-256' algorithm.</kert:description>
-		<kert:test-url>hmacStringWithSha256.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="11">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-256' HMAC for string</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>HMAC for a string by using 'SHA-256' algorithm.</kert:description>
+        <kert:test-url>hmacStringWithSha256.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="24">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-256' HMAC for string, default format</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-256' algorithm and the default format.</kert:description>
-		<kert:test-url>hmacStringWithSha256AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256AndDefaultFormat.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="24">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-256' HMAC for string, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>HMAC for a string by using 'SHA-256' algorithm and the default format.</kert:description>
+        <kert:test-url>hmacStringWithSha256AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="12">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-384' HMAC for string</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-384' algorithm.</kert:description>
-		<kert:test-url>hmacStringWithSha384.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="12">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-384' HMAC for string</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>HMAC for a string by using 'SHA-384' algorithm.</kert:description>
+        <kert:test-url>hmacStringWithSha384.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="25">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-384' HMAC for string, default format</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>HMAC for a string by using 'SHA-384' algorithm and the default format.</kert:description>
-		<kert:test-url>hmacStringWithSha384AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384AndDefaultFormat.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="25">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-384' HMAC for string, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>HMAC for a string by using 'SHA-384' algorithm and the default format.</kert:description>
+        <kert:test-url>hmacStringWithSha384AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="13">
-		<kert:author>Joe Wicentowski</kert:author>
-		<kert:title>AWS REST request</kert:title>
-		<kert:version>0.3</kert:version>
-		<kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service.</kert:description>
-		<kert:test-url>AwsRestRequest.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequest.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="13">
+        <kert:author>Joe Wicentowski</kert:author>
+        <kert:title>AWS REST request</kert:title>
+        <kert:version>0.3</kert:version>
+        <kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service.</kert:description>
+        <kert:test-url>AwsRestRequest.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequest.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="37">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>AWS REST request, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service with default provider.</kert:description>
-		<kert:test-url>AwsRestRequestWithDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequestWithDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="37">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>AWS REST request, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service with default format.</kert:description>
+        <kert:test-url>AwsRestRequestWithDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequestWithDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="14">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-256' hashing for string</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a string by using 'SHA-256' algorithm.</kert:description>
-		<kert:test-url>hashStringWithSha256.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha256.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="14">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-256' hashing for string</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a string by using 'SHA-256' algorithm.</kert:description>
+        <kert:test-url>hashStringWithSha256.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha256.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="29">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-256' hashing for string, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a string by using 'SHA-256' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashStringWithSha256AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha256AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="29">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-256' hashing for string, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a string by using 'SHA-256' algorithm and the default format.</kert:description>
+        <kert:test-url>hashStringWithSha256AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha256AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="15">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-384' hashing for string</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a string by using 'SHA-384' algorithm.</kert:description>
-		<kert:test-url>hashStringWithSha384.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha384.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="15">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-384' hashing for string</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a string by using 'SHA-384' algorithm.</kert:description>
+        <kert:test-url>hashStringWithSha384.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha384.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="30">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-384' hashing for string, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a string by using 'SHA-384' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashStringWithSha384AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha384AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="30">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-384' hashing for string, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a string by using 'SHA-384' algorithm and the default format.</kert:description>
+        <kert:test-url>hashStringWithSha384AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha384AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="16">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-512' hashing for string</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a string by using 'SHA-512' algorithm.</kert:description>
-		<kert:test-url>hashStringWithSha512.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha512.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="16">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-512' hashing for string</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a string by using 'SHA-512' algorithm.</kert:description>
+        <kert:test-url>hashStringWithSha512.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha512.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="31">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-512' hashing for string, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a string by using 'SHA-512' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashStringWithSha512AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha512AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="31">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-512' hashing for string, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a string by using 'SHA-512' algorithm and the default format.</kert:description>
+        <kert:test-url>hashStringWithSha512AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha512AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="17">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'MD5' hashing for binary</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary by using 'MD5' algorithm.</kert:description>
-		<kert:test-url>hashBinaryWithMd5.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithMd5.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="17">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'MD5' hashing for binary</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary by using 'MD5' algorithm.</kert:description>
+        <kert:test-url>hashBinaryWithMd5.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithMd5.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="32">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'MD5' hashing for binary, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary by using 'MD5' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashBinaryWithMd5AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithMd5AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="32">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'MD5' hashing for binary, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary by using 'MD5' algorithm and the default format.</kert:description>
+        <kert:test-url>hashBinaryWithMd5AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithMd5AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="18">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-1' hashing for binary</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary by using 'SHA-1' algorithm.</kert:description>
-		<kert:test-url>hashBinaryWithSha1.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha1.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="18">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-1' hashing for binary</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary by using 'SHA-1' algorithm.</kert:description>
+        <kert:test-url>hashBinaryWithSha1.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha1.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="33">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-1' hashing for binary, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary by using 'SHA-1' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashBinaryWithSha1AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha1AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="33">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-1' hashing for binary, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary by using 'SHA-1' algorithm and the default format.</kert:description>
+        <kert:test-url>hashBinaryWithSha1AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha1AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="19">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-256' hashing for binary</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary by using 'SHA-256' algorithm.</kert:description>
-		<kert:test-url>hashBinaryWithSha256.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha256.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="19">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-256' hashing for binary</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary by using 'SHA-256' algorithm.</kert:description>
+        <kert:test-url>hashBinaryWithSha256.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha256.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="34">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-256' hashing for binary, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary by using 'SHA-256' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashBinaryWithSha256AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha256AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="34">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-256' hashing for binary, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary by using 'SHA-256' algorithm and the default format.</kert:description>
+        <kert:test-url>hashBinaryWithSha256AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha256AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="20">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-384' hashing for binary</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary by using 'SHA-384' algorithm.</kert:description>
-		<kert:test-url>hashBinaryWithSha384.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha384.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="20">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-384' hashing for binary</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary by using 'SHA-384' algorithm.</kert:description>
+        <kert:test-url>hashBinaryWithSha384.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha384.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="35">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-384' hashing for binary, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a string by using 'SHA-384' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashBinaryWithSha384AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha384AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="35">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-384' hashing for binary, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a string by using 'SHA-384' algorithm and the default format.</kert:description>
+        <kert:test-url>hashBinaryWithSha384AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha384AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="21">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-512' hashing for binary</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary by using 'SHA-512' algorithm.</kert:description>
-		<kert:test-url>hashBinaryWithSha512.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha512.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="21">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-512' hashing for binary</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary by using 'SHA-512' algorithm.</kert:description>
+        <kert:test-url>hashBinaryWithSha512.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha512.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="36">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'SHA-512' hashing for binary, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary by using 'SHA-512' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashBinaryWithSha512AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha512AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="36">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'SHA-512' hashing for binary, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary by using 'SHA-512' algorithm and the default format.</kert:description>
+        <kert:test-url>hashBinaryWithSha512AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha512AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="38">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Hash binary with wrong algorithm</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary with a wrong algorithm. Test will pass if the correct error is thrown.
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="38">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Hash binary with wrong algorithm</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary with a wrong algorithm. Test will pass if the correct error is thrown.
 		</kert:description>
-		<kert:test-url>hashBinaryWithWrongAlgorithm.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq
+        <kert:test-url>hashBinaryWithWrongAlgorithm.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="39">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>Hash binary with wrong algorithm, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing a binary with a wrong algorithm and the default provider. Test will pass if the correct
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="39">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>Hash binary with wrong algorithm, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing a binary with a wrong algorithm and the default format. Test will pass if the correct
 			error is thrown.
 		</kert:description>
-		<kert:test-url>hashBinaryWithWrongAlgorithmAndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithmAndDefaultProvider.xq</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="40">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'MD5' hashing for XML file</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing an XML file with 'MD5' algorithm.</kert:description>
-		<kert:test-url>hashXmlWithMd5.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashXmlWithMd5.xq
+        <kert:test-url>hashBinaryWithWrongAlgorithmAndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithmAndDefaultFormat.xq</kert:source-url>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="40">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'MD5' hashing for XML file</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing an XML file with 'MD5' algorithm.</kert:description>
+        <kert:test-url>hashXmlWithMd5.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashXmlWithMd5.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:test id="41">
-		<kert:author>Claudius Teodorescu</kert:author>
-		<kert:title>'MD5' hashing for XML file, default provider</kert:title>
-		<kert:version>0.1</kert:version>
-		<kert:description>Hashing an XML file with 'MD5' algorithm and the default provider.</kert:description>
-		<kert:test-url>hashXmlWithMd5AndDefaultProvider.xq</kert:test-url>
-		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashXmlWithMd5AndDefaultProvider.xq
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:test id="41">
+        <kert:author>Claudius Teodorescu</kert:author>
+        <kert:title>'MD5' hashing for XML file, default format</kert:title>
+        <kert:version>0.1</kert:version>
+        <kert:description>Hashing an XML file with 'MD5' algorithm and the default format.</kert:description>
+        <kert:test-url>hashXmlWithMd5AndDefaultFormat.xq</kert:test-url>
+        <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashXmlWithMd5AndDefaultFormat.xq
 		</kert:source-url>
-		<kert:assertion>/result/result-token</kert:assertion>
-		<kert:timeout />
-		<kert:run-status timestamp="" />
-		<kert:development-status timestamp="" />
-		<kert:log />
-		<kert:loops-number />
-		<kert:total-test-time />
-		<kert:type>unattended</kert:type>
-		<kert:assertion-type>assert-xml</kert:assertion-type>
-	</kert:test>
-	<kert:traceability-matrix />
-	<kert:test-tree>
-		<ul id="tree-data">
-			<li id="tree-1" title="Test 1">Generate enveloped digital signature</li>
-			<li id="tree-2" title="Test 2">Validate enveloped digital signature</li>
-			<li id="tree-3" title="Test 3">Symmetric encryption of string, AES/CBC/PKCS5Padding</li>
-			<li id="tree-44" title="Test 44">Symmetric encryption of string, AES/CBC/PKCS5Padding, default provider</li>
-			<li id="tree-45" title="Test 45">Symmetric encryption of string, AES</li>
-			<li id="tree-46" title="Test 46">Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key</li>
-			<li id="tree-47" title="Test 47">Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key, default provider</li>
-			<li id="tree-4" title="Test 4">Symmetric decryption of string, AES/CBC/PKCS5Padding</li>
-			<li id="tree-42" title="Test 42">Symmetric decryption of string, AES/CBC/PKCS5Padding, default provider</li>
-			<li id="tree-43" title="Test 43">Symmetric decryption of string, AES</li>
-			<li id="tree-5" title="Test 5">Error message for symmetric encryption of string</li>
-			<li id="tree-9" title="Test 9">'MD5' HMAC for string</li>
-			<li id="tree-22" title="Test 22">'MD5' HMAC for string, default format</li>
-			<li id="tree-10" title="Test 10">'SHA-1' HMAC for string</li>
-			<li id="tree-23" title="Test 23">'SHA-1' HMAC for string, default format</li>
-			<li id="tree-11" title="Test 11">'SHA-256' HMAC for string</li>
-			<li id="tree-24" title="Test 24">'SHA-256' HMAC for string, default format</li>
-			<li id="tree-12" title="Test 12">'SHA-384' HMAC for string</li>
-			<li id="tree-25" title="Test 25">'SHA-384' HMAC for string, default format</li>
-			<li id="tree-6" title="Test 6">'SHA-512' HMAC for string</li>
-			<li id="tree-26" title="Test 26">'SHA-512' HMAC for string, default format</li>
-			<li id="tree-7" title="Test 7">'MD5' hashing for string</li>
-			<li id="tree-27" title="Test 27">'MD5' hashing for string, default provider</li>
-			<li id="tree-8" title="Test 8">'SHA-1' hashing for string</li>
-			<li id="tree-28" title="Test 28">'SHA-1' hashing for string, default provider</li>
-			<li id="tree-14" title="Test 14">'SHA-256' hashing for string</li>
-			<li id="tree-29" title="Test 29">'SHA-256' hashing for string, default provider</li>
-			<li id="tree-15" title="Test 15">'SHA-384' hashing for string</li>
-			<li id="tree-30" title="Test 30">'SHA-384' hashing for string, default provider</li>
-			<li id="tree-16" title="Test 16">'SHA-512' hashing for string</li>
-			<li id="tree-31" title="Test 31">'SHA-512' hashing for string, default provider</li>
-			<li id="tree-17" title="Test 17">'MD5' hashing for binary</li>
-			<li id="tree-32" title="Test 32">'MD5' hashing for binary, default provider</li>
-			<li id="tree-18" title="Test 18">'SHA-1' hashing for binary</li>
-			<li id="tree-33" title="Test 33">'SHA-1' hashing for binary, default provider</li>
-			<li id="tree-19" title="Test 19">'SHA-256' hashing for binary</li>
-			<li id="tree-34" title="Test 34">'SHA-256' hashing for binary, default provider</li>
-			<li id="tree-20" title="Test 20">'SHA-384' hashing for binary</li>
-			<li id="tree-35" title="Test 35">'SHA-384' hashing for binary, default provider</li>
-			<li id="tree-21" title="Test 21">'SHA-512' hashing for binary</li>
-			<li id="tree-36" title="Test 36">'SHA-512' hashing for binary, default provider</li>
-			<li id="tree-13" title="Test 13">AWS REST request</li>
-			<li id="tree-37" title="Test 37">AWS REST request, default provider</li>
-			<li id="tree-38" title="Test 38">Hash binary with wrong algorithm</li>
-			<li id="tree-39" title="Test 39">Hash binary with wrong algorithm, default provider</li>
-			<li id="tree-40" title="Test 40">'MD5' hashing for XML file</li>
-			<li id="tree-41" title="Test 41">'MD5' hashing for XML file, default provider</li>
-		</ul>
-	</kert:test-tree>
+        <kert:assertion>/result/result-token</kert:assertion>
+        <kert:timeout/>
+        <kert:run-status timestamp=""/>
+        <kert:development-status timestamp=""/>
+        <kert:log/>
+        <kert:loops-number/>
+        <kert:total-test-time/>
+        <kert:type>unattended</kert:type>
+        <kert:assertion-type>assert-xml</kert:assertion-type>
+    </kert:test>
+    <kert:traceability-matrix/>
+    <kert:test-tree>
+        <ul id="tree-data">
+            <li id="tree-1" title="Test 1">Generate enveloped digital signature</li>
+            <li id="tree-2" title="Test 2">Validate enveloped digital signature</li>
+            <li id="tree-3" title="Test 3">Symmetric encryption of string, AES/CBC/PKCS5Padding</li>
+            <li id="tree-44" title="Test 44">Symmetric encryption of string, AES/CBC/PKCS5Padding, default provider</li>
+            <li id="tree-45" title="Test 45">Symmetric encryption of string, AES</li>
+            <li id="tree-46" title="Test 46">Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key</li>
+            <li id="tree-47" title="Test 47">Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key, default provider</li>
+            <li id="tree-4" title="Test 4">Symmetric decryption of string, AES/CBC/PKCS5Padding</li>
+            <li id="tree-42" title="Test 42">Symmetric decryption of string, AES/CBC/PKCS5Padding, default provider</li>
+            <li id="tree-43" title="Test 43">Symmetric decryption of string, AES</li>
+            <li id="tree-5" title="Test 5">Error message for symmetric encryption of string</li>
+            <li id="tree-9" title="Test 9">'MD5' HMAC for string</li>
+            <li id="tree-22" title="Test 22">'MD5' HMAC for string, default format</li>
+            <li id="tree-10" title="Test 10">'SHA-1' HMAC for string</li>
+            <li id="tree-23" title="Test 23">'SHA-1' HMAC for string, default format</li>
+            <li id="tree-11" title="Test 11">'SHA-256' HMAC for string</li>
+            <li id="tree-24" title="Test 24">'SHA-256' HMAC for string, default format</li>
+            <li id="tree-12" title="Test 12">'SHA-384' HMAC for string</li>
+            <li id="tree-25" title="Test 25">'SHA-384' HMAC for string, default format</li>
+            <li id="tree-6" title="Test 6">'SHA-512' HMAC for string</li>
+            <li id="tree-26" title="Test 26">'SHA-512' HMAC for string, default format</li>
+            <li id="tree-7" title="Test 7">'MD5' hashing for string</li>
+            <li id="tree-27" title="Test 27">'MD5' hashing for string, default provider</li>
+            <li id="tree-8" title="Test 8">'SHA-1' hashing for string</li>
+            <li id="tree-28" title="Test 28">'SHA-1' hashing for string, default provider</li>
+            <li id="tree-14" title="Test 14">'SHA-256' hashing for string</li>
+            <li id="tree-29" title="Test 29">'SHA-256' hashing for string, default provider</li>
+            <li id="tree-15" title="Test 15">'SHA-384' hashing for string</li>
+            <li id="tree-30" title="Test 30">'SHA-384' hashing for string, default provider</li>
+            <li id="tree-16" title="Test 16">'SHA-512' hashing for string</li>
+            <li id="tree-31" title="Test 31">'SHA-512' hashing for string, default provider</li>
+            <li id="tree-17" title="Test 17">'MD5' hashing for binary</li>
+            <li id="tree-32" title="Test 32">'MD5' hashing for binary, default provider</li>
+            <li id="tree-18" title="Test 18">'SHA-1' hashing for binary</li>
+            <li id="tree-33" title="Test 33">'SHA-1' hashing for binary, default provider</li>
+            <li id="tree-19" title="Test 19">'SHA-256' hashing for binary</li>
+            <li id="tree-34" title="Test 34">'SHA-256' hashing for binary, default provider</li>
+            <li id="tree-20" title="Test 20">'SHA-384' hashing for binary</li>
+            <li id="tree-35" title="Test 35">'SHA-384' hashing for binary, default provider</li>
+            <li id="tree-21" title="Test 21">'SHA-512' hashing for binary</li>
+            <li id="tree-36" title="Test 36">'SHA-512' hashing for binary, default format</li>
+            <li id="tree-13" title="Test 13">AWS REST request</li>
+            <li id="tree-37" title="Test 37">AWS REST request, default format</li>
+            <li id="tree-38" title="Test 38">Hash binary with wrong algorithm</li>
+            <li id="tree-39" title="Test 39">Hash binary with wrong algorithm, default format</li>
+            <li id="tree-40" title="Test 40">'MD5' hashing for XML file</li>
+            <li id="tree-41" title="Test 41">'MD5' hashing for XML file, default format</li>
+        </ul>
+    </kert:test-tree>
 </kert:test-plan>

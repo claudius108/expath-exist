@@ -7,7 +7,7 @@ let $expected-result :=
 	FZ0+/JFK2g==</expected-result>
 , $actual-result :=
 	<actual-result>
-		{crypto:hash("Short string for tests.", "SHA-512", "SUN")}
+		{crypto:hash("Short string for tests.", "SHA-512", "base64")}
 	</actual-result>
 , $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	

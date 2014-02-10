@@ -6,7 +6,7 @@ let $expected-result :=
 	<expected-result>F4CFDSBHm+Bm400bOgH2q2IbIUj8XRUBWf0inx7lrN0T8IHz9scGVmJoGZ2+s1La</expected-result>
 , $actual-result :=
 	<actual-result>
-		{crypto:hash("Short string for tests.", "SHA-384", "SUN")}
+		{crypto:hash("Short string for tests.", "SHA-384", "base64")}
 	</actual-result>
 , $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	

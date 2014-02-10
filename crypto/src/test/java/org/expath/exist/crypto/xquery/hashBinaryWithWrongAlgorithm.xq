@@ -9,7 +9,7 @@ let $actual-result :=
 	<actual-result>
         {
 	  try {
-	    crypto:hash($input, "SHA-17", "SUN")
+	    crypto:hash($input, "SHA-17", "base64")
 	  }
 	  catch * {
 	    <error>{$err:description}</error>

@@ -7,7 +7,7 @@ let $expected-result :=
 	<expected-result>37JiNBym250ye3aUJ04RaZg3SFSP03qJ8FR/I1JckVI=</expected-result>
 let $actual-result :=
 	<actual-result>
-		{crypto:hash($input, "SHA-256", "SUN")}
+		{crypto:hash($input, "SHA-256", "base64")}
 	</actual-result>
 let $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	

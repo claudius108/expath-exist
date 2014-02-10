@@ -3,10 +3,11 @@ xquery version "3.0";
 import module "http://expath.org/ns/crypto";
 
 let $expected-result :=
-	<expected-result>E+B0JzLRgxm2+1rB8qIZoQ2Qn+JLxwJCWORv46fKhMM=</expected-result>
+	<expected-result>+YpeZRBrctlL1xr6plZOScp/6ArUw3GihjtKys1e3qQ6/aWLFjoOFEfuiUJA3uLIkebH1OG+rDdM
+	FZ0+/JFK2g==</expected-result>
 , $actual-result :=
 	<actual-result>
-		{crypto:hash("Short string for tests.", "SHA-256", ())}
+		{crypto:hash("Short string for tests.", "SHA-512")}
 	</actual-result>
 , $condition := normalize-space($expected-result/text()) = normalize-space($actual-result/text())
 	

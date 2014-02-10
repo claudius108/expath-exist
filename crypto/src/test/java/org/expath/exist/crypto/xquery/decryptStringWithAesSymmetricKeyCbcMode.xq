@@ -3,7 +3,7 @@ xquery version "3.0";
 import module "http://expath.org/ns/crypto";
 
 let $expected-result := <expected-result>Short string for tests.</expected-result>
-let $iv := crypto:hash("initialization vector", "MD5", "")
+let $iv := crypto:hash("initialization vector", "MD5", "base64")
 let $actual-result :=
     <actual-result>
       {
