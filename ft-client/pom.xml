@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -10,21 +12,14 @@
 	</parent>
 
 	<artifactId>ft-client</artifactId>
-	<version>1.1.2</version>
+	<version>1.1.3</version>
 	<name>eXist wrapper for EXPath File Transfer Client module</name>
 	<url>http://expath.org</url>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-package-name>ftclient</java-package-name>
-		<java-package-main-class>org.expath.exist.ftclient.ExistExpathFTClientModule</java-package-main-class>
-		<dependency-list>expath-ft-client-lib,jsch</dependency-list>
-		<expath-spec-id>ft-client</expath-spec-id>
-		<package-type-dependencies>http://expath.org/lib/ft-client</package-type-dependencies>
-		<!-- TODO: to remove these next two properties -->
+		<java-package-main-class-name>org.expath.exist.ftclient.ExistExpathFTClientModule</java-package-main-class-name>
 		<module-prefix>ft-client</module-prefix>
-		<module-namespace>http://expath.org/ns/ft-client</module-namespace>
-		<spec-title>EXPath File Transfer Module</spec-title>
 	</properties>
 
 	<dependencies>
@@ -39,20 +34,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>xml-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>ro.kuberam.maven.plugins</groupId>
-				<artifactId>kuberam-xar-plugin</artifactId>
+				<artifactId>maven-jar-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

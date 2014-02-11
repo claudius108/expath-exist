@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -63,142 +64,143 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>copy-dependencies</id>
-							<phase>generate-sources</phase>
-							<goals>
-								<goal>copy-dependencies</goal>
-							</goals>
-							<configuration>
-								<outputDirectory>${project.build.directory}/package-files/${project.artifactId}/</outputDirectory>
-								<overWriteReleases>false</overWriteReleases>
-								<overWriteSnapshots>false</overWriteSnapshots>
-								<overWriteIfNewer>true</overWriteIfNewer>
-								<includeArtifactIds>${dependency-list}</includeArtifactIds>
-							</configuration>
-						</execution>
-						<execution>
-							<id>list-dependencies</id>
-							<phase>generate-sources</phase>
-							<goals>
-								<goal>list</goal>
-							</goals>
-							<configuration>
-								<!-- <includeArtifactIds>${dependency-list}</includeArtifactIds> -->
-								<!-- <excludeGroupIds>log4j,org.exist-db,org.codehaus.fabric3.fabric3-db-exist,commons-pool,commons-io</excludeGroupIds> -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.apache.maven.plugins</groupId> -->
+				<!-- <artifactId>maven-dependency-plugin</artifactId> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>copy-dependencies</id> -->
+				<!-- <phase>generate-sources</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>copy-dependencies</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <outputDirectory>${project.build.directory}/package-files/${project.artifactId}/</outputDirectory> -->
+				<!-- <overWriteReleases>false</overWriteReleases> -->
+				<!-- <overWriteSnapshots>false</overWriteSnapshots> -->
+				<!-- <overWriteIfNewer>true</overWriteIfNewer> -->
+				<!-- <includeArtifactIds>${dependency-list}</includeArtifactIds> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- <execution> -->
+				<!-- <id>list-dependencies</id> -->
+				<!-- <phase>generate-sources</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>list</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <includeArtifactIds>${dependency-list}</includeArtifactIds> -->
+				<!-- <excludeGroupIds>log4j,org.exist-db,org.codehaus.fabric3.fabric3-db-exist,commons-pool,commons-io</excludeGroupIds> -->
 
-								<outputFile>${java-dependencies-list-url}</outputFile>
-								<outputScope>false</outputScope>
-								<useJvmChmod>false</useJvmChmod>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>xml-maven-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>generate-lib-package</id>
-							<phase>prepare-package</phase>
-							<goals>
-								<goal>transform</goal>
-							</goals>
-							<configuration>
-								<forceCreation>true</forceCreation>
-								<transformationSets>
-									<transformationSet>
-										<dir>../../expath-specs/${expath-spec-id}</dir>
-										<includes>
-											<include>${expath-spec-id}.xml</include>
-										</includes>
-										<stylesheet>../utils/generate-xar/generate-xar-package.xsl</stylesheet>
-										<parameters>
-											<parameter>
-												<name>cxan.org-id</name>
-												<value>cteodorescu</value>
-											</parameter>
-											<parameter>
-												<name>module-prefix</name>
-												<value>${module-prefix}</value>
-											</parameter>
-											<parameter>
-												<name>module-namespace</name>
-												<value>${module-namespace}</value>
-											</parameter>
-											<parameter>
-												<name>package-version</name>
-												<value>${project.version}</value>
-											</parameter>
-											<parameter>
-												<name>package-target-dir</name>
-												<value>target</value>
-											</parameter>
-											<parameter>
-												<name>java-package-main-class</name>
-												<value>${java-package-main-class}</value>
-											</parameter>
-											<parameter>
-												<name>jar-name</name>
-												<value>${project.artifactId}.jar</value>
-											</parameter>
-											<parameter>
-												<name>package-type-dependencies</name>
-												<value>${package-type-dependencies}</value>
-											</parameter>
-											<parameter>
-												<name>java-dependencies-list-url</name>
-												<value>file://${java-dependencies-list-url}</value>
-											</parameter>
-										</parameters>
-									</transformationSet>
-								</transformationSets>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
+				<!-- <outputFile>${java-dependencies-list-url}</outputFile> -->
+				<!-- <outputScope>false</outputScope> -->
+				<!-- <useJvmChmod>false</useJvmChmod> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- </plugin> -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.codehaus.mojo</groupId> -->
+				<!-- <artifactId>xml-maven-plugin</artifactId> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>generate-lib-package</id> -->
+				<!-- <phase>prepare-package</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>transform</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <forceCreation>true</forceCreation> -->
+				<!-- <transformationSets> -->
+				<!-- <transformationSet> -->
+				<!-- <dir>../../expath-specs/${expath-spec-id}</dir> -->
+				<!-- <includes> -->
+				<!-- <include>${expath-spec-id}.xml</include> -->
+				<!-- </includes> -->
+				<!-- <stylesheet>../utils/generate-xar/generate-xar-package.xsl</stylesheet> -->
+				<!-- <parameters> -->
+				<!-- <parameter> -->
+				<!-- <name>cxan.org-id</name> -->
+				<!-- <value>cteodorescu</value> -->
+				<!-- </parameter> -->
+				<!-- <parameter> -->
+				<!-- <name>module-prefix</name> -->
+				<!-- <value>${module-prefix}</value> -->
+				<!-- </parameter> -->
+				<!-- <parameter> -->
+				<!-- <name>module-namespace</name> -->
+				<!-- <value>${module-namespace}</value> -->
+				<!-- </parameter> -->
+				<!-- <parameter> -->
+				<!-- <name>package-version</name> -->
+				<!-- <value>${project.version}</value> -->
+				<!-- </parameter> -->
+				<!-- <parameter> -->
+				<!-- <name>package-target-dir</name> -->
+				<!-- <value>target</value> -->
+				<!-- </parameter> -->
+				<!-- <parameter> -->
+				<!-- <name>java-package-main-class</name> -->
+				<!-- <value>${java-package-main-class}</value> -->
+				<!-- </parameter> -->
+				<!-- <parameter> -->
+				<!-- <name>jar-name</name> -->
+				<!-- <value>${project.artifactId}.jar</value> -->
+				<!-- </parameter> -->
+				<!-- <parameter> -->
+				<!-- <name>package-type-dependencies</name> -->
+				<!-- <value>${package-type-dependencies}</value> -->
+				<!-- </parameter> -->
+				<!-- <parameter> -->
+				<!-- <name>java-dependencies-list-url</name> -->
+				<!-- <value>file://${java-dependencies-list-url}</value> -->
+				<!-- </parameter> -->
+				<!-- </parameters> -->
+				<!-- </transformationSet> -->
+				<!-- </transformationSets> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- </plugin> -->
 
 
 
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>sql-maven-plugin</artifactId>
-					<version>1.5</version>
-					<dependencies>
-						<dependency>
-							<groupId>mysql</groupId>
-							<artifactId>mysql-connector-java</artifactId>
-							<version>5.1.22</version>
-						</dependency>
-					</dependencies>
-					<!-- common configuration shared by all executions -->
-					<configuration>
-						<driver>com.mysql.jdbc.Driver</driver>
-						<url>jdbc:mysql://127.0.0.1:3306/redmine</url>
-						<username>root</username>
-						<password>iubitamea</password>
-					</configuration>
-					<executions>
-						<execution>
-							<id>get-changelog</id>
-							<phase>prepare-package</phase>
-							<goals>
-								<goal>execute</goal>
-							</goals>
-							<configuration>
-								<url>jdbc:mysql://127.0.0.1:3306/redmine</url>
-								<autocommit>true</autocommit>
-								<!-- <sqlCommand>select * from wiki_pages where wiki_id = (select id from projects where identifier = 'expath-crypto-exist-lib');</sqlCommand> -->
-								<sqlCommand>select * from redmine.projects;</sqlCommand>
-								<outputFile>${project.build.directory}/package-files/changelog.txt</outputFile>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
+				<!-- <plugin> -->
+				<!-- <groupId>org.codehaus.mojo</groupId> -->
+				<!-- <artifactId>sql-maven-plugin</artifactId> -->
+				<!-- <version>1.5</version> -->
+				<!-- <dependencies> -->
+				<!-- <dependency> -->
+				<!-- <groupId>mysql</groupId> -->
+				<!-- <artifactId>mysql-connector-java</artifactId> -->
+				<!-- <version>5.1.22</version> -->
+				<!-- </dependency> -->
+				<!-- </dependencies> -->
+				<!-- common configuration shared by all executions -->
+				<!-- <configuration> -->
+				<!-- <driver>com.mysql.jdbc.Driver</driver> -->
+				<!-- <url>jdbc:mysql://127.0.0.1:3306/redmine</url> -->
+				<!-- <username>root</username> -->
+				<!-- <password>iubitamea</password> -->
+				<!-- </configuration> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>get-changelog</id> -->
+				<!-- <phase>prepare-package</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>execute</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <url>jdbc:mysql://127.0.0.1:3306/redmine</url> -->
+				<!-- <autocommit>true</autocommit> -->
+				<!-- <sqlCommand>select * from wiki_pages where wiki_id = (select id 
+					from projects where identifier = 'expath-crypto-exist-lib');</sqlCommand> -->
+				<!-- <sqlCommand>select * from redmine.projects;</sqlCommand> -->
+				<!-- <outputFile>${project.build.directory}/package-files/changelog.txt</outputFile> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- </plugin> -->
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -206,31 +208,51 @@
 					<executions>
 						<execution>
 							<id>make-xar</id>
-							<phase>package</phase>
+							<phase>pre-integration-test</phase>
 							<goals>
 								<goal>run</goal>
 							</goals>
 							<configuration>
 								<target>
 									<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-									<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
+									<copy
+										file="${project.build.directory}/${project.build.finalName}.jar"
+										tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar"
+										overwrite="true" />
 
 									<echo>Copy icon...</echo>
-									<copy file="${basedir}/src/main/resources/icon.png" tofile="${project.build.directory}/package-files/icon.png" overwrite="true" />
+									<copy file="${basedir}/src/main/resources/icon.png"
+										tofile="${project.build.directory}/package-files/icon.png"
+										overwrite="true" />
 
 									<echo>Copy XQuery unit tests and resources...</echo>
-									<copy file="../utils/generate-xar/test-plan.xq" todir="${project.build.directory}/package-files/tests" overwrite="true" />
-									<copy file="../utils/generate-xar/update-unit-tests-statuses.xsl" todir="${project.build.directory}/package-files/tests" overwrite="true" />
-									<get src="http://kert.sourceforge.net/latest/resources/xsl/generate-tests-presentation.xsl" dest="${project.build.directory}/package-files/tests/generate-tests-presentation.xsl" />
+									<copy file="../utils/generate-xar/test-plan.xq"
+										todir="${project.build.directory}/package-files/tests"
+										overwrite="true" />
+									<copy file="../utils/generate-xar/update-unit-tests-statuses.xsl"
+										todir="${project.build.directory}/package-files/tests"
+										overwrite="true" />
+									<get
+										src="http://kert.sourceforge.net/latest/resources/xsl/generate-tests-presentation.xsl"
+										dest="${project.build.directory}/package-files/tests/generate-tests-presentation.xsl" />
 
-									<copy todir="${project.build.directory}/package-files/tests" overwrite="true">
-										<fileset dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}" includes="*.*" />
+									<copy todir="${project.build.directory}/package-files/tests"
+										overwrite="true">
+										<fileset
+											dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}"
+											includes="*.*" />
 									</copy>
-									<copy todir="${project.build.directory}/package-files/tests/unit-tests" overwrite="true">
-										<fileset dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}/xquery" />
+									<copy
+										todir="${project.build.directory}/package-files/tests/unit-tests"
+										overwrite="true">
+										<fileset
+											dir="${basedir}/src/test/java/org/expath/exist/${java-package-name}/xquery" />
 									</copy>
-									<copy todir="${project.build.directory}/package-files/tests/resources" overwrite="true">
-										<fileset dir="${basedir}/src/test/resources/org/expath/exist/${java-package-name}/tests/resources" />
+									<copy
+										todir="${project.build.directory}/package-files/tests/resources"
+										overwrite="true">
+										<fileset
+											dir="${basedir}/src/test/resources/org/expath/exist/${java-package-name}/tests/resources" />
 									</copy>
 
 									<echo>Making ${project.artifactId}-lib.xar...</echo>
@@ -238,7 +260,8 @@
 									<!-- <fileset dir="${project.build.directory}/package-files"> -->
 									<!-- <exclude name="tests/" /> -->
 									<!-- </fileset> -->
-									<!-- <fileset dir="${project.build.directory}/library-package-descriptors" /> -->
+									<!-- <fileset dir="${project.build.directory}/library-package-descriptors" 
+										/> -->
 									<!-- </zip> -->
 
 									<echo>Making ${project.artifactId}-demos.xar...</echo>
@@ -247,8 +270,10 @@
 									<!-- <exclude name="exist.xml" /> -->
 									<!-- <exclude name="${project.artifactId}/" /> -->
 									<!-- </fileset> -->
-									<!-- <fileset dir="${project.build.directory}/application-package-descriptors" /> -->
-									<!-- <zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" /> -->
+									<!-- <fileset dir="${project.build.directory}/application-package-descriptors" 
+										/> -->
+									<!-- <zipfileset dir="${basedir}" includes="README.md" fullpath="index.xml" 
+										/> -->
 									<!-- </zip> -->
 								</target>
 							</configuration>
@@ -262,13 +287,17 @@
 							<configuration>
 								<target>
 									<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-									<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" overwrite="true" />
+									<copy
+										file="${project.build.directory}/${project.build.finalName}.jar"
+										tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar"
+										overwrite="true" />
 
 									<echo>Deploying files to eXist local folder...</echo>
 									<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
 										<property name="package-name" value="${project.artifactId}" />
 										<property name="package-version" value="${project.version}" />
-										<property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}/" />
+										<property name="source-folder"
+											value="${project.build.directory}/package-files/${project.artifactId}/" />
 									</ant>
 
 									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
@@ -283,10 +312,12 @@
 							</goals>
 							<configuration>
 								<target>
-									<echo>Deploying XQuery unit tests and resources to eXist local instance...</echo>
+									<echo>Deploying XQuery unit tests and resources to eXist local
+										instance...</echo>
 									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
 									<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
-										<property name="source-folder" value="${project.build.directory}/package-files/tests" />
+										<property name="source-folder"
+											value="${project.build.directory}/package-files/tests" />
 										<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" />
 									</ant>
 								</target>
@@ -295,22 +326,18 @@
 					</executions>
 				</plugin>
 				<plugin>
-					<groupId>ro.kuberam.maven.plugins</groupId>
-					<artifactId>kuberam-expath-plugin</artifactId>
-					<version>0.3</version>
-					<executions>
-						<execution>
-							<id>generate-xar</id>
-							<phase>package</phase>
-							<goals>
-								<goal>make-xar</goal>
-							</goals>
-							<configuration>
-								<descriptor>../assembly.xml</descriptor>
-								<finalName>${project.artifactId}-${project.version}</finalName>
-							</configuration>
-						</execution>
-					</executions>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<archive>
+							<manifest>
+								<mainClass>org.expath.${java-package-name}.${java-package-main-class-name}</mainClass>
+								<packageName>org.expath.${java-package-name}</packageName>
+							</manifest>
+						</archive>
+						<encoding>UTF-8</encoding>
+						<finalName>expath-${module-prefix}-exist-lib</finalName>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
