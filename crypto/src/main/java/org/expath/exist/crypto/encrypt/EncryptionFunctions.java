@@ -21,9 +21,10 @@ import org.exist.xquery.value.SequenceType;
 import org.exist.xquery.value.Type;
 import org.exist.xquery.value.FunctionReturnSequenceType;
 import org.exist.xquery.value.StringValue;
-import org.expath.crypto.ErrorMessages;
-import org.expath.crypto.encrypt.SymmetricEncryption;
 import org.expath.exist.crypto.ExistExpathCryptoModule;
+
+import ro.kuberam.libs.java.crypto.ErrorMessages;
+import ro.kuberam.libs.java.crypto.encrypt.SymmetricEncryption;
 
 
 

@@ -27,8 +27,9 @@ import org.exist.xquery.value.Sequence;
 import org.exist.xquery.value.SequenceType;
 import org.exist.xquery.value.StringValue;
 import org.exist.xquery.value.Type;
-import org.expath.crypto.digest.Hmac;
 import org.expath.exist.crypto.ExistExpathCryptoModule;
+
+import ro.kuberam.libs.java.crypto.digest.Hmac;
 
 public class HmacFunction extends BasicFunction {
 

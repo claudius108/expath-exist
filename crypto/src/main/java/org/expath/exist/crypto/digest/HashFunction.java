@@ -44,8 +44,9 @@ import org.exist.xquery.value.Sequence;
 import org.exist.xquery.value.SequenceType;
 import org.exist.xquery.value.StringValue;
 import org.exist.xquery.value.Type;
-import org.expath.crypto.digest.Hash;
 import org.expath.exist.crypto.ExistExpathCryptoModule;
+
+import ro.kuberam.libs.java.crypto.digest.Hash;
 
 public class HashFunction extends BasicFunction {
 

@@ -26,12 +26,13 @@ import java.util.Map;
 
 import org.exist.xquery.AbstractInternalModule;
 import org.exist.xquery.FunctionDef;
-import org.expath.crypto.ExpathCryptoModule;
 import org.expath.exist.crypto.digest.HashFunction;
 import org.expath.exist.crypto.digest.HmacFunction;
 import org.expath.exist.crypto.digitalSignature.GenerateSignatureFunction;
 import org.expath.exist.crypto.digitalSignature.ValidateSignatureFunction;
 import org.expath.exist.crypto.encrypt.EncryptionFunctions;
+
+import ro.kuberam.libs.java.crypto.ExpathCryptoModule;
 
 /**
  * Implements the module definition.

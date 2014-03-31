@@ -37,10 +37,11 @@ import org.exist.xquery.value.FunctionReturnSequenceType;
 import org.exist.storage.serializers.Serializer;
 import org.exist.xquery.value.BooleanValue;
 import org.exist.xquery.value.NodeValue;
-import org.expath.crypto.digitalSignature.ValidateXmlSignature;
 import org.expath.exist.crypto.ExistExpathCryptoModule;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
+
+import ro.kuberam.libs.java.crypto.digitalSignature.ValidateXmlSignature;
 
 /**
  * Cryptographic extension functions.

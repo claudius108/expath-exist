@@ -43,14 +43,15 @@ import org.exist.storage.serializers.Serializer;
 import org.exist.validation.internal.node.NodeInputStream;
 import org.exist.xmldb.XmldbURI;
 import org.exist.xquery.value.NodeValue;
-import org.expath.crypto.ErrorMessages;
-import org.expath.crypto.ExpathCryptoModule;
-import org.expath.crypto.digitalSignature.GenerateXmlSignature;
 import org.expath.exist.crypto.ExistExpathCryptoModule;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.XMLReader;
+
+import ro.kuberam.libs.java.crypto.ErrorMessages;
+import ro.kuberam.libs.java.crypto.ExpathCryptoModule;
+import ro.kuberam.libs.java.crypto.digitalSignature.GenerateXmlSignature;
 
 /**
  * @author Claudius Teodorescu (claudius.teodorescu@gmail.com)

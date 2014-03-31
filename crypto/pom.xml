@@ -24,7 +24,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.expath.libs</groupId>
+			<groupId>ro.kuberam.libs.java</groupId>
 			<artifactId>crypto</artifactId>
 			<version>1.1</version>
 			<scope>compile</scope>
