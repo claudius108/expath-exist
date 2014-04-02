@@ -331,9 +331,12 @@
 					<configuration>
 						<archive>
 							<manifest>
-								<mainClass>org.expath.${java-package-name}.${java-package-main-class-name}</mainClass>
-								<packageName>org.expath.${java-package-name}</packageName>
+								<mainClass>org.expath.exist.${java-package-name}.${java-package-main-class-name}</mainClass>
+								<packageName>org.expath.exist.${java-package-name}</packageName>
 							</manifest>
+							<manifestEntries>
+								<ModuleNamespace>http://expath.org/ns/${project.artifactId}</ModuleNamespace>
+							</manifestEntries>
 						</archive>
 						<encoding>UTF-8</encoding>
 						<finalName>expath-${module-prefix}-exist-lib</finalName>
