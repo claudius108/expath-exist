@@ -18,7 +18,7 @@
 
 	<properties>
 		<java-package-name>crypto</java-package-name>
-		<java-package-main-class-name>org.expath.exist.crypto.ExistExpathCryptoModule</java-package-main-class-name>
+		<java-package-main-class-name>ExistExpathCryptoModule</java-package-main-class-name>
 		<module-prefix>${java-package-name}</module-prefix>
 	</properties>
 
