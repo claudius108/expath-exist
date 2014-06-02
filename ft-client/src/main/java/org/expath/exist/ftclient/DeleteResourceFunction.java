@@ -64,7 +64,7 @@ public class DeleteResourceFunction extends BasicFunction {
 
         //store the resource
         try {
-            result = org.expath.ftclient.DeleteResource.deleteResource(ExistExpathFTClientModule.retrieveRemoteConnection(context, ((IntegerValue)args[0].itemAt(0)).getLong()), args[1].getStringValue());
+            result = ro.kuberam.libs.java.ftclient.DeleteResource.deleteResource(ExistExpathFTClientModule.retrieveRemoteConnection(context, ((IntegerValue)args[0].itemAt(0)).getLong()), args[1].getStringValue());
         } catch (Exception ex) {
             throw new XPathException(ex.getMessage());
         }

@@ -57,71 +57,71 @@ import org.xml.sax.XMLReader;
  */
 public class GetResourceMetadataFunction extends BasicFunction {
 
-    private static final Logger log = Logger.getLogger(GetResourceMetadataFunction.class);
-    
-    public final static FunctionSignature signature = new FunctionSignature(
-        new QName("get-resource-metadata", ExistExpathFTClientModule.NAMESPACE_URI, ExistExpathFTClientModule.PREFIX),
-        "Get metadata of a resource.",
-        new SequenceType[] {
-				new FunctionParameterSequenceType("connection-handle", Type.LONG, Cardinality.EXACTLY_ONE,
-						"The connection handle"),
-				new FunctionParameterSequenceType("remote-resource-path", Type.STRING, Cardinality.EXACTLY_ONE,
-						"The path for resource to be retrieved.") }, new FunctionReturnSequenceType(Type.ANY_TYPE,
-				Cardinality.ZERO_OR_ONE, "the metadata retrieved, wrapped in element(resource).")
-    );
+	private static final Logger log = Logger.getLogger(GetResourceMetadataFunction.class);
 
-    public GetResourceMetadataFunction(XQueryContext context) {
-        super(context, signature);
-    }
+	public final static FunctionSignature signature = new FunctionSignature(new QName(
+			"get-resource-metadata", ExistExpathFTClientModule.NAMESPACE_URI,
+			ExistExpathFTClientModule.PREFIX), "Get metadata of a resource.", new SequenceType[] {
+			new FunctionParameterSequenceType("connection-handle", Type.LONG, Cardinality.EXACTLY_ONE,
+					"The connection handle"),
+			new FunctionParameterSequenceType("remote-resource-path", Type.STRING, Cardinality.EXACTLY_ONE,
+					"The path for resource to be retrieved.") },
+			new FunctionReturnSequenceType(Type.ANY_TYPE, Cardinality.ZERO_OR_ONE,
+					"the metadata retrieved, wrapped in element(resource)."));
 
-    @Override
-    public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
-        
+	public GetResourceMetadataFunction(XQueryContext context) {
+		super(context, signature);
+	}
+
+	@Override
+	public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
+
 		Sequence result = new ValueSequence();
-		
+
 		StreamResult resultAsStreamResult = null;
 
 		try {
-			resultAsStreamResult = org.expath.ftclient.GetResourceMetadata.getResourceMetadata(
-					ExistExpathFTClientModule.retrieveRemoteConnection(context, ((IntegerValue) args[0].itemAt(0)).getLong()),
-					args[1].getStringValue());
+			resultAsStreamResult = ro.kuberam.libs.java.ftclient.GetResourceMetadata.getResourceMetadata(
+					ExistExpathFTClientModule.retrieveRemoteConnection(context,
+							((IntegerValue) args[0].itemAt(0)).getLong()), args[1].getStringValue());
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}
-		
-	      ByteArrayInputStream resultDocAsInputStream = null;
-	      try {
-				resultDocAsInputStream = new ByteArrayInputStream(resultAsStreamResult.getWriter().toString().getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException ex) {
-				throw new XPathException(ex.getMessage());
+
+		ByteArrayInputStream resultDocAsInputStream = null;
+		try {
+			resultDocAsInputStream = new ByteArrayInputStream(resultAsStreamResult.getWriter().toString()
+					.getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException ex) {
+			throw new XPathException(ex.getMessage());
+		}
+
+		XMLReader reader = null;
+
+		context.pushDocumentContext();
+		try {
+			InputSource src = new InputSource(new CloseShieldInputStream(resultDocAsInputStream));
+
+			reader = context.getBroker().getBrokerPool().getParserPool().borrowXMLReader();
+			MemTreeBuilder builder = context.getDocumentBuilder();
+			DocumentBuilderReceiver receiver = new DocumentBuilderReceiver(builder, true);
+			reader.setContentHandler(receiver);
+			reader.parse(src);
+			Document doc = receiver.getDocument();
+
+			result = (NodeValue) doc;
+		} catch (SAXException saxe) {
+			// do nothing, we will default to trying to return a string below
+		} catch (IOException ioe) {
+			// do nothing, we will default to trying to return a string below
+		} finally {
+			context.popDocumentContext();
+
+			if (reader != null) {
+				context.getBroker().getBrokerPool().getParserPool().returnXMLReader(reader);
 			}
-	        
-	        XMLReader reader = null;
+		}
 
-	        context.pushDocumentContext();
-	        try {
-	            InputSource src = new InputSource(new CloseShieldInputStream(resultDocAsInputStream));
-
-	            reader = context.getBroker().getBrokerPool().getParserPool().borrowXMLReader();
-	            MemTreeBuilder builder = context.getDocumentBuilder();
-	            DocumentBuilderReceiver receiver = new DocumentBuilderReceiver(builder, true);
-	            reader.setContentHandler(receiver);
-	            reader.parse(src);
-	            Document doc = receiver.getDocument();
-
-	            result = (NodeValue)doc;
-	        } catch(SAXException saxe) {
-	            //do nothing, we will default to trying to return a string below
-	        } catch(IOException ioe) {
-	            //do nothing, we will default to trying to return a string below
-	        } finally {
-	            context.popDocumentContext();
-
-	            if(reader != null) {
-	                context.getBroker().getBrokerPool().getParserPool().returnXMLReader(reader);
-	            }
-	        }
-	        
-	        return result;
-    }
+		return result;
+	}
 }

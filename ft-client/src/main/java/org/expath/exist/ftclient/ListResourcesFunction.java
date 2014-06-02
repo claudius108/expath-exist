@@ -50,7 +50,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 /**
- * Implements a method for listing resources (files and directories) within a remote directory.
+ * Implements a method for listing resources (files and directories) within a
+ * remote directory.
  * 
  * @author ws
  * @author Adam Retter <adam@existsolutions.com>
@@ -58,67 +59,71 @@ import org.xml.sax.XMLReader;
  */
 public class ListResourcesFunction extends BasicFunction {
 
-    private final static String NAMESPACE_URI = ExistExpathFTClientModule.NAMESPACE_URI;
-    private final static String PREFIX = ExistExpathFTClientModule.PREFIX;
-    private static final Logger log = Logger.getLogger(ListResourcesFunction.class);
-   
-    public final static FunctionSignature signature = new FunctionSignature(
-        new QName("list-resources", NAMESPACE_URI, PREFIX),
-        "This function gets the list of resources (files and directories) inside the directory indicated by $remote-directory-path. The list is returned as XML document.",
-        new SequenceType[] {
-            new FunctionParameterSequenceType("connection-handle", Type.LONG, Cardinality.EXACTLY_ONE, "The connection handle."),
-            new FunctionParameterSequenceType("remote-directory-path", Type.STRING, Cardinality.EXACTLY_ONE, "The remote directory path."),
-        },
-        new FunctionReturnSequenceType(Type.ELEMENT, Cardinality.EXACTLY_ONE, "response from as element(resources-list)." )
-    );
+	private final static String NAMESPACE_URI = ExistExpathFTClientModule.NAMESPACE_URI;
+	private final static String PREFIX = ExistExpathFTClientModule.PREFIX;
+	private static final Logger log = Logger.getLogger(ListResourcesFunction.class);
 
-    public ListResourcesFunction( XQueryContext context ){
-        super(context, signature);
-    }
+	public final static FunctionSignature signature = new FunctionSignature(
+			new QName("list-resources", NAMESPACE_URI, PREFIX),
+			"This function gets the list of resources (files and directories) inside the directory indicated by $remote-directory-path. The list is returned as XML document.",
+			new SequenceType[] {
+					new FunctionParameterSequenceType("connection-handle", Type.LONG,
+							Cardinality.EXACTLY_ONE, "The connection handle."),
+					new FunctionParameterSequenceType("remote-directory-path", Type.STRING,
+							Cardinality.EXACTLY_ONE, "The remote directory path."), },
+			new FunctionReturnSequenceType(Type.ELEMENT, Cardinality.EXACTLY_ONE,
+					"response from as element(resources-list)."));
 
-    @Override
-    public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
-        Sequence result = Sequence.EMPTY_SEQUENCE;
-        StreamResult resultAsStreamResult = null;
-        try {
-            resultAsStreamResult = org.expath.ftclient.ListResources.listResources(ExistExpathFTClientModule.retrieveRemoteConnection(context, ((IntegerValue)args[0].itemAt(0)).getLong()), args[1].getStringValue());
-        } catch (Exception ex) {
-        	throw new XPathException(ex.getMessage());
-        }        
+	public ListResourcesFunction(XQueryContext context) {
+		super(context, signature);
+	}
 
-      ByteArrayInputStream resultDocAsInputStream = null;
-      try {
-			resultDocAsInputStream = new ByteArrayInputStream(resultAsStreamResult.getWriter().toString().getBytes("UTF-8"));
+	@Override
+	public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
+		Sequence result = Sequence.EMPTY_SEQUENCE;
+		StreamResult resultAsStreamResult = null;
+		try {
+			resultAsStreamResult = ro.kuberam.libs.java.ftclient.ListResources.listResources(
+					ExistExpathFTClientModule.retrieveRemoteConnection(context,
+							((IntegerValue) args[0].itemAt(0)).getLong()), args[1].getStringValue());
+		} catch (Exception ex) {
+			throw new XPathException(ex.getMessage());
+		}
+
+		ByteArrayInputStream resultDocAsInputStream = null;
+		try {
+			resultDocAsInputStream = new ByteArrayInputStream(resultAsStreamResult.getWriter().toString()
+					.getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException ex) {
 			throw new XPathException(ex.getMessage());
 		}
-        
-        XMLReader reader = null;
 
-        context.pushDocumentContext();
-        try {
-            InputSource src = new InputSource(new CloseShieldInputStream(resultDocAsInputStream));
+		XMLReader reader = null;
 
-            reader = context.getBroker().getBrokerPool().getParserPool().borrowXMLReader();
-            MemTreeBuilder builder = context.getDocumentBuilder();
-            DocumentBuilderReceiver receiver = new DocumentBuilderReceiver(builder, true);
-            reader.setContentHandler(receiver);
-            reader.parse(src);
-            Document doc = receiver.getDocument();
+		context.pushDocumentContext();
+		try {
+			InputSource src = new InputSource(new CloseShieldInputStream(resultDocAsInputStream));
 
-            result = (NodeValue)doc;
-        } catch(SAXException saxe) {
-            //do nothing, we will default to trying to return a string below
-        } catch(IOException ioe) {
-            //do nothing, we will default to trying to return a string below
-        } finally {
-            context.popDocumentContext();
+			reader = context.getBroker().getBrokerPool().getParserPool().borrowXMLReader();
+			MemTreeBuilder builder = context.getDocumentBuilder();
+			DocumentBuilderReceiver receiver = new DocumentBuilderReceiver(builder, true);
+			reader.setContentHandler(receiver);
+			reader.parse(src);
+			Document doc = receiver.getDocument();
 
-            if(reader != null) {
-                context.getBroker().getBrokerPool().getParserPool().returnXMLReader(reader);
-            }
-        }
+			result = (NodeValue) doc;
+		} catch (SAXException saxe) {
+			// do nothing, we will default to trying to return a string below
+		} catch (IOException ioe) {
+			// do nothing, we will default to trying to return a string below
+		} finally {
+			context.popDocumentContext();
 
-        return result;
-    }
+			if (reader != null) {
+				context.getBroker().getBrokerPool().getParserPool().returnXMLReader(reader);
+			}
+		}
+
+		return result;
+	}
 }

@@ -21,18 +21,10 @@
  */
 package org.expath.exist.ftclient;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 
-import javax.xml.transform.stream.StreamResult;
-
-import org.apache.commons.io.input.CloseShieldInputStream;
 import org.apache.log4j.Logger;
 import org.exist.dom.QName;
-import org.exist.memtree.DocumentBuilderReceiver;
-import org.exist.memtree.MemTreeBuilder;
 import org.exist.xquery.BasicFunction;
 import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
@@ -43,15 +35,10 @@ import org.exist.xquery.value.BinaryValueFromInputStream;
 import org.exist.xquery.value.FunctionParameterSequenceType;
 import org.exist.xquery.value.FunctionReturnSequenceType;
 import org.exist.xquery.value.IntegerValue;
-import org.exist.xquery.value.NodeValue;
 import org.exist.xquery.value.Sequence;
 import org.exist.xquery.value.SequenceType;
 import org.exist.xquery.value.Type;
 import org.exist.xquery.value.ValueSequence;
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 
 /**
  * Implements a method for retrieving a remote resource.
@@ -85,7 +72,7 @@ public class RetrieveResourceFunction extends BasicFunction {
 		InputStream resultAsStreamResult = null;
 
 		try {
-			resultAsStreamResult = org.expath.ftclient.RetrieveResource.retrieveResource2(
+			resultAsStreamResult = ro.kuberam.libs.java.ftclient.RetrieveResource.retrieveResource(
 					ExistExpathFTClientModule.retrieveRemoteConnection(context,
 							((IntegerValue) args[0].itemAt(0)).getLong()), args[1].getStringValue());
 		} catch (Exception ex) {

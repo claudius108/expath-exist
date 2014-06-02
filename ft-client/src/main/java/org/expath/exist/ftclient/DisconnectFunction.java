@@ -66,7 +66,7 @@ public class DisconnectFunction extends BasicFunction {
         long connectionUID = ((IntegerValue)args[0].itemAt(0)).getLong();
 
         try {
-            result = (Boolean) org.expath.ftclient.Disconnect.disconnect(ExistExpathFTClientModule.retrieveRemoteConnection(context, connectionUID));
+            result = (Boolean) ro.kuberam.libs.java.ftclient.Disconnect.disconnect(ExistExpathFTClientModule.retrieveRemoteConnection(context, connectionUID));
         } catch (Exception ex) {
         	throw new XPathException(ex.getMessage());
         }

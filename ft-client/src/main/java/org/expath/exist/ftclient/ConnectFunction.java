@@ -126,7 +126,7 @@ public class ConnectFunction extends BasicFunction {
 
 		// get the connection object
 		try {
-			remoteConnection = org.expath.ftclient.Connect.connect(remoteHostUri, optionsString);
+			remoteConnection = ro.kuberam.libs.java.ftclient.Connect.connect(remoteHostUri, optionsString);
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}

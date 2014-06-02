@@ -58,11 +58,14 @@ public class StoreResourceFunction extends BasicFunction {
 			new QName("store-resource", NAMESPACE_URI, ExistExpathFTClientModule.PREFIX),
 			"This function stores a resource to the remote path. It returns true or false indicating the success of the resource storage.",
 			new SequenceType[] {
-					new FunctionParameterSequenceType("connection-handle", Type.LONG, Cardinality.EXACTLY_ONE, "The connection handle."),
-					new FunctionParameterSequenceType("remote-resource-path", Type.STRING, Cardinality.EXACTLY_ONE,
-							"The path for resource to be stored."),
-					new FunctionParameterSequenceType("resource-contents", Type.ANY_TYPE, Cardinality.ZERO_OR_ONE, "The contents of the resource.") },
-			new FunctionReturnSequenceType(Type.BOOLEAN, Cardinality.EXACTLY_ONE, "It returns true if successfully completed, false if not."));
+					new FunctionParameterSequenceType("connection-handle", Type.LONG,
+							Cardinality.EXACTLY_ONE, "The connection handle."),
+					new FunctionParameterSequenceType("remote-resource-path", Type.STRING,
+							Cardinality.EXACTLY_ONE, "The path for resource to be stored."),
+					new FunctionParameterSequenceType("resource-contents", Type.ANY_TYPE,
+							Cardinality.ZERO_OR_ONE, "The contents of the resource.") },
+			new FunctionReturnSequenceType(Type.BOOLEAN, Cardinality.EXACTLY_ONE,
+					"It returns true if successfully completed, false if not."));
 
 	public StoreResourceFunction(XQueryContext context) {
 		super(context, signature);
@@ -80,10 +83,11 @@ public class StoreResourceFunction extends BasicFunction {
 		switch (resourceType) {
 		// xs:base64Binary
 		case Type.BASE64_BINARY:
-		// xs:hexBinary
+			// xs:hexBinary
 		case Type.HEX_BINARY:
 			byte[] binary = (byte[]) ((BinaryValue) args[2].itemAt(0)).toJavaObject(byte[].class);
-			data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(), new ByteArrayInputStream(binary));
+			data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
+					new ByteArrayInputStream(binary));
 
 			break;
 		// xs:string
@@ -98,16 +102,18 @@ public class StoreResourceFunction extends BasicFunction {
 		// ()
 		case Type.EMPTY:
 			try {
-				data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(), new ByteArrayInputStream("".getBytes("UTF-8")));
+				data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
+						new ByteArrayInputStream("".getBytes("UTF-8")));
 			} catch (UnsupportedEncodingException e) {
 			}
 			break;
 		}
 		// store the resource
 		try {
-			result = org.expath.ftclient.StoreResource.storeResource(
-					ExistExpathFTClientModule.retrieveRemoteConnection(context, ((IntegerValue) args[0].itemAt(0)).getLong()),
-					args[1].getStringValue(), data.getInputStream());
+			result = ro.kuberam.libs.java.ftclient.StoreResource.storeResource(
+					ExistExpathFTClientModule.retrieveRemoteConnection(context,
+							((IntegerValue) args[0].itemAt(0)).getLong()), args[1].getStringValue(),
+					data.getInputStream());
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}

@@ -27,98 +27,106 @@ import org.exist.xquery.AbstractInternalModule;
 import org.exist.xquery.FunctionDef;
 import org.exist.xquery.XQueryContext;
 import org.exist.xquery.modules.ModuleUtils;
-import org.expath.ftclient.ExpathFTClientModule;
+import ro.kuberam.libs.java.ftclient.ExpathFTClientModule;
 
 /**
  * Implements the module definition.
- *
+ * 
  * @author WStarcev
  * @author Adam Retter <adam@existsolutions.com>
  * @author Claudius Teodorescu <claudius.teodorescu@gmail.com>
  */
 public class ExistExpathFTClientModule extends AbstractInternalModule {
 
-    public static String          NAMESPACE_URI                   = "";
+	public static String NAMESPACE_URI = "";
 	static {
 		NAMESPACE_URI = ExpathFTClientModule.NAMESPACE_URI;
 	}
-    public static String          PREFIX                          = "";
+	public static String PREFIX = "";
 	static {
 		PREFIX = ExpathFTClientModule.PREFIX;
-	}    
-    public final static String          INCLUSION_DATE                  = "2011-03-24";
-    public final static String          RELEASED_IN_VERSION             = "eXist-1.5";
-    public final static String          CONNECTIONS_CONTEXTVAR          = "_eXist_ftc_connections";
+	}
+	public final static String INCLUSION_DATE = "2011-03-24";
+	public final static String RELEASED_IN_VERSION = "eXist-1.5";
+	public final static String CONNECTIONS_CONTEXTVAR = "_eXist_ftc_connections";
 
-    protected static int CONNECTION_TYPE;
+	protected static int CONNECTION_TYPE;
 
-    private final static FunctionDef[] functions = {
-        new FunctionDef(ConnectFunction.signatures[0], ConnectFunction.class),
-        new FunctionDef(ConnectFunction.signatures[1], ConnectFunction.class),
-        new FunctionDef(ListResourcesFunction.signature, ListResourcesFunction.class),
-        new FunctionDef(DisconnectFunction.signature, DisconnectFunction.class),
-        new FunctionDef(StoreResourceFunction.signature, StoreResourceFunction.class),
-        new FunctionDef(RetrieveResourceFunction.signature, RetrieveResourceFunction.class),
-        new FunctionDef(GetResourceMetadataFunction.signature, GetResourceMetadataFunction.class),
-        new FunctionDef(DeleteResourceFunction.signature, DeleteResourceFunction.class)
-    };
+	private final static FunctionDef[] functions = {
+			new FunctionDef(ConnectFunction.signatures[0], ConnectFunction.class),
+			new FunctionDef(ConnectFunction.signatures[1], ConnectFunction.class),
+			new FunctionDef(ListResourcesFunction.signature, ListResourcesFunction.class),
+			new FunctionDef(DisconnectFunction.signature, DisconnectFunction.class),
+			new FunctionDef(StoreResourceFunction.signature, StoreResourceFunction.class),
+			new FunctionDef(RetrieveResourceFunction.signature, RetrieveResourceFunction.class),
+			new FunctionDef(GetResourceMetadataFunction.signature, GetResourceMetadataFunction.class),
+			new FunctionDef(DeleteResourceFunction.signature, DeleteResourceFunction.class) };
 
-    public ExistExpathFTClientModule(Map<String, List<? extends Object>> parameters) throws Exception {
-        super(functions, parameters);
-    }
+	public ExistExpathFTClientModule(Map<String, List<? extends Object>> parameters) throws Exception {
+		super(functions, parameters);
+	}
 
-    @Override
-    public String getNamespaceURI() {
-        return NAMESPACE_URI;
-    }
+	@Override
+	public String getNamespaceURI() {
+		return NAMESPACE_URI;
+	}
 
-    @Override
-    public String getDefaultPrefix() {
-        return PREFIX;
-    }
+	@Override
+	public String getDefaultPrefix() {
+		return PREFIX;
+	}
 
-    @Override
-    public String getDescription() {
-        return "A module for performing File Transfer requests as a client.";
-    }
+	@Override
+	public String getDescription() {
+		return "A module for performing File Transfer requests as a client.";
+	}
 
-    @Override
-    public String getReleaseVersion() {
-        return RELEASED_IN_VERSION;
-    }
-    
-    /**
-     * Stores a remote connection in the Context of an XQuery.
-     *
-     * @param   context  The Context of the XQuery to store the Connection in
-     * @param   con      The connection to store
-     *
-     * @return  A unique ID representing the connection
-     */
-    public static synchronized long storeRemoteConnection(XQueryContext context, Object remoteConnection) {
-        return ModuleUtils.storeObjectInContextMap(context, ExistExpathFTClientModule.CONNECTIONS_CONTEXTVAR, remoteConnection);
-    }
+	@Override
+	public String getReleaseVersion() {
+		return RELEASED_IN_VERSION;
+	}
 
-    /**
-     * Retrieves a previously stored connection from the Context of an XQuery.
-     *
-     * @param   context        The Context of the XQuery containing the Connection
-     * @param   connectionUID  The UID of the Connection to retrieve from the Context of the XQuery
-     *
-     * @return  DOCUMENT ME!
-     */
-    public static Object retrieveRemoteConnection(XQueryContext context, long connectionUID) {
-        return ModuleUtils.retrieveObjectFromContextMap(context, ExistExpathFTClientModule.CONNECTIONS_CONTEXTVAR, connectionUID);
-    }
+	/**
+	 * Stores a remote connection in the Context of an XQuery.
+	 * 
+	 * @param context
+	 *            The Context of the XQuery to store the Connection in
+	 * @param con
+	 *            The connection to store
+	 * 
+	 * @return A unique ID representing the connection
+	 */
+	public static synchronized long storeRemoteConnection(XQueryContext context, Object remoteConnection) {
+		return ModuleUtils.storeObjectInContextMap(context,
+				ExistExpathFTClientModule.CONNECTIONS_CONTEXTVAR, remoteConnection);
+	}
 
-    /**
-     * Resets the Module Context and closes any connections for the XQueryContext.
-     *
-     * @param  xqueryContext  The XQueryContext
-     */
-    @Override
-    public void reset(XQueryContext xqueryContext) {
-        // reset the module context
-        super.reset(xqueryContext);
-    }
+	/**
+	 * Retrieves a previously stored connection from the Context of an XQuery.
+	 * 
+	 * @param context
+	 *            The Context of the XQuery containing the Connection
+	 * @param connectionUID
+	 *            The UID of the Connection to retrieve from the Context of the
+	 *            XQuery
+	 * 
+	 * @return DOCUMENT ME!
+	 */
+	public static Object retrieveRemoteConnection(XQueryContext context, long connectionUID) {
+		return ModuleUtils.retrieveObjectFromContextMap(context,
+				ExistExpathFTClientModule.CONNECTIONS_CONTEXTVAR, connectionUID);
+	}
+
+	/**
+	 * Resets the Module Context and closes any connections for the
+	 * XQueryContext.
+	 * 
+	 * @param xqueryContext
+	 *            The XQueryContext
+	 */
+	@Override
+	public void reset(XQueryContext xqueryContext) {
+		// reset the module context
+		super.reset(xqueryContext);
+	}
 }
