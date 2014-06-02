@@ -24,10 +24,11 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>ro.kuberam.java.libs</groupId>
+			<groupId>ro.kuberam.libs.java</groupId>
 			<artifactId>ft-client</artifactId>
 			<version>1.1.0</version>
 			<type>jar</type>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -39,4 +40,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
