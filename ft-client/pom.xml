@@ -18,7 +18,7 @@
 
 	<properties>
 		<java-package-name>ftclient</java-package-name>
-		<java-package-main-class-name>org.expath.exist.ftclient.ExistExpathFTClientModule</java-package-main-class-name>
+		<java-package-main-class-name>ExistExpathFTClientModule</java-package-main-class-name>
 		<module-prefix>ft-client</module-prefix>
 	</properties>
 
