@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kert:test-plan xmlns="http://www.w3.org/1999/xhtml" xmlns:kert="http://kuberam.ro/ns/kert" test-plan-version="0.5" xml:base="unit-tests/">
     <kert:description>Test plan for EXPath Cryptographic Module</kert:description>
-    <kert:version>0.5.2</kert:version>
+    <kert:version>0.6</kert:version>
     <kert:results>
 		<!--start of standard results - do not remove them -->
         <kert:result id="passed" icon-url="../resources/images/passed.png" font-color="white" background-color="green" score="0">Passed</kert:result>
@@ -25,7 +25,7 @@
 			namespace prefix, and an X509
 			certificate.
 		</kert:description>
-        <kert:test-url>generateEnvelopedDigitalSignature.xq</kert:test-url>
+        <kert:test-url>unit-tests/generateEnvelopedDigitalSignature.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/generateEnvelopedDigitalSignature.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -49,7 +49,7 @@
 			namespace prefix, and an X509
 			certificate.
 		</kert:description>
-        <kert:test-url>validateEnvelopedDigitalSignature.xq</kert:test-url>
+        <kert:test-url>unit-tests/validateEnvelopedDigitalSignature.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/validateEnvelopedDigitalSignature.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -66,7 +66,7 @@
         <kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding</kert:title>
         <kert:version>0.4</kert:version>
         <kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, and 128 bytes key.</kert:description>
-        <kert:test-url>encryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
+        <kert:test-url>unit-tests/encryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyCbcMode.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -83,7 +83,7 @@
         <kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding, default provider</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, 128 bytes key, and default provider.</kert:description>
-        <kert:test-url>encryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
+        <kert:test-url>unit-tests/encryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -100,7 +100,7 @@
         <kert:title>Symmetric encryption of string, AES</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Symmetric encryption of a string with AES transformation (implicit ECB mode), and 128 bytes key.</kert:description>
-        <kert:test-url>encryptStringWithAesSymmetricKeyEcbMode.xq</kert:test-url>
+        <kert:test-url>unit-tests/encryptStringWithAesSymmetricKeyEcbMode.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesSymmetricKeyEcbMode.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -117,7 +117,7 @@
         <kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, and wrong key.</kert:description>
-        <kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:test-url>
+        <kert:test-url>unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -134,7 +134,7 @@
         <kert:title>Symmetric encryption of string, AES/CBC/PKCS5Padding, wrong key, default provider</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Symmetric encryption of a string with AES/CBC/PKCS5Padding transformation, wrong key, and default provider.</kert:description>
-        <kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
+        <kert:test-url>unit-tests/encryptStringWithAesWrongSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcModeDefaultProvider.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -151,7 +151,7 @@
         <kert:title>Symmetric decryption of string, AES/CBC/PKCS5Padding</kert:title>
         <kert:version>0.4</kert:version>
         <kert:description>Symmetric decryption of a string with AES/CBC/PKCS5Padding transformation, and 128 bytes key.</kert:description>
-        <kert:test-url>decryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
+        <kert:test-url>unit-tests/decryptStringWithAesSymmetricKeyCbcMode.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyCbcMode.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -168,7 +168,7 @@
         <kert:title>Symmetric decryption of string, AES/CBC/PKCS5Padding, default provider</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Symmetric decryption of a string with AES/CBC/PKCS5Padding transformation, 128 bytes key, and default provider.</kert:description>
-        <kert:test-url>decryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
+        <kert:test-url>unit-tests/decryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyCbcModeDefaultProvider.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -186,7 +186,7 @@
         <kert:version>0.1</kert:version>
         <kert:description>Symmetric decryption of a string with AES transformation (implicit ECB mode), and 128 bytes key.
 		</kert:description>
-        <kert:test-url>decryptStringWithAesSymmetricKeyEcbMode.xq</kert:test-url>
+        <kert:test-url>unit-tests/decryptStringWithAesSymmetricKeyEcbMode.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/decryptStringWithAesSymmetricKeyEcbMode.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -207,7 +207,7 @@
 			<kert:a>Test!</kert:a>
 			' with AES algorithm and 136 key (testing with a wrong key, to see the error message).
 		</kert:description>
-        <kert:test-url>encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:test-url>
+        <kert:test-url>unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/encryptStringWithAesWrongSymmetricKeyCbcMode.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -225,7 +225,7 @@
         <kert:title>'SHA-512' HMAC for string</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>HMAC for a string by using 'SHA-512' algorithm.</kert:description>
-        <kert:test-url>hmacStringWithSha512.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithSha512.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -243,7 +243,7 @@
         <kert:title>'SHA-512' HMAC for string, default format</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>HMAC for a string by using 'SHA-512' algorithm and the default format.</kert:description>
-        <kert:test-url>hmacStringWithSha512AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithSha512AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha512AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -261,7 +261,7 @@
         <kert:title>'MD5' hashing for string</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>Hashing a string by using 'MD5' algorithm.</kert:description>
-        <kert:test-url>hashStringWithMd5.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithMd5.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithMd5.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -279,7 +279,7 @@
         <kert:title>'MD5' hashing for string, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a string by using 'MD5' algorithm and the default format.</kert:description>
-        <kert:test-url>hashStringWithMd5AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithMd5AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithMd5AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -297,7 +297,7 @@
         <kert:title>'SHA-1' hashing for string</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>Hashing a string by using 'SHA-1' algorithm.</kert:description>
-        <kert:test-url>hashStringWithSha1.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithSha1.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha1.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -315,7 +315,7 @@
         <kert:title>'SHA-1' hashing for string, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a string by using 'SHA-1' algorithm and the default format.</kert:description>
-        <kert:test-url>hashStringWithSha1AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithSha1AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha1AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -333,7 +333,7 @@
         <kert:title>'MD5' HMAC for string</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>HMAC for a string by using 'MD5' algorithm.</kert:description>
-        <kert:test-url>hmacStringWithMd5.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithMd5.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -351,7 +351,7 @@
         <kert:title>'MD5' HMAC for string, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>HMAC for a string by using 'MD5' algorithm and the default format.</kert:description>
-        <kert:test-url>hmacStringWithMd5AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithMd5AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithMd5AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -369,7 +369,7 @@
         <kert:title>'SHA-1' HMAC for string</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>HMAC for a string by using 'SHA-1' algorithm.</kert:description>
-        <kert:test-url>hmacStringWithSha1.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithSha1.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -387,7 +387,7 @@
         <kert:title>'SHA-1' HMAC for string, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>HMAC for a string by using 'SHA-1' algorithm and the default format.</kert:description>
-        <kert:test-url>hmacStringWithSha1AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithSha1AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha1AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -405,7 +405,7 @@
         <kert:title>'SHA-256' HMAC for string</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>HMAC for a string by using 'SHA-256' algorithm.</kert:description>
-        <kert:test-url>hmacStringWithSha256.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithSha256.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -423,7 +423,7 @@
         <kert:title>'SHA-256' HMAC for string, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>HMAC for a string by using 'SHA-256' algorithm and the default format.</kert:description>
-        <kert:test-url>hmacStringWithSha256AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithSha256AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha256AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -441,7 +441,7 @@
         <kert:title>'SHA-384' HMAC for string</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>HMAC for a string by using 'SHA-384' algorithm.</kert:description>
-        <kert:test-url>hmacStringWithSha384.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithSha384.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -459,7 +459,7 @@
         <kert:title>'SHA-384' HMAC for string, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>HMAC for a string by using 'SHA-384' algorithm and the default format.</kert:description>
-        <kert:test-url>hmacStringWithSha384AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hmacStringWithSha384AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hmacStringWithSha384AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -477,7 +477,7 @@
         <kert:title>AWS REST request</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service.</kert:description>
-        <kert:test-url>AwsRestRequest.xq</kert:test-url>
+        <kert:test-url>unit-tests/AwsRestRequest.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequest.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -495,7 +495,7 @@
         <kert:title>AWS REST request, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Authenticating a REST Request as needed by S3 Amazon Web Service with default format.</kert:description>
-        <kert:test-url>AwsRestRequestWithDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/AwsRestRequestWithDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/AwsRestRequestWithDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -513,7 +513,7 @@
         <kert:title>'SHA-256' hashing for string</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a string by using 'SHA-256' algorithm.</kert:description>
-        <kert:test-url>hashStringWithSha256.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithSha256.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha256.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -531,7 +531,7 @@
         <kert:title>'SHA-256' hashing for string, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a string by using 'SHA-256' algorithm and the default format.</kert:description>
-        <kert:test-url>hashStringWithSha256AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithSha256AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha256AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -549,7 +549,7 @@
         <kert:title>'SHA-384' hashing for string</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a string by using 'SHA-384' algorithm.</kert:description>
-        <kert:test-url>hashStringWithSha384.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithSha384.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha384.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -567,7 +567,7 @@
         <kert:title>'SHA-384' hashing for string, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a string by using 'SHA-384' algorithm and the default format.</kert:description>
-        <kert:test-url>hashStringWithSha384AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithSha384AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha384AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -585,7 +585,7 @@
         <kert:title>'SHA-512' hashing for string</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a string by using 'SHA-512' algorithm.</kert:description>
-        <kert:test-url>hashStringWithSha512.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithSha512.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha512.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -603,7 +603,7 @@
         <kert:title>'SHA-512' hashing for string, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a string by using 'SHA-512' algorithm and the default format.</kert:description>
-        <kert:test-url>hashStringWithSha512AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashStringWithSha512AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashStringWithSha512AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -621,7 +621,7 @@
         <kert:title>'MD5' hashing for binary</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary by using 'MD5' algorithm.</kert:description>
-        <kert:test-url>hashBinaryWithMd5.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithMd5.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithMd5.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -639,7 +639,7 @@
         <kert:title>'MD5' hashing for binary, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary by using 'MD5' algorithm and the default format.</kert:description>
-        <kert:test-url>hashBinaryWithMd5AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithMd5AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithMd5AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -657,7 +657,7 @@
         <kert:title>'SHA-1' hashing for binary</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary by using 'SHA-1' algorithm.</kert:description>
-        <kert:test-url>hashBinaryWithSha1.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithSha1.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha1.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -675,7 +675,7 @@
         <kert:title>'SHA-1' hashing for binary, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary by using 'SHA-1' algorithm and the default format.</kert:description>
-        <kert:test-url>hashBinaryWithSha1AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithSha1AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha1AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -693,7 +693,7 @@
         <kert:title>'SHA-256' hashing for binary</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary by using 'SHA-256' algorithm.</kert:description>
-        <kert:test-url>hashBinaryWithSha256.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithSha256.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha256.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -711,7 +711,7 @@
         <kert:title>'SHA-256' hashing for binary, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary by using 'SHA-256' algorithm and the default format.</kert:description>
-        <kert:test-url>hashBinaryWithSha256AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithSha256AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha256AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -729,7 +729,7 @@
         <kert:title>'SHA-384' hashing for binary</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary by using 'SHA-384' algorithm.</kert:description>
-        <kert:test-url>hashBinaryWithSha384.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithSha384.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha384.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -747,7 +747,7 @@
         <kert:title>'SHA-384' hashing for binary, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a string by using 'SHA-384' algorithm and the default format.</kert:description>
-        <kert:test-url>hashBinaryWithSha384AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithSha384AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha384AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -765,7 +765,7 @@
         <kert:title>'SHA-512' hashing for binary</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary by using 'SHA-512' algorithm.</kert:description>
-        <kert:test-url>hashBinaryWithSha512.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithSha512.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha512.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -783,7 +783,7 @@
         <kert:title>'SHA-512' hashing for binary, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary by using 'SHA-512' algorithm and the default format.</kert:description>
-        <kert:test-url>hashBinaryWithSha512AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithSha512AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithSha512AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -802,7 +802,7 @@
         <kert:version>0.1</kert:version>
         <kert:description>Hashing a binary with a wrong algorithm. Test will pass if the correct error is thrown.
 		</kert:description>
-        <kert:test-url>hashBinaryWithWrongAlgorithm.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithWrongAlgorithm.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithm.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -822,7 +822,7 @@
         <kert:description>Hashing a binary with a wrong algorithm and the default format. Test will pass if the correct
 			error is thrown.
 		</kert:description>
-        <kert:test-url>hashBinaryWithWrongAlgorithmAndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashBinaryWithWrongAlgorithmAndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashBinaryWithWrongAlgorithmAndDefaultFormat.xq</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
         <kert:timeout/>
@@ -839,7 +839,7 @@
         <kert:title>'MD5' hashing for XML file</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing an XML file with 'MD5' algorithm.</kert:description>
-        <kert:test-url>hashXmlWithMd5.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashXmlWithMd5.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashXmlWithMd5.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
@@ -857,7 +857,7 @@
         <kert:title>'MD5' hashing for XML file, default format</kert:title>
         <kert:version>0.1</kert:version>
         <kert:description>Hashing an XML file with 'MD5' algorithm and the default format.</kert:description>
-        <kert:test-url>hashXmlWithMd5AndDefaultFormat.xq</kert:test-url>
+        <kert:test-url>unit-tests/hashXmlWithMd5AndDefaultFormat.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/hashXmlWithMd5AndDefaultFormat.xq
 		</kert:source-url>
         <kert:assertion>/result/result-token</kert:assertion>
