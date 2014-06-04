@@ -2,7 +2,7 @@ xquery version "3.0";
 
 import module "http://expath.org/ns/crypto";
 
-let $input := util:binary-doc(concat('xmldb:', resolve-uri('../resources/keystore', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/'))))
+let $input := util:binary-doc(concat('xmldb:', resolve-uri('../resources/keystore.ks', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/'))))
 let $expected-result :=
 	<expected-result>DcQ3caBftiQCIQn96Pr8PC2vzs17Re0tZ8/CZnOoucu/N+818uqAXxR7l9oxYgoW</expected-result>
 let $actual-result :=

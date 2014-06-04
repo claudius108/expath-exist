@@ -13,7 +13,7 @@ let $sample-doc := doc('../resources/doc-1.xml')
 		<keystore-password>ab987c</keystore-password>
 		<key-alias>eXist</key-alias>
 		<private-key-password>kpi135</private-key-password>
-		<keystore-uri>{concat('xmldb:', resolve-uri('../resources/keystore', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/')))}</keystore-uri>
+		<keystore-uri>{concat('xmldb:', resolve-uri('../resources/keystore.ks', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/')))}</keystore-uri>
 	</digital-certificate>
 , $actual-result :=
 	<actual-result>
