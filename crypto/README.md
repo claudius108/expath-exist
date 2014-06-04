@@ -14,12 +14,12 @@
 			<li>crypto:validate-signature() (only for XML data for now)</li>
 		</ul>
 		<h3>Documentation</h3>
-		<p>For the latest version of the specification for this module see <a href="http://extxsltforms.sourceforge.net/expath-specs/crypto/crypto.html">here</a>.</p>
+		<p>For the latest version of the specification for this module see <a href="http://kuberam.ro/specs/expath/crypto/crypto.html">here</a>.</p>
 		<p>The implementation follows this specification.</p>
 		<h3>Examples of usage</h3>
 		<p>For examples of usage, see section Unit Tests.</p>
 		<h3>Unit Tests</h3>
-		<p>Unit Tests can be found in /apps/expath-crypto/tests/unit-tests' collection (when this library is installed in eXist).</p>
+		<p>Unit Tests can be found in '/apps/expath-crypto/tests/unit-tests' collection (when this library is installed in eXist).</p>
 		<p>For a simple test runner, showing description and status (passed / failed) for each unit test, go <a href="tests/test-plan.xq">here</a>.</p>
 	</body>
 </html>
