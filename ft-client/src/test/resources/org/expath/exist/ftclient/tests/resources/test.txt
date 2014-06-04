@@ -1,1 +1,0 @@
-Content of the file to be store with store-resource() function.
