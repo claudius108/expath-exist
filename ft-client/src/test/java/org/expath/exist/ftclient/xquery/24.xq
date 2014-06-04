@@ -1,12 +1,11 @@
 xquery version "3.0";
 
 import module "http://expath.org/ns/ft-client";
+import module namespace config = "http://kuberam.ro/ns/config" at "../config.xqm";
 
-let $script-collection := concat(replace(replace(request:get-effective-uri(), "tests/(\w)+.xql$", ""), "/rest//db", ""), 'data/')
-let $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
-let $expected-result :=
-	<expected-result/>
-let $file-to-store := util:binary-to-string(util:binary-doc(concat($script-collection, "test.txt")))
+let $connection := ft-client:connect($config:ftp-server-connection-url)
+let $expected-result := <expected-result/>
+let $file-to-store := util:binary-to-string(util:binary-doc(concat($config:resources-collection, "test.txt")))
 let $file-to-store-path := concat("/dir-with-rights/test", util:uuid(), ".txt")
 let $store-file := ft-client:store-resource($connection, $file-to-store-path, $file-to-store)
 let $actual-result :=

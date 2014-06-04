@@ -2,9 +2,6 @@ xquery version "3.0";
 
 import module "http://expath.org/ns/ft-client";
 
-let $title := 'Get Information about the File Transfer Client Module Status'
-let $expected-result :=
-	<expected-result>0</expected-result>
 let $actual-result := 
 	<actual-result>
 		<util-is-module-mapped>{util:is-module-mapped('http://expath.org/ns/ft-client')}</util-is-module-mapped>

@@ -1,16 +1,15 @@
 xquery version "3.0";
 
 import module "http://expath.org/ns/ft-client";
+import module namespace config = "http://kuberam.ro/ns/config" at "../config.xqm";
 
-let $private-key := util:binary-to-string(util:binary-doc(concat('xmldb:', resolve-uri('../resources/Open-Private-Key', concat(substring-after(system:get-module-load-path(), 'xmldb:'), '/')))))
-let $connection := ft-client:connect(xs:anyURI('sftp://ftp-user:ftp-pass@127.0.0.1'), $private-key)
-let $expected-result :=
-	<expected-result>0</expected-result>
+let $connection := ft-client:connect($config:sftp-server-connection-url, $config:private-key)
+let $expected-result := <expected-result>0</expected-result>
 let $actual-result := 
 	<actual-result>
 		{
           try {
-            ft-client:retrieve-resource($connection, "/home/ftp-user/dir-with-rights/image-no-rights.gif")
+            ft-client:retrieve-resource($connection, $config:server-home-folder || "/dir-with-rights/image-no-rights.gif")
           }
           catch * {
             <error>{$err:description}</error>

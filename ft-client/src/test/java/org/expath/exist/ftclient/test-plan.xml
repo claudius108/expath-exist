@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kert:test-plan xmlns="http://www.w3.org/1999/xhtml" xmlns:kert="http://kuberam.ro/ns/kert" test-plan-version="0.5" xml:base="unit-tests/">
+<kert:test-plan xmlns="http://www.w3.org/1999/xhtml" xmlns:kert="http://kuberam.ro/ns/kert" test-plan-version="0.5" xml:base="http://127.0.0.1:8080/exist/rest/db/apps/expath-ft-client/tests/">
     <kert:description>Test plan for EXPath File Transfer Client Module</kert:description>
     <kert:version>0.4</kert:version>
     <kert:results>
@@ -33,7 +33,7 @@
 			If list contains something (files or directories), the test is
 			passed.
 		</kert:description>
-        <kert:test-url>listResourcesOnFtpServer.xq</kert:test-url>
+        <kert:test-url>unit-tests/listResourcesOnFtpServer.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/listResourcesOnFtpServer.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -60,7 +60,7 @@
 			host, the test has to be
 			modified accordingly.
 		</kert:description>
-        <kert:test-url>retrieveResourceFromFtpServer.xq</kert:test-url>
+        <kert:test-url>unit-tests/retrieveResourceFromFtpServer.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/retrieveResourceFromFtpServer.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -80,7 +80,7 @@
         <kert:description>
 			This test verifies the function store-resource() for a binary file, with an FTP connection.
 		</kert:description>
-        <kert:test-url>storeResourceOnFtpServer.xq</kert:test-url>
+        <kert:test-url>unit-tests/storeResourceOnFtpServer.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/storeResourceOnFtpServer.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -107,7 +107,7 @@
 			the test has to be modified
 			accordingly.
 		</kert:description>
-        <kert:test-url>retrieveTextResourceFromFtpServer.xq</kert:test-url>
+        <kert:test-url>unit-tests/retrieveTextResourceFromFtpServer.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/retrieveTextResourceFromFtpServer.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -128,7 +128,7 @@
 			This test verifies the function store-resource() for a text file,
 			with an FTP connection.
 		</kert:description>
-        <kert:test-url>07.xq</kert:test-url>
+        <kert:test-url>unit-tests/07.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/07.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -155,7 +155,7 @@
 			reasons, the test has to be modified
 			accordingly.
 		</kert:description>
-        <kert:test-url>04.xq</kert:test-url>
+        <kert:test-url>unit-tests/04.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/04.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -185,7 +185,7 @@
 			test has to be modified
 			accordingly.
 		</kert:description>
-        <kert:test-url>05.xq</kert:test-url>
+        <kert:test-url>unit-tests/05.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/05.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -215,7 +215,7 @@
 			to be modified
 			accordingly.
 		</kert:description>
-        <kert:test-url>09.xq</kert:test-url>
+        <kert:test-url>unit-tests/09.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/09.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -237,7 +237,7 @@
 			with a private key SFTP
 			connection.
 		</kert:description>
-        <kert:test-url>06.xq</kert:test-url>
+        <kert:test-url>unit-tests/06.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/06.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -259,7 +259,7 @@
 			with a private key SFTP
 			connection.
 		</kert:description>
-        <kert:test-url>10.xq</kert:test-url>
+        <kert:test-url>unit-tests/10.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/10.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -272,35 +272,35 @@
         <kert:type>unattended</kert:type>
         <kert:assertion-type>assert-xml</kert:assertion-type>
     </kert:test>
-    <kert:test id="12">
-        <kert:author>Claudius Teodorescu</kert:author>
-        <kert:title>Function retrieve-resource(), FTP, binary file, no rights</kert:title>
-        <kert:version>0.3</kert:version>
-        <kert:description>
-			This test verifies the error raising for function retrieve-resource() with a binary file
-			having no
-			read rigths, with an FTP connection.
-			The evaluation of test is based on the permissions of the file. If
-			the file exists
-			and logged user have no read rights, the test is passed. Note that this test depends
-			on this file;
-			in case when that
-			file will cease to exist on server, the test has
-			to be modified accordingly.
-		</kert:description>
-        <kert:test-url>12.xq</kert:test-url>
-        <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/12.xq
-		</kert:source-url>
-        <kert:assertion>//result-token</kert:assertion>
-        <kert:timeout/>
-        <kert:run-status timestamp=""/>
-        <kert:development-status timestamp=""/>
-        <kert:log/>
-        <kert:loops-number/>
-        <kert:total-test-time/>
-        <kert:type>unattended</kert:type>
-        <kert:assertion-type>assert-xml</kert:assertion-type>
-    </kert:test>
+<!--    <kert:test id="12">-->
+<!--        <kert:author>Claudius Teodorescu</kert:author>-->
+<!--        <kert:title>Function retrieve-resource(), FTP, binary file, no rights</kert:title>-->
+<!--        <kert:version>0.3</kert:version>-->
+<!--        <kert:description>-->
+<!--			This test verifies the error raising for function retrieve-resource() with a binary file-->
+<!--			having no-->
+<!--			read rigths, with an FTP connection.-->
+<!--			The evaluation of test is based on the permissions of the file. If-->
+<!--			the file exists-->
+<!--			and logged user have no read rights, the test is passed. Note that this test depends-->
+<!--			on this file;-->
+<!--			in case when that-->
+<!--			file will cease to exist on server, the test has-->
+<!--			to be modified accordingly.-->
+<!--		</kert:description>-->
+<!--        <kert:test-url>unit-tests/12.xq</kert:test-url>-->
+<!--        <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/12.xq-->
+<!--		</kert:source-url>-->
+<!--        <kert:assertion>//result-token</kert:assertion>-->
+<!--        <kert:timeout/>-->
+<!--        <kert:run-status timestamp=""/>-->
+<!--        <kert:development-status timestamp=""/>-->
+<!--        <kert:log/>-->
+<!--        <kert:loops-number/>-->
+<!--        <kert:total-test-time/>-->
+<!--        <kert:type>unattended</kert:type>-->
+<!--        <kert:assertion-type>assert-xml</kert:assertion-type>-->
+<!--    </kert:test>-->
     <kert:test id="11">
         <kert:author>Dan McCreary</kert:author>
         <kert:title>Check installation of module</kert:title>
@@ -308,7 +308,7 @@
         <kert:description>
 			This test verifies that the module is installed.
 		</kert:description>
-        <kert:test-url>11.xq</kert:test-url>
+        <kert:test-url>unit-tests/11.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/11.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -331,7 +331,7 @@
 			connection in
 			order to list a non-existent directory.
 		</kert:description>
-        <kert:test-url>13.xq</kert:test-url>
+        <kert:test-url>unit-tests/13.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/13.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -354,7 +354,7 @@
 			FTP connection in
 			order to list a non-existent directory.
 		</kert:description>
-        <kert:test-url>14.xq</kert:test-url>
+        <kert:test-url>unit-tests/14.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/14.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -377,7 +377,7 @@
 			connection in
 			order to list a directory the user has no access.
 		</kert:description>
-        <kert:test-url>15.xq</kert:test-url>
+        <kert:test-url>unit-tests/15.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/15.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -400,7 +400,7 @@
 			FTP connection in
 			order to list a directory the user has no access.
 		</kert:description>
-        <kert:test-url>16.xq</kert:test-url>
+        <kert:test-url>unit-tests/16.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/16.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -413,35 +413,35 @@
         <kert:type>unattended</kert:type>
         <kert:assertion-type>assert-xml</kert:assertion-type>
     </kert:test>
-    <kert:test id="17">
-        <kert:author>Claudius Teodorescu</kert:author>
-        <kert:title>Error for retrieve-resource(), FTP, binary file, wrong name</kert:title>
-        <kert:version>0.3</kert:version>
-        <kert:description>
-			This test verifies the error raising for function retrieve-resource() for a wrong name
-			of a binary
-			file, with an FTP connection.
-			The evaluation of test is based on the non-existence of the file name. If
-			the file name
-			does not exists, the test is passed. Note that this test depends on this file name;
-			in case when that
-			file name will
-			start to exist on server, the test has to be modified
-			accordingly.
-		</kert:description>
-        <kert:test-url>17.xq</kert:test-url>
-        <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/17.xq
-		</kert:source-url>
-        <kert:assertion>//result-token</kert:assertion>
-        <kert:timeout/>
-        <kert:run-status timestamp=""/>
-        <kert:development-status timestamp=""/>
-        <kert:log/>
-        <kert:loops-number/>
-        <kert:total-test-time/>
-        <kert:type>unattended</kert:type>
-        <kert:assertion-type>assert-xml</kert:assertion-type>
-    </kert:test>
+<!--    <kert:test id="17">-->
+<!--        <kert:author>Claudius Teodorescu</kert:author>-->
+<!--        <kert:title>Error for retrieve-resource(), FTP, binary file, wrong name</kert:title>-->
+<!--        <kert:version>0.3</kert:version>-->
+<!--        <kert:description>-->
+<!--			This test verifies the error raising for function retrieve-resource() for a wrong name-->
+<!--			of a binary-->
+<!--			file, with an FTP connection.-->
+<!--			The evaluation of test is based on the non-existence of the file name. If-->
+<!--			the file name-->
+<!--			does not exists, the test is passed. Note that this test depends on this file name;-->
+<!--			in case when that-->
+<!--			file name will-->
+<!--			start to exist on server, the test has to be modified-->
+<!--			accordingly.-->
+<!--		</kert:description>-->
+<!--        <kert:test-url>unit-tests/17.xq</kert:test-url>-->
+<!--        <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/17.xq-->
+<!--		</kert:source-url>-->
+<!--        <kert:assertion>//result-token</kert:assertion>-->
+<!--        <kert:timeout/>-->
+<!--        <kert:run-status timestamp=""/>-->
+<!--        <kert:development-status timestamp=""/>-->
+<!--        <kert:log/>-->
+<!--        <kert:loops-number/>-->
+<!--        <kert:total-test-time/>-->
+<!--        <kert:type>unattended</kert:type>-->
+<!--        <kert:assertion-type>assert-xml</kert:assertion-type>-->
+<!--    </kert:test>-->
     <kert:test id="18">
         <kert:author>Claudius Teodorescu</kert:author>
         <kert:title>Function retrieve-resource(), FTP, binary file, wrong file name</kert:title>
@@ -460,7 +460,7 @@
 			server, the test has to be modified
 			accordingly.
 		</kert:description>
-        <kert:test-url>18.xq</kert:test-url>
+        <kert:test-url>unit-tests/18.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/18.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -475,12 +475,12 @@
     </kert:test>
     <kert:test id="19">
         <kert:author>Claudius Teodorescu</kert:author>
-        <kert:title>Function retrieve-resource(), FTP, binary file, no rights</kert:title>
+        <kert:title>Function retrieve-resource(), SFTP, binary file, no rights</kert:title>
         <kert:version>0.3</kert:version>
         <kert:description>
 			This test verifies the error raising for function retrieve-resource() with a binary file
 			having no
-			read rigths, with a FTP connection.
+			read rigths, with a SFTP connection.
 			The evaluation of test is based on the permissions of the file.
 			If the file exists
 			and logged user have no read rights, the test is passed. Note that this test depends
@@ -489,7 +489,7 @@
 			file will cease to exist on server, the test has
 			to be modified accordingly.
 		</kert:description>
-        <kert:test-url>19.xq</kert:test-url>
+        <kert:test-url>unit-tests/19.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/19.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -511,7 +511,7 @@
 			stored with a
 			wrong path, with an FTP connection.
 		</kert:description>
-        <kert:test-url>20.xq</kert:test-url>
+        <kert:test-url>unit-tests/20.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/20.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -534,7 +534,7 @@
 			no
 			rights path, with an FTP connection.
 		</kert:description>
-        <kert:test-url>21.xq</kert:test-url>
+        <kert:test-url>unit-tests/21.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/21.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -560,7 +560,7 @@
 			list-resources(),
 			which raises the error.
 		</kert:description>
-        <kert:test-url>22.xq</kert:test-url>
+        <kert:test-url>unit-tests/22.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/22.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -590,7 +590,7 @@
 			to be modified
 			accordingly.
 		</kert:description>
-        <kert:test-url>23.xq</kert:test-url>
+        <kert:test-url>unit-tests/23.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/23.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -616,7 +616,7 @@
 			store-resource()), which is
 			afterwards deleted.
 		</kert:description>
-        <kert:test-url>24.xq</kert:test-url>
+        <kert:test-url>unit-tests/24.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/24.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -637,7 +637,7 @@
 			This test verifies the function store-resource() for a directory, with an
 			SFTP connection. The tests passes if the directory is created.
 		</kert:description>
-        <kert:test-url>createDirectoryWithSftp.xq</kert:test-url>
+        <kert:test-url>unit-tests/createDirectoryWithSftp.xq</kert:test-url>
         <kert:source-url>http://127.0.0.1:8080/rest//db/web-apps/utils/kert/services/source.xq?url=/web-apps/tests/ft-client/tests/createDirectoryWithSftp.xq
 		</kert:source-url>
         <kert:assertion>//result-token</kert:assertion>
@@ -659,7 +659,7 @@
             <li id="tree-15" title="Test 15">Error for list-resources(), FTP, no rights directory</li>
             <li id="tree-2" title="Test 2">Function retrieve-resource(), FTP, binary file</li>
             <li id="tree-17" title="Test 17">Error for retrieve-resource(), FTP, binary file, wrong name</li>
-            <li id="tree-12" title="Test 12">Error for retrieve-resource(), FTP, binary file, no rights</li>
+<!--            <li id="tree-12" title="Test 12">Error for retrieve-resource(), FTP, binary file, no rights</li>-->
             <li id="tree-8" title="Test 8">Function retrieve-resource(), FTP, text file</li>
             <li id="tree-3" title="Test 3">Function store-resource(), FTP, binary file</li>
             <li id="tree-20" title="Test 20">Function store-resource(), FTP, binary file, wrong path</li>
@@ -672,7 +672,7 @@
             <li id="tree-16" title="Test 16">Error for list-resources(), FTP, no rights directory</li>
             <li id="tree-5" title="Test 5">Function retrieve-resource(), SFTP, binary file</li>
             <li id="tree-18" title="Test 18">Error for function retrieve-resource(), FTP, binary file, wrong file name</li>
-            <li id="tree-19" title="Test 19">Error for function retrieve-resource(), FTP, binary file, no rights</li>
+            <li id="tree-19" title="Test 19">Error for function retrieve-resource(), SFTP, binary file, no rights</li>
             <li id="tree-9" title="Test 9">Function retrieve-resource(), SFTP, text file</li>
             <li id="tree-6" title="Test 6">Function store-resource(), SFTP, binary file</li>
             <li id="tree-10" title="Test 10">Function store-resource(), SFTP, text file</li>

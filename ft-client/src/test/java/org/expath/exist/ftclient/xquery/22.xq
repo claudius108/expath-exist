@@ -1,16 +1,16 @@
 xquery version "3.0";
 
 import module "http://expath.org/ns/ft-client";
+import module namespace config = "http://kuberam.ro/ns/config" at "../config.xqm";
 
-let $connection := ft-client:connect(xs:anyURI('ftp://ftp-user:ftp-pass@127.0.0.1'))
-let $expected-result :=
-	<expected-result>0</expected-result>
+let $connection := ft-client:connect($config:ftp-server-connection-url)
+let $expected-result := <expected-result>0</expected-result>
 let $close-connection := ft-client:disconnect($connection)
 let $actual-result := 
 	<actual-result>
 		{
           try {
-            ft-client:list-resources($connection, "/")
+            ft-client:list-resources($connection, "/dir-with-rights/")
           }
           catch * {
             <error>{$err:description}</error>
