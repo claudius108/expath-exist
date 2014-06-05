@@ -10,7 +10,7 @@
 			<li>pdf:set-text-files()</li>
 		</ul>
 		<h3>Documentation</h3>
-		<p>For the latest version of the specification for this module see <a href="http://extxsltforms.sourceforge.net/expath-specs/pdf/pdf.html">here</a>.</p>
+		<p>For the latest version of the specification for this module see <a href="http://http://kuberam.ro/specs/expath/pdf/pdf.html">here</a>.</p>
 		<p>The implementation follows this specification.</p>
 		<h3>Examples of usage</h3>
 		<p>For examples of usage, see section Unit Tests.</p>
