@@ -16,7 +16,7 @@
 
 	<properties>
 		<java-package-name>location</java-package-name>
-		<java-package-main-class-name>org.expath.exist.crypto.ExistExpathLocationModule</java-package-main-class-name>
+		<java-package-main-class-name>ExistExpathLocationModule</java-package-main-class-name>
 		<module-prefix>${java-package-name}</module-prefix>
 	</properties>
 
