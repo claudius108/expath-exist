@@ -19,53 +19,41 @@
  *
  *  $Id$
  */
-package org.expath.exist.crypto;
+package org.expath.exist.pdf;
 
 import java.util.List;
 import java.util.Map;
 
 import org.exist.xquery.AbstractInternalModule;
 import org.exist.xquery.FunctionDef;
-import org.expath.exist.crypto.digest.HashFunction;
-import org.expath.exist.crypto.digest.HmacFunction;
-import org.expath.exist.crypto.digitalSignature.GenerateSignatureFunction;
-import org.expath.exist.crypto.digitalSignature.ValidateSignatureFunction;
-import org.expath.exist.crypto.encrypt.EncryptionFunctions;
+import org.expath.exist.pdf.formControls.GetTextFieldsFunction;
+import org.expath.exist.pdf.formControls.SetTextFieldsFunction;
 
-import ro.kuberam.libs.java.crypto.ExpathCryptoModule;
+import ro.kuberam.libs.java.pdf.ModuleDescription;
 
 /**
  * Implements the module definition.
  * 
  * @author Claudius Teodorescu <claudius.teodorescu@gmail.com>
  */
-public class ExistExpathCryptoModule extends AbstractInternalModule {
+public class ExistExpathPdfModule extends AbstractInternalModule {
 
 	public static String NAMESPACE_URI = "";
 	static {
-		NAMESPACE_URI = ExpathCryptoModule.NAMESPACE_URI;
+		NAMESPACE_URI = ModuleDescription.NAMESPACE_URI;
 	}
 	public static String PREFIX = "";
 	static {
-		PREFIX = ExpathCryptoModule.PREFIX;
+		PREFIX = ModuleDescription.PREFIX;
 	}
 	public final static String INCLUSION_DATE = "2011-03-24";
 	public final static String RELEASED_IN_VERSION = "eXist-1.5";
 
 	private final static FunctionDef[] functions = {
-			new FunctionDef(HashFunction.signatures[0], HashFunction.class),
-			new FunctionDef(HashFunction.signatures[1], HashFunction.class),
-			new FunctionDef(HmacFunction.signatures[0], HmacFunction.class),
-			new FunctionDef(HmacFunction.signatures[1], HmacFunction.class),
-			new FunctionDef(GenerateSignatureFunction.signatures[0], GenerateSignatureFunction.class),
-			new FunctionDef(GenerateSignatureFunction.signatures[1], GenerateSignatureFunction.class),
-			new FunctionDef(GenerateSignatureFunction.signatures[2], GenerateSignatureFunction.class),
-			new FunctionDef(GenerateSignatureFunction.signatures[3], GenerateSignatureFunction.class),
-			new FunctionDef(ValidateSignatureFunction.signature, ValidateSignatureFunction.class),
-			new FunctionDef(EncryptionFunctions.signatures[0], EncryptionFunctions.class),
-			new FunctionDef(EncryptionFunctions.signatures[1], EncryptionFunctions.class) };
+			new FunctionDef(GetTextFieldsFunction.signature, GetTextFieldsFunction.class),
+			new FunctionDef(SetTextFieldsFunction.signature, SetTextFieldsFunction.class) };
 
-	public ExistExpathCryptoModule(Map<String, List<? extends Object>> parameters) throws Exception {
+	public ExistExpathPdfModule(Map<String, List<? extends Object>> parameters) throws Exception {
 		super(functions, parameters);
 	}
 
@@ -81,7 +69,7 @@ public class ExistExpathCryptoModule extends AbstractInternalModule {
 
 	@Override
 	public String getDescription() {
-		return ExpathCryptoModule.MODULE_DESCRIPTION;
+		return ModuleDescription.MODULE_DESCRIPTION;
 	}
 
 	@Override
