@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kert:test-plan xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:kert="http://kuberam.ro/ns/kert" test-plan-version="0.5"
+	xml:base="unit-tests/">
+	<kert:description>Test plan for EXPath PDF Module</kert:description>
+	<kert:version>0.1</kert:version>
+	<kert:results>
+		<!--start of standard results - do not remove them -->
+		<kert:result id="passed" icon-url="../resources/images/passed.png"
+			font-color="white" background-color="green" score="0">Passed
+		</kert:result>
+		<kert:result id="failed" icon-url="../resources/images/failed.png"
+			font-color="white" background-color="red" score="0">Failed</kert:result>
+		<kert:result id="unfound" icon-url="" font-color="white"
+			background-color="black" score="0">Unfound</kert:result>
+		<kert:result id="undefined" icon-url="" font-color="white"
+			background-color="black" score="0">Undefined result token</kert:result>
+		<!--end of standard results - do not remove them -->
+		<kert:result id="partial" icon-url="" font-color="white"
+			background-color="yellow" score="0">Partial</kert:result>
+		<kert:result id="unknown" icon-url="" font-color="black"
+			background-color="white" score="0">Unknown</kert:result>
+		<kert:result id="deprecated" icon-url="" font-color="white"
+			background-color="green" score="0">Deprecated</kert:result>
+		<kert:result id="timeout" icon-url="" font-color="white"
+			background-color="green" score="0">Timeout</kert:result>
+	</kert:results>
+	<kert:test id="1">
+		<kert:author>Claudius Teodorescu</kert:author>
+		<kert:title>Get text fields</kert:title>
+		<kert:version>0.1</kert:version>
+		<kert:description>
+			Extracts the text fields from a PDF file. The test
+			passes if the number of those text fields is as stated.
+		</kert:description>
+		<kert:test-url>unit-tests/get-text-fields.xq</kert:test-url>
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/get-text-fields.xq
+		</kert:source-url>
+		<kert:assertion>/result/result-token</kert:assertion>
+		<kert:timeout />
+		<kert:run-status timestamp="" />
+		<kert:development-status timestamp="" />
+		<kert:log />
+		<kert:loops-number />
+		<kert:total-test-time />
+		<kert:type>unattended</kert:type>
+		<kert:assertion-type>assert-xml</kert:assertion-type>
+	</kert:test>
+	<kert:test id="2">
+		<kert:author>Claudius Teodorescu</kert:author>
+		<kert:title>Set text fields</kert:title>
+		<kert:version>0.1</kert:version>
+		<kert:description>
+			Set the text fields of a PDf file. The test is
+			passed if the content of the PDF file is updated as needed.
+		</kert:description>
+		<kert:test-url>unit-tests/set-text-fields.xq</kert:test-url>
+		<kert:source-url>http://127.0.0.1:8080/utils/kert-new/services/source.xq?url=/tests/crypto/unit-tests/set-text-fields.xq
+		</kert:source-url>
+		<kert:assertion>/result/result-token</kert:assertion>
+		<kert:timeout />
+		<kert:run-status timestamp="" />
+		<kert:development-status timestamp="" />
+		<kert:log />
+		<kert:loops-number />
+		<kert:total-test-time />
+		<kert:type>unattended</kert:type>
+		<kert:assertion-type>assert-xml</kert:assertion-type>
+	</kert:test>
+	<kert:traceability-matrix />
+	<kert:test-tree>
+		<ul id="tree-data">
+			<li id="tree-1" title="Test 1">Get text fields</li>
+			<li id="tree-2" title="Test 2">Set text fields</li>
+		</ul>
+	</kert:test-tree>
+</kert:test-plan>
