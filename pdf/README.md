@@ -16,6 +16,7 @@
 		<p>For examples of usage, see section Unit Tests.</p>
 		<h3>Unit Tests</h3>
 		<p>Unit Tests can be found in /apps/expath-pdf/tests/unit-tests' collection (when this library is installed in eXist).</p>
-		<p>For a simple test runner, showing description and status (passed / failed) for each unit test, go <a href="tests/test-plan.xq">here</a>.</p>
+		<p>For a simple test runner, showing description and status (passed / failed) for each unit test, go <a href="tests/test-plan.xq">here</a> 
+		(the tests have to be run as dba role, in order to have rights to write documents within the DB).</p>
 	</body>
 </html>
