@@ -27,7 +27,10 @@ package org.expath.exist.pdf.formControls;
  */
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.exist.dom.QName;
@@ -36,7 +39,8 @@ import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
 import org.exist.xquery.XPathException;
 import org.exist.xquery.XQueryContext;
-import org.exist.xquery.functions.map.MapType;
+import org.exist.xquery.functions.map.AbstractMapType;
+import org.exist.xquery.value.AtomicValue;
 import org.exist.xquery.value.Base64BinaryValueType;
 import org.exist.xquery.value.BinaryValue;
 import org.exist.xquery.value.BinaryValueFromInputStream;
@@ -44,23 +48,26 @@ import org.exist.xquery.value.FunctionParameterSequenceType;
 import org.exist.xquery.value.FunctionReturnSequenceType;
 import org.exist.xquery.value.Sequence;
 import org.exist.xquery.value.SequenceType;
-import org.exist.xquery.value.StringValue;
 import org.exist.xquery.value.Type;
+import org.exist.xquery.value.ValueSequence;
 import org.expath.exist.pdf.ExistExpathPdfModule;
 
-import ro.kuberam.libs.java.pdf.formControls.GetTextFields;
+import ro.kuberam.libs.java.pdf.formControls.SetTextFields;
 
 public class SetTextFieldsFunction extends BasicFunction {
 
 	private final static Logger log = Logger.getLogger(SetTextFieldsFunction.class);
 
-	public final static FunctionSignature signature = new FunctionSignature(
-			new QName("get-text-fields", ExistExpathPdfModule.NAMESPACE_URI, ExistExpathPdfModule.PREFIX),
-			"Get all the text fields from a sequence of PDF contents.",
-			new SequenceType[] { new FunctionParameterSequenceType("content", Type.ATOMIC,
-					Cardinality.ZERO_OR_MORE, "PDF content where to get the text fields from.") },
+	public final static FunctionSignature signature = new FunctionSignature(new QName("set-text-fields",
+			ExistExpathPdfModule.NAMESPACE_URI, ExistExpathPdfModule.PREFIX),
+			"Set the text fields of a PDF contents.", new SequenceType[] {
+					new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
+							Cardinality.ZERO_OR_ONE, "the PDF contents where to set the text fields to."),
+					new FunctionParameterSequenceType("text-fields", Type.MAP, Cardinality.ZERO_OR_ONE,
+							"the information sets about the text fields, namely a map containing pairs of fully qualified name"
+									+ "and value for each text field to be set.") },
 			new FunctionReturnSequenceType(Type.MAP, Cardinality.ZERO_OR_MORE,
-					"a sequence of maps containing information about the text fields for each content inputted."));
+					"a map containing pairs of fully qualified name and value for each text field."));
 
 	public SetTextFieldsFunction(XQueryContext context, FunctionSignature signature) {
 		super(context, signature);
@@ -68,25 +75,27 @@ public class SetTextFieldsFunction extends BasicFunction {
 
 	@Override
 	public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
-		Sequence result = Sequence.EMPTY_SEQUENCE;
+		byte[] binary = (byte[]) ((BinaryValue) args[0].itemAt(0)).toJavaObject(byte[].class);
+		AbstractMapType fieldsXqueryMap = (AbstractMapType) args[1].itemAt(0);
+		Map<String, String> fieldsMap = new HashMap<String, String>();
+
+		for (final Entry<AtomicValue, Sequence> entry : fieldsXqueryMap) {
+			fieldsMap.put(entry.getKey().getStringValue(), entry.getValue().getStringValue());
+		}
+
+		Sequence result = new ValueSequence();
+
+		ByteArrayOutputStream resultAsStreamResult = new ByteArrayOutputStream();
 
 		try {
-			Map<String, String> resultMap = null;
-			MapType resultXqueryMap = new MapType(this.context, null);
-
-			byte[] binary = (byte[]) ((BinaryValue) args[0].itemAt(0)).toJavaObject(byte[].class);
 			BinaryValue data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
 					new ByteArrayInputStream(binary));
-			resultMap = GetTextFields.run(data.getInputStream());
 
-			log.debug("The EXPath PDf module got the following text fields: " + resultMap);
+			resultAsStreamResult = SetTextFields.run(data.getInputStream(), fieldsMap);
 
-			for (Map.Entry<String, String> resultEntry : resultMap.entrySet()) {
-				resultXqueryMap.add(new StringValue(resultEntry.getKey()),
-						new StringValue(resultEntry.getValue()));
-			}
+			result.add(BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
+					new ByteArrayInputStream(resultAsStreamResult.toByteArray())));
 
-			result.add(resultXqueryMap);
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}

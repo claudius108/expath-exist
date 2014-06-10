@@ -30,6 +30,12 @@
 			<scope>provided</scope>
 			<type>jar</type>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>1.8.5</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
