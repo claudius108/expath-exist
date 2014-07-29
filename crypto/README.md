@@ -13,6 +13,11 @@
 			<li>crypto:generate-signature() (only for XML data for now)</li>
 			<li>crypto:validate-signature() (only for XML data for now)</li>
 		</ul>
+		<h3>Currently implemented algorithms</h3>
+		<ul>
+			<li>For crypto:hash(): "MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512".</li>
+			<li>For crypto:hmac(): "HMAC-MD5", "HMAC-SHA-1", "HMAC-SHA-256", "HMAC-SHA-384", "HMAC-SHA-512".</li>
+		</ul>				
 		<h3>Documentation</h3>
 		<p>For the latest version of the specification for this module see <a href="http://kuberam.ro/specs/expath/crypto/crypto.html">here</a>.</p>
 		<p>The implementation follows this specification.</p>
