@@ -28,6 +28,7 @@ import org.exist.xquery.AbstractInternalModule;
 import org.exist.xquery.FunctionDef;
 import org.expath.exist.pdf.formControls.GetTextFieldsFunction;
 import org.expath.exist.pdf.formControls.SetTextFieldsFunction;
+import org.expath.exist.pdf.stamp.StampFunction;
 
 import ro.kuberam.libs.java.pdf.ModuleDescription;
 
@@ -45,7 +46,8 @@ public class ExistExpathPdfModule extends AbstractInternalModule {
 
 	private final static FunctionDef[] functions = {
 			new FunctionDef(GetTextFieldsFunction.signature, GetTextFieldsFunction.class),
-			new FunctionDef(SetTextFieldsFunction.signature, SetTextFieldsFunction.class) };
+			new FunctionDef(SetTextFieldsFunction.signature, SetTextFieldsFunction.class),
+			new FunctionDef(StampFunction.signature, StampFunction.class) };
 
 	public ExistExpathPdfModule(Map<String, List<? extends Object>> parameters) throws Exception {
 		super(functions, parameters);
