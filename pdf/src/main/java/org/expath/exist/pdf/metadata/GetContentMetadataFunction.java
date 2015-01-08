@@ -32,12 +32,9 @@ import java.io.UnsupportedEncodingException;
 
 import javax.xml.transform.stream.StreamResult;
 
-import org.apache.commons.io.input.CloseShieldInputStream;
-
 import org.apache.log4j.Logger;
 import org.exist.dom.QName;
-import org.exist.memtree.DocumentBuilderReceiver;
-import org.exist.memtree.MemTreeBuilder;
+import org.exist.xquery.modules.ModuleUtils;
 import org.exist.xquery.BasicFunction;
 import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
@@ -87,51 +84,25 @@ public class GetContentMetadataFunction extends BasicFunction {
 		
 		Sequence result = new ValueSequence();
 		
-		StreamResult resultAsStreamResult = null;
+		//StreamResult resultAsStreamResult = null;
+		String resultAsString = null;
 		
 		try {
 			byte[] binary = (byte[]) ((BinaryValue) args[0].itemAt(0)).toJavaObject(byte[].class);
 			BinaryValue data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
 					new ByteArrayInputStream(binary));
-			resultAsStreamResult = Metadata.run(data.getInputStream());
+			resultAsString = Metadata.run(data.getInputStream());
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}
 		
-		ByteArrayInputStream resultDocAsInputStream = null;
 		try {
-			resultDocAsInputStream = new ByteArrayInputStream(resultAsStreamResult.getWriter().toString()
-					.getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException ex) {
-			throw new XPathException(ex.getMessage());
-		}
-
-		XMLReader reader = null;
-
-		context.pushDocumentContext();
-		try {
-			InputSource src = new InputSource(new CloseShieldInputStream(resultDocAsInputStream));
-
-			reader = context.getBroker().getBrokerPool().getParserPool().borrowXMLReader();
-			MemTreeBuilder builder = context.getDocumentBuilder();
-			DocumentBuilderReceiver receiver = new DocumentBuilderReceiver(builder, true);
-			reader.setContentHandler(receiver);
-			reader.parse(src);
-			Document doc = receiver.getDocument();
-
-			result = (NodeValue) doc;
+			result = (NodeValue) ModuleUtils.stringToXML(context,resultAsString);
 		} catch (SAXException saxe) {
 			// do nothing, we will default to trying to return a string below
 		} catch (IOException ioe) {
 			// do nothing, we will default to trying to return a string below
-		} finally {
-			context.popDocumentContext();
-
-			if (reader != null) {
-				context.getBroker().getBrokerPool().getParserPool().returnXMLReader(reader);
-			}
 		}
-
 		return result;
 	}
 }
