@@ -30,6 +30,8 @@ import org.expath.exist.pdf.formControls.GetTextFieldsFunction;
 import org.expath.exist.pdf.formControls.SetTextFieldsFunction;
 import org.expath.exist.pdf.metadata.GetContentMetadataFunction;
 import org.expath.exist.pdf.metadata.SetContentMetadataFunction;
+import org.expath.exist.pdf.stamp.StampFunction;
+
 import ro.kuberam.libs.java.pdf.ModuleDescription;
 
 /**
@@ -41,14 +43,16 @@ public class ExistExpathPdfModule extends AbstractInternalModule {
 
 	public static String NAMESPACE_URI = ModuleDescription.NAMESPACE_URI;
 	public static String PREFIX = ModuleDescription.PREFIX;
-	public final static String INCLUSION_DATE = "2011-03-24";
-	public final static String RELEASED_IN_VERSION = "eXist-1.5";
+	public final static String INCLUSION_DATE = "2014-07-12";
+	public final static String RELEASED_IN_VERSION = "eXist-2.2";
 
 	private final static FunctionDef[] functions = {
 			new FunctionDef(GetTextFieldsFunction.signature, GetTextFieldsFunction.class),
 			new FunctionDef(SetTextFieldsFunction.signature, SetTextFieldsFunction.class),
 			new FunctionDef(GetContentMetadataFunction.signature, GetContentMetadataFunction.class),
-			new FunctionDef(SetContentMetadataFunction.signature, SetContentMetadataFunction.class)};
+			new FunctionDef(SetContentMetadataFunction.signature, SetContentMetadataFunction.class),
+			new FunctionDef(StampFunction.signatures[0], StampFunction.class),
+			new FunctionDef(StampFunction.signatures[1], StampFunction.class) };
 
 	public ExistExpathPdfModule(Map<String, List<? extends Object>> parameters) throws Exception {
 		super(functions, parameters);
