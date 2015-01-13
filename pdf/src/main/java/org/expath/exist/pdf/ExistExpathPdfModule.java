@@ -28,6 +28,8 @@ import org.exist.xquery.AbstractInternalModule;
 import org.exist.xquery.FunctionDef;
 import org.expath.exist.pdf.formControls.GetTextFieldsFunction;
 import org.expath.exist.pdf.formControls.SetTextFieldsFunction;
+import org.expath.exist.pdf.metadata.GetContentMetadataFunction;
+import org.expath.exist.pdf.metadata.SetContentMetadataFunction;
 import org.expath.exist.pdf.stamp.StampFunction;
 
 import ro.kuberam.libs.java.pdf.ModuleDescription;
@@ -47,6 +49,10 @@ public class ExistExpathPdfModule extends AbstractInternalModule {
 	private final static FunctionDef[] functions = {
 			new FunctionDef(GetTextFieldsFunction.signature, GetTextFieldsFunction.class),
 			new FunctionDef(SetTextFieldsFunction.signature, SetTextFieldsFunction.class),
+			new FunctionDef(GetContentMetadataFunction.signatures[0], GetContentMetadataFunction.class),
+			new FunctionDef(GetContentMetadataFunction.signatures[1], GetContentMetadataFunction.class),
+			new FunctionDef(SetContentMetadataFunction.signatures[0], SetContentMetadataFunction.class),
+			new FunctionDef(SetContentMetadataFunction.signatures[1], SetContentMetadataFunction.class),
 			new FunctionDef(StampFunction.signatures[0], StampFunction.class),
 			new FunctionDef(StampFunction.signatures[1], StampFunction.class) };
 

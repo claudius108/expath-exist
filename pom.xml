@@ -55,11 +55,10 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.trifork</groupId>
-			<artifactId>clj_ds</artifactId>
-			<version>0.0.1</version>
-			<scope>provided</scope>
-		</dependency>		
+			<groupId>com.github.krukow</groupId>
+			<artifactId>clj-ds</artifactId>
+			<version>0.0.4</version>
+		</dependency>	
 	</dependencies>
 
 	<properties>
