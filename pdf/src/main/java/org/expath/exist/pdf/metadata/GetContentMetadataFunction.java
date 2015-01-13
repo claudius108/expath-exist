@@ -21,9 +21,9 @@
 package org.expath.exist.pdf.metadata;
 
 /**
- * Implements the pdf:get-text-fields() function for eXist.
+ * Implements the get-content-metadata() function for eXist.
  * 
- * @author Claudius Teodorescu <claudius.teodorescu@gmail.com>
+ * @author W.S. Hager <wshager@gmail.com>
  */
 
 import java.io.ByteArrayInputStream;
@@ -67,13 +67,24 @@ public class GetContentMetadataFunction extends BasicFunction {
 
 	private final static Logger log = Logger.getLogger(GetContentMetadataFunction.class);
 
-	public final static FunctionSignature signature = new FunctionSignature(new QName("get-content-metadata",
+	public final static FunctionSignature signatures[] = {
+		new FunctionSignature(new QName("get-content-metadata",
 			ExistExpathPdfModule.NAMESPACE_URI, ExistExpathPdfModule.PREFIX),
 			"Get the XMP metadata from a PDF contents.",
 			new SequenceType[] { new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
 					Cardinality.ZERO_OR_ONE, "PDF contents where to get the metadata from.") },
 			new FunctionReturnSequenceType(Type.NODE, Cardinality.ZERO_OR_ONE,
-					"an XML document containing XMP metadata."));
+					"an XML document containing XMP metadata.")),
+		new FunctionSignature(new QName("get-content-metadata",
+			ExistExpathPdfModule.NAMESPACE_URI, ExistExpathPdfModule.PREFIX),
+			"Get document information metadata attributes from a PDF contents.",
+			new SequenceType[] { new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
+					Cardinality.ZERO_OR_ONE, "PDF contents where to get the metadata from.") },
+			new SequenceType[] { new FunctionParameterSequenceType("properties", Type.STRING,
+					Cardinality.ONE_OR_MORE, "List of properties to retrieve.") },
+			new FunctionReturnSequenceType(Type.STRING, Cardinality.ONE_OR_MORE,
+					"a map containing document information metadata."))
+	};
 
 	public GetContentMetadataFunction(XQueryContext context, FunctionSignature signature) {
 		super(context, signature);
@@ -84,25 +95,32 @@ public class GetContentMetadataFunction extends BasicFunction {
 		
 		Sequence result = new ValueSequence();
 		
-		//StreamResult resultAsStreamResult = null;
 		String resultAsString = null;
 		
 		try {
 			byte[] binary = (byte[]) ((BinaryValue) args[0].itemAt(0)).toJavaObject(byte[].class);
 			BinaryValue data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
 					new ByteArrayInputStream(binary));
-			resultAsString = Metadata.run(data.getInputStream());
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}
-		
-		try {
-			result = (NodeValue) ModuleUtils.stringToXML(context,resultAsString);
-		} catch (SAXException saxe) {
-			// do nothing, we will default to trying to return a string below
-		} catch (IOException ioe) {
-			// do nothing, we will default to trying to return a string below
+		if (args.length == 1) {
+			try {
+				resultAsString = Metadata.get-content-xmp(data.getInputStream());
+			} catch (Exception ex) {
+				throw new XPathException(ex.getMessage());
+			}
+			try {
+				result = (NodeValue) ModuleUtils.stringToXML(context,resultAsString);
+			} catch (SAXException saxe) {
+				// do nothing, we will default to trying to return a string below
+			} catch (IOException ioe) {
+				// do nothing, we will default to trying to return a string below
+			}
+		} else if (args.length == 2) {
+			
 		}
+		
 		return result;
 	}
 }
