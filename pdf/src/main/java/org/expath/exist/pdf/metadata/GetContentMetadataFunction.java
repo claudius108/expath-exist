@@ -29,6 +29,11 @@ package org.expath.exist.pdf.metadata;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 
 import javax.xml.transform.stream.StreamResult;
 
@@ -67,23 +72,29 @@ public class GetContentMetadataFunction extends BasicFunction {
 
 	private final static Logger log = Logger.getLogger(GetContentMetadataFunction.class);
 
-	public final static FunctionSignature signatures[] = {
+	public final static FunctionSignature signatures[] = { 
 		new FunctionSignature(new QName("get-content-metadata",
 			ExistExpathPdfModule.NAMESPACE_URI, ExistExpathPdfModule.PREFIX),
 			"Get the XMP metadata from a PDF contents.",
-			new SequenceType[] { new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
-					Cardinality.ZERO_OR_ONE, "PDF contents where to get the metadata from.") },
+			new SequenceType[] {
+				new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
+					Cardinality.ZERO_OR_ONE, "PDF contents where to get the metadata from.")
+			},
 			new FunctionReturnSequenceType(Type.NODE, Cardinality.ZERO_OR_ONE,
-					"an XML document containing XMP metadata.")),
+					"an XML document containing XMP metadata.")
+		),
 		new FunctionSignature(new QName("get-content-metadata",
 			ExistExpathPdfModule.NAMESPACE_URI, ExistExpathPdfModule.PREFIX),
 			"Get document information metadata attributes from a PDF contents.",
-			new SequenceType[] { new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
-					Cardinality.ZERO_OR_ONE, "PDF contents where to get the metadata from.") },
-			new SequenceType[] { new FunctionParameterSequenceType("properties", Type.STRING,
-					Cardinality.ONE_OR_MORE, "List of properties to retrieve.") },
-			new FunctionReturnSequenceType(Type.STRING, Cardinality.ONE_OR_MORE,
-					"a map containing document information metadata."))
+			new SequenceType[] {
+				new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
+					Cardinality.ZERO_OR_ONE, "PDF contents where to get the metadata from."),
+				new FunctionParameterSequenceType("properties", Type.STRING,
+						Cardinality.ZERO_OR_MORE, "List of properties to retrieve.")
+			},
+			new FunctionReturnSequenceType(Type.STRING, Cardinality.ZERO_OR_MORE,
+					"a map containing document information metadata.")
+		)
 	};
 
 	public GetContentMetadataFunction(XQueryContext context, FunctionSignature signature) {
@@ -94,19 +105,18 @@ public class GetContentMetadataFunction extends BasicFunction {
 	public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
 		
 		Sequence result = new ValueSequence();
-		
-		String resultAsString = null;
-		
+		BinaryValue data = null;
 		try {
 			byte[] binary = (byte[]) ((BinaryValue) args[0].itemAt(0)).toJavaObject(byte[].class);
-			BinaryValue data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
+			data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
 					new ByteArrayInputStream(binary));
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}
 		if (args.length == 1) {
+			String resultAsString = null;
 			try {
-				resultAsString = Metadata.get-content-xmp(data.getInputStream());
+				resultAsString = Metadata.getDocumentXMP(data.getInputStream());
 			} catch (Exception ex) {
 				throw new XPathException(ex.getMessage());
 			}
@@ -118,7 +128,19 @@ public class GetContentMetadataFunction extends BasicFunction {
 				// do nothing, we will default to trying to return a string below
 			}
 		} else if (args.length == 2) {
-			
+			ArrayList<String> resultAsStringList = new ArrayList<String>();
+			ArrayList<String> properties = new ArrayList<String>();
+			for(int i = 0; i < args[1].getItemCount(); i++) {
+				properties.add(args[1].itemAt(i).toString());
+			}
+			try {
+				resultAsStringList = Metadata.getDocumentInfo(data.getInputStream(),properties);
+				for (String val : resultAsStringList) {
+					result.add(new StringValue(val));
+				}
+			} catch (Exception ex) {
+				throw new XPathException(ex.getMessage());
+			}
 		}
 		
 		return result;

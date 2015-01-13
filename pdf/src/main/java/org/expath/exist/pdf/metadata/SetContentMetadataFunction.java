@@ -21,17 +21,15 @@
 package org.expath.exist.pdf.metadata;
 
 /**
- * Implements the pdf:set-text-fields() function for eXist.
+ * Implements the pdf:set-content-metadata() function for eXist.
  * 
- * @author Claudius Teodorescu <claudius.teodorescu@gmail.com>
+ * @author W.S. Hager <wshager@gmail.com>
  */
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 import org.exist.dom.QName;
@@ -63,17 +61,33 @@ public class SetContentMetadataFunction extends BasicFunction {
 
 	private final static Logger log = Logger.getLogger(SetContentMetadataFunction.class);
 
-	public final static FunctionSignature signature = new FunctionSignature(new QName("set-content-metadata",
+	public final static FunctionSignature signatures[] = {
+		new FunctionSignature(new QName("set-content-metadata",
 			ExistExpathPdfModule.NAMESPACE_URI, ExistExpathPdfModule.PREFIX),
 			"Set the XMP metadata of a PDF contents.", new SequenceType[] {
-					new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
-							Cardinality.ZERO_OR_ONE, "the PDF contents where to set the metadata to."),
-					new FunctionParameterSequenceType("text-fields", Type.NODE, Cardinality.ZERO_OR_ONE,
-							"the information sets about the text fields, namely a map containing pairs of fully qualified name"
-									+ "and value for each text field to be set.") },
+				new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
+						Cardinality.ZERO_OR_ONE, "the PDF contents where to set the metadata to."),
+				new FunctionParameterSequenceType("metadata", Type.NODE, Cardinality.ZERO_OR_ONE,
+						"A XML document node in XMP format")
+			},
 			new FunctionReturnSequenceType(Type.BASE64_BINARY, Cardinality.ZERO_OR_MORE,
-					"A new PDF file with the new metadata inserted."));
-
+					"A new PDF file with the new metadata inserted.")
+		),
+		new FunctionSignature(new QName("set-content-metadata",
+			ExistExpathPdfModule.NAMESPACE_URI, ExistExpathPdfModule.PREFIX),
+			"Set the document info metadata of a PDF contents.", new SequenceType[] {
+				new FunctionParameterSequenceType("contents", Type.BASE64_BINARY,
+						Cardinality.ZERO_OR_ONE, "the PDF contents where to set the metadata to."),
+				new FunctionParameterSequenceType("properties", Type.STRING, Cardinality.ZERO_OR_MORE,
+						"The property to update"),
+				new FunctionParameterSequenceType("values", Type.STRING, Cardinality.ZERO_OR_MORE,
+						"The new value")
+			},
+			new FunctionReturnSequenceType(Type.BASE64_BINARY, Cardinality.ZERO_OR_MORE,
+					"A new PDF file with the new metadata inserted.")
+		)
+	};
+	
 	public SetContentMetadataFunction(XQueryContext context, FunctionSignature signature) {
 		super(context, signature);
 	}
@@ -81,26 +95,46 @@ public class SetContentMetadataFunction extends BasicFunction {
 	@Override
 	public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
 		byte[] binary = (byte[]) ((BinaryValue) args[0].itemAt(0)).toJavaObject(byte[].class);
-		Serializer serializer = context.getBroker().getSerializer();
-		NodeValue inputNode = (NodeValue) args[1].itemAt(0);
-		InputStream inputNodeStream = new NodeInputStream(serializer, inputNode);
 
 		Sequence result = new ValueSequence();
 
 		ByteArrayOutputStream resultAsStreamResult = new ByteArrayOutputStream();
-
+		BinaryValue data = null;
+		
 		try {
-			BinaryValue data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
+			data = BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
 					new ByteArrayInputStream(binary));
-
-			resultAsStreamResult = Metadata.run(data.getInputStream(), inputNodeStream);
-
-			result.add(BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
-					new ByteArrayInputStream(resultAsStreamResult.toByteArray())));
-
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}
+		
+		if(args.length == 2) {
+			Serializer serializer = context.getBroker().getSerializer();
+			NodeValue inputNode = (NodeValue) args[1].itemAt(0);
+			InputStream inputNodeStream = new NodeInputStream(serializer, inputNode);
+			try {
+				resultAsStreamResult = Metadata.setDocumentXMP(data.getInputStream(), inputNodeStream);
+			} catch (Exception ex) {
+				throw new XPathException(ex.getMessage());
+			}
+		} else if(args.length == 3) {
+			ArrayList<String> properties = new ArrayList<String>();
+			ArrayList<String> values = new ArrayList<String>();
+			for(int i = 0; i < args[1].getItemCount(); i++) {
+				properties.add(args[1].itemAt(i).toString());
+			}
+			for(int i = 0; i < args[2].getItemCount(); i++) {
+				values.add(args[2].itemAt(i).toString());
+			}
+			try {
+				resultAsStreamResult = Metadata.setDocumentInfo(data.getInputStream(), properties, values);
+			} catch (Exception ex) {
+				throw new XPathException(ex.getMessage());
+			}
+		}
+		
+		result.add(BinaryValueFromInputStream.getInstance(context, new Base64BinaryValueType(),
+				new ByteArrayInputStream(resultAsStreamResult.toByteArray())));
 
 		return result;
 	}

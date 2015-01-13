@@ -49,8 +49,10 @@ public class ExistExpathPdfModule extends AbstractInternalModule {
 	private final static FunctionDef[] functions = {
 			new FunctionDef(GetTextFieldsFunction.signature, GetTextFieldsFunction.class),
 			new FunctionDef(SetTextFieldsFunction.signature, SetTextFieldsFunction.class),
-			new FunctionDef(GetContentMetadataFunction.signature, GetContentMetadataFunction.class),
-			new FunctionDef(SetContentMetadataFunction.signature, SetContentMetadataFunction.class),
+			new FunctionDef(GetContentMetadataFunction.signatures[0], GetContentMetadataFunction.class),
+			new FunctionDef(GetContentMetadataFunction.signatures[1], GetContentMetadataFunction.class),
+			new FunctionDef(SetContentMetadataFunction.signatures[0], SetContentMetadataFunction.class),
+			new FunctionDef(SetContentMetadataFunction.signatures[1], SetContentMetadataFunction.class),
 			new FunctionDef(StampFunction.signatures[0], StampFunction.class),
 			new FunctionDef(StampFunction.signatures[1], StampFunction.class) };
 
