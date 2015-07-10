@@ -7,46 +7,45 @@
  */
 package org.expath.exist.crypto.digitalSignature;
 
-import java.net.URISyntaxException;
-import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
-import javax.xml.crypto.dsig.CanonicalizationMethod;
-import javax.xml.crypto.dsig.DigestMethod;
-import javax.xml.crypto.dsig.SignatureMethod;
-import javax.xml.parsers.DocumentBuilderFactory;
+import java.net.URISyntaxException;
+
 import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
+import org.apache.log4j.Logger;
 import org.exist.Namespaces;
-import org.exist.dom.BinaryDocument;
-import org.exist.memtree.DocumentImpl;
 import org.exist.dom.QName;
+import org.exist.dom.memtree.SAXAdapter;
+import org.exist.dom.persistent.BinaryDocument;
+import org.exist.dom.persistent.DocumentImpl;
 import org.exist.security.PermissionDeniedException;
+import org.exist.storage.lock.Lock;
+import org.exist.storage.serializers.Serializer;
+import org.exist.validation.internal.node.NodeInputStream;
+import org.exist.xmldb.XmldbURI;
 import org.exist.xquery.BasicFunction;
 import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
 import org.exist.xquery.XPathException;
 import org.exist.xquery.XQueryContext;
 import org.exist.xquery.value.FunctionParameterSequenceType;
+import org.exist.xquery.value.FunctionReturnSequenceType;
+import org.exist.xquery.value.NodeValue;
 import org.exist.xquery.value.Sequence;
 import org.exist.xquery.value.SequenceType;
 import org.exist.xquery.value.Type;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.exist.xquery.value.FunctionReturnSequenceType;
-import org.exist.memtree.SAXAdapter;
-import org.exist.storage.lock.Lock;
-import org.exist.storage.serializers.Serializer;
-import org.exist.validation.internal.node.NodeInputStream;
-import org.exist.xmldb.XmldbURI;
-import org.exist.xquery.value.NodeValue;
 import org.expath.exist.crypto.ExistExpathCryptoModule;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import ro.kuberam.libs.java.crypto.ErrorMessages;
@@ -242,7 +241,7 @@ public class GenerateSignatureFunction extends BasicFunction {
 
 	private InputStream getKeyStoreInputStream(InputStream keyStoreInputStream, String keystoreURI) throws XPathException {
 		// get the keystore as InputStream
-		org.exist.dom.DocumentImpl keyStoreDoc = null;
+		DocumentImpl keyStoreDoc = null;
 		try {
 			try {
 				keyStoreDoc = context.getBroker().getXMLResource(XmldbURI.xmldbUriFor(keystoreURI), Lock.READ_LOCK);
