@@ -50,16 +50,15 @@
 		</dependency>
 		<dependency>
 			<groupId>org.exist-db</groupId>
-			<artifactId>existdb-core</artifactId>
-			<version>2.1</version>
-			<scope>provided</scope>
+			<artifactId>exist-core</artifactId>
+			<version>3.0.RC1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.trifork</groupId>
 			<artifactId>clj_ds</artifactId>
 			<version>0.0.1</version>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
 	</dependencies>
 
 	<properties>
