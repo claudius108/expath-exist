@@ -71,7 +71,7 @@ public class EncryptionFunctions extends BasicFunction {
 
 	public Sequence eval(Sequence[] args, Sequence contextSequence) throws XPathException {
             String result = null;
-            String functionName = getSignature().getName().getLocalName();
+            String functionName = getSignature().getName().getLocalPart();
 
             if ("encrypt".equals(functionName)) {
                 if ("symmetric".equals(args[1].getStringValue())) {
