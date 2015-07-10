@@ -7,37 +7,35 @@
  */
 package org.expath.exist.crypto.digitalSignature;
 
-import java.util.logging.Level;
-import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Properties;
-import javax.xml.parsers.DocumentBuilderFactory;
+import java.util.logging.Level;
+
 import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 
-import org.exist.dom.NodeProxy;
+import org.apache.log4j.Logger;
 import org.exist.dom.QName;
+import org.exist.storage.serializers.Serializer;
 import org.exist.xquery.BasicFunction;
 import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
 import org.exist.xquery.XPathException;
 import org.exist.xquery.XQueryContext;
+import org.exist.xquery.value.BooleanValue;
 import org.exist.xquery.value.FunctionParameterSequenceType;
-import org.exist.xquery.value.Item;
+import org.exist.xquery.value.FunctionReturnSequenceType;
+import org.exist.xquery.value.NodeValue;
 import org.exist.xquery.value.Sequence;
 import org.exist.xquery.value.SequenceType;
 import org.exist.xquery.value.Type;
+import org.expath.exist.crypto.ExistExpathCryptoModule;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import org.exist.xquery.value.FunctionReturnSequenceType;
-import org.exist.storage.serializers.Serializer;
-import org.exist.xquery.value.BooleanValue;
-import org.exist.xquery.value.NodeValue;
-import org.expath.exist.crypto.ExistExpathCryptoModule;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 
