@@ -12,7 +12,7 @@
 	</parent>
 
 	<artifactId>pdf</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<name>eXist wrapper for EXPath PDF library</name>
 	<url>http://expath.org</url>
 
