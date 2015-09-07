@@ -63,78 +63,94 @@ public class GenerateSignatureFunction extends BasicFunction {
 	private static String PREFIX = ExistExpathCryptoModule.PREFIX;
 	private static String canonicalization_algorithm = ExpathCryptoModule.canonicalization_algorithm;
 	private final static String certificateRootElementName = "digital-certificate";
-	private final static String[] certificateChildElementNames = { "keystore-type", "keystore-password", "key-alias", "private-key-password",
-			"keystore-uri" };
+	private final static String[] certificateChildElementNames = { "keystore-type", "keystore-password",
+			"key-alias", "private-key-password", "keystore-uri" };
 
 	public final static FunctionSignature signatures[] = {
-			new FunctionSignature(new QName("generate-signature", NAMESPACE_URI, PREFIX),
-					"Generate an XML digital signature based on generated key pair. This signature is for the whole document.", new SequenceType[] {
-							new FunctionParameterSequenceType("data", Type.NODE, Cardinality.EXACTLY_ONE, "The document to be signed."),
-							new FunctionParameterSequenceType("canonicalization-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									canonicalization_algorithm),
-							new FunctionParameterSequenceType("digest-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.DIGEST_ALGORITHM),
-							new FunctionParameterSequenceType("signature-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.SIGNATURE_ALGORITHM),
-							new FunctionParameterSequenceType("signature-namespace-prefix", Type.STRING, Cardinality.EXACTLY_ONE,
-									"The namespace prefix for signature."),
-							new FunctionParameterSequenceType("signature-type", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.SIGNATURE_TYPE) }, new FunctionReturnSequenceType(Type.NODE, Cardinality.EXACTLY_ONE,
+			new FunctionSignature(
+					new QName("generate-signature", NAMESPACE_URI, PREFIX),
+					"Generate an XML digital signature based on generated key pair. This signature is for the whole document.",
+					new SequenceType[] {
+							new FunctionParameterSequenceType("data", Type.NODE, Cardinality.EXACTLY_ONE,
+									"The document to be signed."),
+							new FunctionParameterSequenceType("canonicalization-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, canonicalization_algorithm),
+							new FunctionParameterSequenceType("digest-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.DIGEST_ALGORITHM),
+							new FunctionParameterSequenceType("signature-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.SIGNATURE_ALGORITHM),
+							new FunctionParameterSequenceType("signature-namespace-prefix", Type.STRING,
+									Cardinality.EXACTLY_ONE, "The namespace prefix for signature."),
+							new FunctionParameterSequenceType("signature-type", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.SIGNATURE_TYPE) },
+					new FunctionReturnSequenceType(Type.NODE, Cardinality.EXACTLY_ONE,
 							"the signed document (or signature) as node().")),
 			new FunctionSignature(
 					new QName("generate-signature", NAMESPACE_URI, PREFIX),
 					"Generate an XML digital signature based on generated key pair. This signature is for node(s) selected using an XPath expression",
 					new SequenceType[] {
-							new FunctionParameterSequenceType("data", Type.NODE, Cardinality.EXACTLY_ONE, "The document to be signed."),
-							new FunctionParameterSequenceType("canonicalization-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									canonicalization_algorithm),
-							new FunctionParameterSequenceType("digest-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.DIGEST_ALGORITHM),
-							new FunctionParameterSequenceType("signature-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.SIGNATURE_ALGORITHM),
-							new FunctionParameterSequenceType("signature-namespace-prefix", Type.STRING, Cardinality.EXACTLY_ONE,
-									"The default namespace prefix for signature."),
-							new FunctionParameterSequenceType("signature-type", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.SIGNATURE_TYPE),
-							new FunctionParameterSequenceType("xpath-expression", Type.ANY_TYPE, Cardinality.EXACTLY_ONE,
-									"The XPath expression used for selecting the subset to be signed.") }, new FunctionReturnSequenceType(Type.NODE,
-							Cardinality.EXACTLY_ONE, "the signed document (or signature) as node().")),
-			new FunctionSignature(new QName("generate-signature", NAMESPACE_URI, PREFIX),
-					"Generate an XML digital signature based on X.509 certificate.", new SequenceType[] {
-							new FunctionParameterSequenceType("data", Type.NODE, Cardinality.EXACTLY_ONE, "The document to be signed."),
-							new FunctionParameterSequenceType("canonicalization-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									canonicalization_algorithm),
-							new FunctionParameterSequenceType("digest-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.DIGEST_ALGORITHM),
-							new FunctionParameterSequenceType("signature-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.SIGNATURE_ALGORITHM),
-							new FunctionParameterSequenceType("signature-namespace-prefix", Type.STRING, Cardinality.EXACTLY_ONE,
-									"The default namespace prefix for signature."),
-							new FunctionParameterSequenceType("signature-type", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.SIGNATURE_TYPE),
-							new FunctionParameterSequenceType("digital-certificate", Type.ANY_TYPE, Cardinality.ONE,
-									ExpathCryptoModule.digitalCertificateDetailsDescription) }, new FunctionReturnSequenceType(Type.NODE,
-							Cardinality.EXACTLY_ONE, "the signed document (or signature) as node().")),
+							new FunctionParameterSequenceType("data", Type.NODE, Cardinality.EXACTLY_ONE,
+									"The document to be signed."),
+							new FunctionParameterSequenceType("canonicalization-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, canonicalization_algorithm),
+							new FunctionParameterSequenceType("digest-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.DIGEST_ALGORITHM),
+							new FunctionParameterSequenceType("signature-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.SIGNATURE_ALGORITHM),
+							new FunctionParameterSequenceType("signature-namespace-prefix", Type.STRING,
+									Cardinality.EXACTLY_ONE, "The default namespace prefix for signature."),
+							new FunctionParameterSequenceType("signature-type", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.SIGNATURE_TYPE),
+							new FunctionParameterSequenceType("xpath-expression", Type.ANY_TYPE,
+									Cardinality.EXACTLY_ONE,
+									"The XPath expression used for selecting the subset to be signed.") },
+					new FunctionReturnSequenceType(Type.NODE, Cardinality.EXACTLY_ONE,
+							"the signed document (or signature) as node().")),
+			new FunctionSignature(
+					new QName("generate-signature", NAMESPACE_URI, PREFIX),
+					"Generate an XML digital signature based on X.509 certificate.",
+					new SequenceType[] {
+							new FunctionParameterSequenceType("data", Type.NODE, Cardinality.EXACTLY_ONE,
+									"The document to be signed."),
+							new FunctionParameterSequenceType("canonicalization-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, canonicalization_algorithm),
+							new FunctionParameterSequenceType("digest-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.DIGEST_ALGORITHM),
+							new FunctionParameterSequenceType("signature-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.SIGNATURE_ALGORITHM),
+							new FunctionParameterSequenceType("signature-namespace-prefix", Type.STRING,
+									Cardinality.EXACTLY_ONE, "The default namespace prefix for signature."),
+							new FunctionParameterSequenceType("signature-type", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.SIGNATURE_TYPE),
+							new FunctionParameterSequenceType("digital-certificate", Type.ANY_TYPE,
+									Cardinality.ONE,
+									ExpathCryptoModule.digitalCertificateDetailsDescription) },
+					new FunctionReturnSequenceType(Type.NODE, Cardinality.EXACTLY_ONE,
+							"the signed document (or signature) as node().")),
 			new FunctionSignature(
 					new QName("generate-signature", NAMESPACE_URI, PREFIX),
 					"Generate an XML digital signature based on generated key pair. This signature is for node(s) selected using an XPath expression",
 					new SequenceType[] {
-							new FunctionParameterSequenceType("data", Type.NODE, Cardinality.EXACTLY_ONE, "The document to be signed."),
-							new FunctionParameterSequenceType("canonicalization-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									canonicalization_algorithm),
-							new FunctionParameterSequenceType("digest-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.DIGEST_ALGORITHM),
-							new FunctionParameterSequenceType("signature-algorithm", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.SIGNATURE_ALGORITHM),
-							new FunctionParameterSequenceType("signature-namespace-prefix", Type.STRING, Cardinality.EXACTLY_ONE,
-									"The default namespace prefix for signature."),
-							new FunctionParameterSequenceType("signature-type", Type.STRING, Cardinality.EXACTLY_ONE,
-									ExpathCryptoModule.SIGNATURE_TYPE),
-							new FunctionParameterSequenceType("xpath-expression", Type.ANY_TYPE, Cardinality.EXACTLY_ONE,
+							new FunctionParameterSequenceType("data", Type.NODE, Cardinality.EXACTLY_ONE,
+									"The document to be signed."),
+							new FunctionParameterSequenceType("canonicalization-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, canonicalization_algorithm),
+							new FunctionParameterSequenceType("digest-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.DIGEST_ALGORITHM),
+							new FunctionParameterSequenceType("signature-algorithm", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.SIGNATURE_ALGORITHM),
+							new FunctionParameterSequenceType("signature-namespace-prefix", Type.STRING,
+									Cardinality.EXACTLY_ONE, "The default namespace prefix for signature."),
+							new FunctionParameterSequenceType("signature-type", Type.STRING,
+									Cardinality.EXACTLY_ONE, ExpathCryptoModule.SIGNATURE_TYPE),
+							new FunctionParameterSequenceType("xpath-expression", Type.ANY_TYPE,
+									Cardinality.EXACTLY_ONE,
 									"The XPath expression used for selecting the node(s) to be signed."),
-							new FunctionParameterSequenceType("digital-certificate", Type.ANY_TYPE, Cardinality.ONE,
-									ExpathCryptoModule.digitalCertificateDetailsDescription) }, new FunctionReturnSequenceType(Type.NODE,
-							Cardinality.EXACTLY_ONE, "the signed document (or detached signature) as node().")) };
+							new FunctionParameterSequenceType("digital-certificate", Type.ANY_TYPE,
+									Cardinality.ONE,
+									ExpathCryptoModule.digitalCertificateDetailsDescription) },
+					new FunctionReturnSequenceType(Type.NODE, Cardinality.EXACTLY_ONE,
+							"the signed document (or detached signature) as node().")) };
 
 	public GenerateSignatureFunction(XQueryContext context, FunctionSignature signature) {
 		super(context, signature);
@@ -168,7 +184,8 @@ public class GenerateSignatureFunction extends BasicFunction {
 			} else if (args[6].itemAt(0).getType() == 1) {
 				Node certificateDetailsNode = ((NodeValue) args[6].itemAt(0)).getNode();
 				// get the certificate details
-				certificateDetails = getDigitalCertificateDetails(certificateDetails, certificateDetailsNode);
+				certificateDetails = getDigitalCertificateDetails(certificateDetails,
+						certificateDetailsNode);
 				// get the keystore InputStream
 				keyStoreInputStream = getKeyStoreInputStream(keyStoreInputStream, certificateDetails[4]);
 			}
@@ -185,8 +202,9 @@ public class GenerateSignatureFunction extends BasicFunction {
 		}
 
 		try {
-			signatureString = GenerateXmlSignature.generate(inputDOMDoc, canonicalizationAlgorithm, digestAlgorithm, signatureAlgorithm,
-					signatureNamespacePrefix, signatureType, xpathExprString, certificateDetails, keyStoreInputStream);
+			signatureString = GenerateXmlSignature.generate(inputDOMDoc, canonicalizationAlgorithm,
+					digestAlgorithm, signatureAlgorithm, signatureNamespacePrefix, signatureType,
+					xpathExprString, certificateDetails, keyStoreInputStream);
 		} catch (Exception ex) {
 			throw new XPathException(ex.getMessage());
 		}
@@ -223,9 +241,12 @@ public class GenerateSignatureFunction extends BasicFunction {
 		return adapter.getDocument();
 	}
 
-	private String[] getDigitalCertificateDetails(String[] certificateDetails, Node certificateDetailsNode) throws XPathException {
+	private String[] getDigitalCertificateDetails(String[] certificateDetails, Node certificateDetailsNode)
+			throws XPathException {
 		if (!certificateDetailsNode.getNodeName().equals(certificateRootElementName)) {
-			throw new XPathException(ErrorMessages.err_CX05);
+			throw new XPathException(ErrorMessages.error_sigElem);
+			// TODO: here was err:CX05 The root element of argument
+			// $digital-certificate must have the name 'digital-certificate'.
 		}
 		NodeList certificateDetailsNodeList = certificateDetailsNode.getChildNodes();
 		for (int i = 0, il = certificateDetailsNodeList.getLength(); i < il; i++) {
@@ -233,32 +254,38 @@ public class GenerateSignatureFunction extends BasicFunction {
 			if (child.getNodeName().equals(certificateChildElementNames[i])) {
 				certificateDetails[i] = child.getFirstChild().getNodeValue();
 			} else {
-				throw new XPathException(ErrorMessages.err_CX05);
+				throw new XPathException(ErrorMessages.error_sigElem);
+				// TODO: here was err:CX05 The root element of argument
+				// $digital-certificate must have the name
+				// 'digital-certificate'.
 			}
 		}
 		return certificateDetails;
 	}
 
-	private InputStream getKeyStoreInputStream(InputStream keyStoreInputStream, String keystoreURI) throws XPathException {
+	private InputStream getKeyStoreInputStream(InputStream keyStoreInputStream, String keystoreURI)
+			throws XPathException {
 		// get the keystore as InputStream
 		DocumentImpl keyStoreDoc = null;
 		try {
 			try {
-				keyStoreDoc = context.getBroker().getXMLResource(XmldbURI.xmldbUriFor(keystoreURI), Lock.READ_LOCK);
+				keyStoreDoc = context.getBroker().getXMLResource(XmldbURI.xmldbUriFor(keystoreURI),
+						Lock.READ_LOCK);
 				if (keyStoreDoc == null) {
-					throw new XPathException(ErrorMessages.err_CX07);
+					throw new XPathException(ErrorMessages.error_readKeystore);
+					// TODO: here was err:CX07 The keystore is null.
 				}
 				BinaryDocument keyStoreBinaryDoc = (BinaryDocument) keyStoreDoc;
 				try {
 					keyStoreInputStream = context.getBroker().getBinaryResource(keyStoreBinaryDoc);
 				} catch (IOException ex) {
-					throw new XPathException(ErrorMessages.err_CX08);
+					throw new XPathException(ErrorMessages.error_readKeystore);
 				}
 			} catch (PermissionDeniedException ex) {
-				log.info(ErrorMessages.err_CX09);
+				log.info(ErrorMessages.error_deniedKeystore);
 			}
 		} catch (URISyntaxException ex) {
-			log.error(ErrorMessages.err_CX10);
+			log.error(ErrorMessages.error_keystoreUrl);
 		}
 		return keyStoreInputStream;
 	}

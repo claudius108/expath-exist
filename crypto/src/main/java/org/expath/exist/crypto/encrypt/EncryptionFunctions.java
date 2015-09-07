@@ -83,7 +83,7 @@ public class EncryptionFunctions extends BasicFunction {
                 } else if ("asymmetric".equals(args[1].getStringValue())) {
                     
                 } else {
-                    throw new XPathException(ErrorMessages.err_CX18);
+                    throw new XPathException(ErrorMessages.error_encType);
                 }
             } else if("decrypt".equals(functionName)) {
                 if ("symmetric".equals(args[1].getStringValue())) {
@@ -95,7 +95,7 @@ public class EncryptionFunctions extends BasicFunction {
                 } else if ("asymmetric".equals(args[1].getStringValue())) {
 
                 } else {
-                    throw new XPathException(ErrorMessages.err_CX22);
+                    throw new XPathException(ErrorMessages.error_decryptionType);
                 }
             }
 
