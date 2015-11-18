@@ -50,7 +50,7 @@ import ro.kuberam.libs.java.crypto.digest.Hash;
 
 public class HashFunction extends BasicFunction {
 
-	private final static Logger log = Logger.getLogger(HashFunction.class);
+	private final static Logger logger = Logger.getLogger(HashFunction.class);
 
 	public final static FunctionSignature signatures[] = {
 			new FunctionSignature(new QName("hash", ExistExpathCryptoModule.NAMESPACE_URI,
@@ -89,19 +89,13 @@ public class HashFunction extends BasicFunction {
 			format = args[2].getStringValue();
 		}
 
-		if (inputType == Type.STRING || inputType == Type.ELEMENT || inputType == Type.DOCUMENT) {// xs:string
-																									// or
-																									// document()
-																									// or
-																									// element()
+		if (inputType == Type.STRING || inputType == Type.ELEMENT || inputType == Type.DOCUMENT) {
 			try {
 				resultString = Hash.hashString(args[0].getStringValue(), hashAlgorithm, format);
 			} catch (Exception ex) {
 				throw new XPathException(ex.getMessage());
 			}
-		} else if (inputType == Type.BASE64_BINARY || inputType == Type.HEX_BINARY) {// xs:base64Binary
-																						// or
-																						// xs:hexBinary
+		} else if (inputType == Type.BASE64_BINARY || inputType == Type.HEX_BINARY) {
 			try {
 				byte[] binary = (byte[]) ((BinaryValue) args[0].itemAt(0)).toJavaObject(byte[].class);
 				BinaryValue data = BinaryValueFromInputStream.getInstance(context,
