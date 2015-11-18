@@ -20,6 +20,7 @@
 		<java-package-name>crypto</java-package-name>
 		<java-package-main-class-name>ExistExpathCryptoModule</java-package-main-class-name>
 		<module-prefix>${java-package-name}</module-prefix>
+		<java-version>1.8</java-version>
 	</properties>
 
 	<dependencies>
