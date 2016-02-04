@@ -1,7 +1,0 @@
-<digital-certificate>
-  <keystore-type>JKS</keystore-type>
-  <keystore-password>ab987c</keystore-password>
-  <key-alias>eXist</key-alias>
-  <private-key-password>kpi135</private-key-password>
-  <keystore-uri>/wb=e/tests/expath-crypto/resources/keystore</keystore-uri>
-</digital-certificate>
