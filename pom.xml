@@ -3,25 +3,24 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>ro.kuberam.maven</groupId>
-		<artifactId>base</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
+	<!-- <parent> -->
+	<!-- <groupId>ro.kuberam.maven</groupId> -->
+	<!-- <artifactId>base</artifactId> -->
+	<!-- <version>0.0.1-SNAPSHOT</version> -->
+	<!-- </parent> -->
 
 	<groupId>org.expath.exist</groupId>
 	<artifactId>base</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>pom</packaging>
 	<name>eXist wrappers for EXPath modules</name>
 	<url>http://expath.org</url>
 
-	<repositories>
-		<repository>
-			<id>eXistDB</id>
-			<url>https://raw.github.com/eXist-db/mvn-repo/master/</url>
-		</repository>
-	</repositories>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java-version>1.8</java-version>
+		<java-dependencies-list-url>${project.build.directory}/dependency-list.txt</java-dependencies-list-url>
+	</properties>
 
 	<dependencies>
 		<dependency>
@@ -31,9 +30,9 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.exist-db</groupId>
+			<groupId>org.exist-db.thirdparty.org.xmldb</groupId>
 			<artifactId>xmldb-api</artifactId>
-			<version>1.0</version>
+			<version>1.0-patched</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -53,128 +52,139 @@
 			<artifactId>exist-core</artifactId>
 			<version>3.0.RC1</version>
 		</dependency>
-		<dependency>
-			<groupId>com.trifork</groupId>
-			<artifactId>clj_ds</artifactId>
-			<version>0.0.1</version>
-			<scope>provided</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.trifork</groupId> -->
+<!-- 			<artifactId>clj_ds</artifactId> -->
+<!-- 			<version>0.0.1</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
 	</dependencies>
-
-	<properties>
-		<java-dependencies-list-url>${project.build.directory}/dependency-list.txt</java-dependencies-list-url>
-	</properties>
 
 	<build>
 		<pluginManagement>
 			<plugins>
-				<!-- <plugin> -->
-				<!-- <groupId>org.codehaus.mojo</groupId> -->
-				<!-- <artifactId>sql-maven-plugin</artifactId> -->
-				<!-- <version>1.5</version> -->
-				<!-- <dependencies> -->
-				<!-- <dependency> -->
-				<!-- <groupId>mysql</groupId> -->
-				<!-- <artifactId>mysql-connector-java</artifactId> -->
-				<!-- <version>5.1.22</version> -->
-				<!-- </dependency> -->
-				<!-- </dependencies> -->
-				<!-- common configuration shared by all executions -->
-				<!-- <configuration> -->
-				<!-- <driver>com.mysql.jdbc.Driver</driver> -->
-				<!-- <url>jdbc:mysql://127.0.0.1:3306/redmine</url> -->
-				<!-- <username>root</username> -->
-				<!-- <password></password> -->
-				<!-- </configuration> -->
-				<!-- <executions> -->
-				<!-- <execution> -->
-				<!-- <id>get-changelog</id> -->
-				<!-- <phase>prepare-package</phase> -->
-				<!-- <goals> -->
-				<!-- <goal>execute</goal> -->
-				<!-- </goals> -->
-				<!-- <configuration> -->
-				<!-- <url>jdbc:mysql://127.0.0.1:3306/redmine</url> -->
-				<!-- <autocommit>true</autocommit> -->
-				<!-- <sqlCommand>select * from wiki_pages where wiki_id = (select id 
-					from projects where identifier = 'expath-crypto-exist-lib');</sqlCommand> -->
-				<!-- <sqlCommand>select * from redmine.projects;</sqlCommand> -->
-				<!-- <outputFile>${project.build.directory}/package-files/changelog.txt</outputFile> -->
-				<!-- </configuration> -->
-				<!-- </execution> -->
-				<!-- </executions> -->
-				<!-- </plugin> -->
-
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-antrun-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>compile-and-deploy-jars-for-testing</id>
-							<phase>pre-integration-test</phase>
-							<goals>
-								<goal>run</goal>
-							</goals>
-							<configuration>
-								<target>
-									<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-									<copy
-										file="${project.build.directory}/${project.build.finalName}.jar"
-										tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar"
-										overwrite="true" />
-
-									<echo>Deploying files to eXist local folder...</echo>
-									<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
-										<property name="package-name" value="${project.artifactId}" />
-										<property name="package-version" value="${project.version}" />
-										<property name="source-folder"
-											value="${project.build.directory}/package-files/${project.artifactId}/" />
-									</ant>
-
-									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
-								</target>
-							</configuration>
-						</execution>
-						<execution>
-							<id>deploy-files</id>
-							<phase>install</phase>
-							<goals>
-								<goal>run</goal>
-							</goals>
-							<configuration>
-								<target>
-									<echo>Deploying XQuery unit tests and resources to eXist local
-										instance...</echo>
-									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
-									<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
-										<property name="source-folder"
-											value="${project.build.directory}/package-files/tests" />
-										<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" />
-									</ant>
-								</target>
-							</configuration>
-						</execution>
-					</executions>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<source>${java-version}</source>
+						<target>${java-version}</target>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<configuration>
-						<archive>
-							<manifest>
-								<mainClass>org.expath.exist.${java-package-name}.${java-package-main-class-name}</mainClass>
-								<packageName>org.expath.exist.${java-package-name}</packageName>
-							</manifest>
-							<manifestEntries>
-								<ModuleNamespace>http://expath.org/ns/${project.artifactId}</ModuleNamespace>
-							</manifestEntries>
-						</archive>
-						<encoding>UTF-8</encoding>
-						<finalName>expath-${module-prefix}-exist-lib</finalName>
-					</configuration>
+					<version>2.6</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<!-- <plugin> -->
+			<!-- <groupId>org.codehaus.mojo</groupId> -->
+			<!-- <artifactId>sql-maven-plugin</artifactId> -->
+			<!-- <version>1.5</version> -->
+			<!-- <dependencies> -->
+			<!-- <dependency> -->
+			<!-- <groupId>mysql</groupId> -->
+			<!-- <artifactId>mysql-connector-java</artifactId> -->
+			<!-- <version>5.1.22</version> -->
+			<!-- </dependency> -->
+			<!-- </dependencies> -->
+			<!-- common configuration shared by all executions -->
+			<!-- <configuration> -->
+			<!-- <driver>com.mysql.jdbc.Driver</driver> -->
+			<!-- <url>jdbc:mysql://127.0.0.1:3306/redmine</url> -->
+			<!-- <username>root</username> -->
+			<!-- <password></password> -->
+			<!-- </configuration> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>get-changelog</id> -->
+			<!-- <phase>prepare-package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>execute</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <url>jdbc:mysql://127.0.0.1:3306/redmine</url> -->
+			<!-- <autocommit>true</autocommit> -->
+			<!-- <sqlCommand>select * from wiki_pages where wiki_id = (select id from 
+				projects where identifier = 'expath-crypto-exist-lib');</sqlCommand> -->
+			<!-- <sqlCommand>select * from redmine.projects;</sqlCommand> -->
+			<!-- <outputFile>${project.build.directory}/package-files/changelog.txt</outputFile> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>compile-and-deploy-jars-for-testing</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
+								<copy
+									file="${project.build.directory}/${project.build.finalName}.jar"
+									tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar"
+									overwrite="true" />
+
+								<echo>Deploying files to eXist local folder...</echo>
+								<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
+									<property name="package-name" value="${project.artifactId}" />
+									<property name="package-version" value="${project.version}" />
+									<property name="source-folder"
+										value="${project.build.directory}/package-files/${project.artifactId}/" />
+								</ant>
+
+								<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>deploy-files</id>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo>Deploying XQuery unit tests and resources to eXist local
+									instance...</echo>
+								<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
+								<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
+									<property name="source-folder"
+										value="${project.build.directory}/package-files/tests" />
+									<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" />
+								</ant>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.expath.exist.${java-package-name}.${java-package-main-class-name}</mainClass>
+							<packageName>org.expath.exist.${java-package-name}</packageName>
+						</manifest>
+						<manifestEntries>
+							<ModuleNamespace>http://expath.org/ns/${project.artifactId}</ModuleNamespace>
+						</manifestEntries>
+					</archive>
+					<encoding>UTF-8</encoding>
+					<finalName>expath-${module-prefix}-exist-lib</finalName>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 
 </project>
