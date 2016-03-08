@@ -22,6 +22,13 @@
 		<java-dependencies-list-url>${project.build.directory}/dependency-list.txt</java-dependencies-list-url>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>exist</id>
+			<url>https://raw.github.com/eXist-db/mvn-repo/master/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>commons-pool</groupId>
