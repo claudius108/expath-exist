@@ -86,7 +86,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.6</version>
+					<version>3.0.2</version>
 				</plugin>
 				<plugin>
 					<groupId>ro.kuberam.maven.plugins</groupId>
@@ -102,6 +102,53 @@
 							<configuration>
 								<descriptor>assembly.xml</descriptor>
 								<finalName>${package-final-name}</finalName>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>compile-and-deploy-jars-for-testing</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
+									<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
+									<copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar"
+										overwrite="true" />
+
+									<echo>Deploying files to eXist local folder...</echo>
+									<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
+										<property name="package-name" value="${project.artifactId}" />
+										<property name="package-version" value="${project.version}" />
+										<property name="source-folder" value="${project.build.directory}/package-files/${project.artifactId}/" />
+									</ant>
+
+									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
+								</target>
+							</configuration>
+						</execution>
+						<execution>
+							<id>deploy-files</id>
+							<phase>install</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
+									<echo>Deploying XQuery unit tests and resources to eXist local
+										instance...</echo>
+									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
+									<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
+										<property name="source-folder" value="${project.build.directory}/package-files/tests" />
+										<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" />
+									</ant>
+								</target>
 							</configuration>
 						</execution>
 					</executions>
@@ -137,66 +184,13 @@
 			<!-- <configuration> -->
 			<!-- <url>jdbc:mysql://127.0.0.1:3306/redmine</url> -->
 			<!-- <autocommit>true</autocommit> -->
-			<!-- <sqlCommand>select * from wiki_pages where wiki_id = (select id from 
-				projects where identifier = 'expath-crypto-exist-lib');</sqlCommand> -->
+			<!-- <sqlCommand>select * from wiki_pages where wiki_id = (select id from projects where identifier = 'expath-crypto-exist-lib');</sqlCommand> -->
 			<!-- <sqlCommand>select * from redmine.projects;</sqlCommand> -->
 			<!-- <outputFile>${project.build.directory}/package-files/changelog.txt</outputFile> -->
 			<!-- </configuration> -->
 			<!-- </execution> -->
 			<!-- </executions> -->
 			<!-- </plugin> -->
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>compile-and-deploy-jars-for-testing</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<echo>Copy ${project.artifactId}-${project.version}.jar...</echo>
-								<copy
-									file="${project.build.directory}/${project.build.finalName}.jar"
-									tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar"
-									overwrite="true" />
-
-								<echo>Deploying files to eXist local folder...</echo>
-								<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server">
-									<property name="package-name" value="${project.artifactId}" />
-									<property name="package-version" value="${project.version}" />
-									<property name="source-folder"
-										value="${project.build.directory}/package-files/${project.artifactId}/" />
-								</ant>
-
-								<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
-							</target>
-						</configuration>
-					</execution>
-					<execution>
-						<id>deploy-files</id>
-						<phase>install</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<echo>Deploying XQuery unit tests and resources to eXist local
-									instance...</echo>
-								<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" />
-								<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db">
-									<property name="source-folder"
-										value="${project.build.directory}/package-files/tests" />
-									<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" />
-								</ant>
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
