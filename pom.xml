@@ -3,27 +3,26 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>9</version>
-		<relativePath />
-	</parent>
-
 	<groupId>org.expath.exist</groupId>
 	<artifactId>base</artifactId>
-	<version>1.4.0</version>
+	<version>1.5.0</version>
 	<packaging>pom</packaging>
-
 	<name>eXist wrappers for EXPath modules</name>
 	<description>eXist wrappers for EXPath modules</description>
 	<url>http://expath.org</url>
 	<inceptionYear>2012</inceptionYear>
-
 	<organization>
 		<name>Kuberam</name>
 		<url>http://kuberam.ro</url>
 	</organization>
+
+	<developers>
+		<developer>
+			<id>claudius</id>
+			<name>Claudius Teodorescu</name>
+			<email>claudius.teodorescu@gmail.com</email>
+		</developer>
+	</developers>
 
 	<licenses>
 		<license>
@@ -45,8 +44,6 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.source>1.8</project.build.source>
-		<project.build.target>1.8</project.build.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<exist.version>4.2.0</exist.version>
@@ -132,11 +129,6 @@
 					<version>3.0.2</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.7.0</version>
-				</plugin>
-				<plugin>
 					<groupId>ro.kuberam.maven.plugins</groupId>
 					<artifactId>kuberam-expath-plugin</artifactId>
 					<version>0.5.8</version>
@@ -211,73 +203,68 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
 					<version>1.6</version>
-					<configuration>
-						<useAgent>true</useAgent>
-					</configuration>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5.3</version>
-					<configuration>
-						<mavenExecutorId>forked-path</mavenExecutorId> <!-- avoid a bug with GPG plugin hanging http://jira.codehaus.org/browse/MGPG-9 -->
-						<autoVersionSubmodules>true</autoVersionSubmodules>
-						<tagNameFormat>@{project.version}</tagNameFormat>
-					</configuration>
-				</plugin>
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 					<artifactId>maven-antrun-plugin</artifactId> -->
-<!-- 					<version>1.8</version> -->
-<!-- 					<executions> -->
-<!-- 						<execution> -->
-<!-- 							<id>compile-and-deploy-jars-for-testing</id> -->
-<!-- 							<phase>pre-integration-test</phase> -->
-<!-- 							<goals> -->
-<!-- 								<goal>run</goal> -->
-<!-- 							</goals> -->
-<!-- 							<configuration> -->
-<!-- 								<target> -->
-<!-- 									<echo>Copy ${project.artifactId}-${project.version}.jar...</echo> -->
-<!-- 									<copy file="${project.build.directory}/${project.build.finalName}.jar" -->
-<!-- 										tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" -->
-<!-- 										overwrite="true" /> -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.apache.maven.plugins</groupId> -->
+				<!-- <artifactId>maven-antrun-plugin</artifactId> -->
+				<!-- <version>1.8</version> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>compile-and-deploy-jars-for-testing</id> -->
+				<!-- <phase>pre-integration-test</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>run</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <target> -->
+				<!-- <echo>Copy ${project.artifactId}-${project.version}.jar...</echo> -->
+				<!-- <copy file="${project.build.directory}/${project.build.finalName}.jar" -->
+				<!-- tofile="${project.build.directory}/package-files/${project.artifactId}/${project.artifactId}.jar" -->
+				<!-- overwrite="true" /> -->
 
-<!-- 									<echo>Deploying files to eXist local folder...</echo> -->
-<!-- 									<ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server"> -->
-<!-- 										<property name="package-name" value="${project.artifactId}" /> -->
-<!-- 										<property name="package-version" value="${project.version}" /> -->
-<!-- 										<property name="source-folder" -->
-<!-- 											value="${project.build.directory}/package-files/${project.artifactId}/" /> -->
-<!-- 									</ant> -->
+				<!-- <echo>Deploying files to eXist local folder...</echo> -->
+				<!-- <ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server"> -->
+				<!-- <property name="package-name" value="${project.artifactId}" /> -->
+				<!-- <property name="package-version" value="${project.version}" /> -->
+				<!-- <property name="source-folder" -->
+				<!-- value="${project.build.directory}/package-files/${project.artifactId}/" /> -->
+				<!-- </ant> -->
 
-<!-- 									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" /> -->
-<!-- 								</target> -->
-<!-- 							</configuration> -->
-<!-- 						</execution> -->
-<!-- 						<execution> -->
-<!-- 							<id>deploy-files</id> -->
-<!-- 							<phase>install</phase> -->
-<!-- 							<goals> -->
-<!-- 								<goal>run</goal> -->
-<!-- 							</goals> -->
-<!-- 							<configuration> -->
-<!-- 								<target> -->
-<!-- 									<echo>Deploying XQuery unit tests and resources to eXist local -->
-<!-- 										instance...</echo> -->
-<!-- 									<ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" /> -->
-<!-- 									<ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db"> -->
-<!-- 										<property name="source-folder" value="${project.build.directory}/package-files/tests" /> -->
-<!-- 										<property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" /> -->
-<!-- 									</ant> -->
-<!-- 								</target> -->
-<!-- 							</configuration> -->
-<!-- 						</execution> -->
-<!-- 					</executions> -->
-<!-- 				</plugin> -->
+				<!-- <ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" /> -->
+				<!-- </target> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- <execution> -->
+				<!-- <id>deploy-files</id> -->
+				<!-- <phase>install</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>run</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <target> -->
+				<!-- <echo>Deploying XQuery unit tests and resources to eXist local -->
+				<!-- instance...</echo> -->
+				<!-- <ant antfile="${local-eXist-management-build-file}" target="restart-exist-local-server" /> -->
+				<!-- <ant antfile="${local-eXist-management-build-file}" target="add-collection-to-db"> -->
+				<!-- <property name="source-folder" value="${project.build.directory}/package-files/tests" /> -->
+				<!-- <property name="target-collection" value="/apps/expath-${expath-spec-id}/tests" /> -->
+				<!-- </ant> -->
+				<!-- </target> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- </plugin> -->
 			</plugins>
 		</pluginManagement>
-
 		<plugins>
 			<plugin>
 				<groupId>com.mycila</groupId>
