@@ -107,11 +107,6 @@
 					<version>1.6.8</version>
 				</plugin>
 				<plugin>
-					<groupId>com.mycila</groupId>
-					<artifactId>license-maven-plugin</artifactId>
-					<version>3.0</version>
-				</plugin>
-				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>3.1.0</version>
@@ -264,38 +259,6 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<plugin>
-				<groupId>com.mycila</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<configuration>
-					<header>LGPL2.1-template.txt</header>
-					<failIfMissing>true</failIfMissing>
-					<aggregate>true</aggregate>
-					<strictCheck>true</strictCheck>
-					<properties>
-						<owner>${project.organization.name}</owner>
-						<organization>${project.organization.name}</organization>
-						<email>exit-open@lists.sourceforge.net</email>
-						<url>${project.organization.url}</url>
-					</properties>
-					<headerDefinitions>
-						<headerDefinition>xquery-license-style.xml</headerDefinition>
-					</headerDefinitions>
-					<mapping>
-						<xq>xquery_style</xq>
-						<xqm>xquery_style</xqm>
-						<xql>xquery_style</xql>
-						<xqy>xquery_style</xqy>
-					</mapping>
-					<excludes>
-						<exclude>pom.xml</exclude>
-						<exclude>README.md</exclude>
-						<exclude>LICENSE</exclude>
-						<exclude>xquery-license-style.xml</exclude>
-						<exclude>xar-assembly.xml</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>com.code54.mojo</groupId>
 				<artifactId>buildversion-plugin</artifactId>
