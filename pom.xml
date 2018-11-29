@@ -43,7 +43,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<exist.version>4.4.0</exist.version>
-		<mavenVersion>3.6.0</mavenVersion>
+		<maven.version>3.6.0</maven.version>
 	</properties>
 
 	<dependencyManagement>
@@ -284,7 +284,6 @@
 				<artifactId>buildversion-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>validate</phase>
 						<goals>
 							<goal>set-properties</goal>
 						</goals>
