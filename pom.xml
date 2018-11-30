@@ -131,6 +131,14 @@
 					<groupId>com.code54.mojo</groupId>
 					<artifactId>buildversion-plugin</artifactId>
 					<version>1.0.3</version>
+					<executions>
+						<execution>
+							<phase>verify</phase>
+							<goals>
+								<goal>set-properties</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -282,13 +290,6 @@
 			<plugin>
 				<groupId>com.code54.mojo</groupId>
 				<artifactId>buildversion-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>set-properties</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
