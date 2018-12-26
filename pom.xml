@@ -149,6 +149,19 @@
 					<groupId>ro.kuberam.maven.plugins</groupId>
 					<artifactId>kuberam-expath-plugin</artifactId>
 					<version>0.5.9</version>
+					<executions>
+						<execution>
+							<id>create-xar</id>
+							<phase>package</phase>
+							<goals>
+								<goal>make-xar</goal>
+							</goals>
+							<configuration>
+								<descriptor>build/xar-assembly.xml</descriptor>
+								<finalName>${package-final-name}</finalName>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<!-- Attach source jars -->
