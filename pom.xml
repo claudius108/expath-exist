@@ -5,7 +5,7 @@
 
 	<groupId>ro.kuberam.expath.exist</groupId>
 	<artifactId>base</artifactId>
-	<version>1.5.3</version>
+	<version>1.5.4</version>
 	<packaging>pom</packaging>
 	<name>eXist wrappers for EXPath modules</name>
 	<description>eXist wrappers for EXPath modules</description>
@@ -44,6 +44,8 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<exist.version>4.4.0</exist.version>
 		<maven.version>3.6.0</maven.version>
+		<package.name>http://expath.org/ns/${project.artifactId}</package.name>
+		<package.abbrev>expath-${project.artifactId}-exist-lib</package.abbrev>		
 	</properties>
 
 	<dependencyManagement>
@@ -158,7 +160,7 @@
 							</goals>
 							<configuration>
 								<descriptor>build/xar-assembly.xml</descriptor>
-								<finalName>${package-final-name}</finalName>
+								<finalName>expath-${project.artifactId}-exist-lib-${project.version}</finalName>
 							</configuration>
 						</execution>
 					</executions>
@@ -263,8 +265,8 @@
 
 				<!-- <echo>Deploying files to eXist local folder...</echo> -->
 				<!-- <ant antfile="${local-eXist-management-build-file}" target="deploy-module-jars-to-local-eXist-server"> -->
-				<!-- <property name="package-name" value="${project.artifactId}" /> -->
-				<!-- <property name="package-version" value="${project.version}" /> -->
+				<!-- <property name="package.name" value="${project.artifactId}" /> -->
+				<!-- <property name="package.version" value="${project.version}" /> -->
 				<!-- <property name="source-folder" -->
 				<!-- value="${project.build.directory}/package-files/${project.artifactId}/" /> -->
 				<!-- </ant> -->
