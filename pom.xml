@@ -5,7 +5,7 @@
 
 	<groupId>ro.kuberam.expath.exist</groupId>
 	<artifactId>base</artifactId>
-	<version>1.5.4</version>
+	<version>1.5.5</version>
 	<packaging>pom</packaging>
 	<name>eXist wrappers for EXPath modules</name>
 	<description>eXist wrappers for EXPath modules</description>
@@ -42,7 +42,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<exist.version>4.4.0</exist.version>
+		<exist.version>4.6.1</exist.version>
 		<maven.version>3.6.0</maven.version>
 		<package.name>http://expath.org/ns/${project.artifactId}</package.name>
 		<package.abbrev>expath-${project.artifactId}-exist-lib</package.abbrev>		
@@ -150,7 +150,7 @@
 				<plugin>
 					<groupId>ro.kuberam.maven.plugins</groupId>
 					<artifactId>kuberam-expath-plugin</artifactId>
-					<version>0.5.9</version>
+					<version>0.6.0</version>
 					<executions>
 						<execution>
 							<id>create-xar</id>
