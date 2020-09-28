@@ -80,12 +80,6 @@
                 <artifactId>log4j-api</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
-			<dependency>
-				<groupId>org.exist-db</groupId>
-				<artifactId>exist-testkit</artifactId>
-				<version>${exist.version}</version>
-				<scope>test</scope>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
