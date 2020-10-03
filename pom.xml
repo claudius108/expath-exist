@@ -42,8 +42,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<exist.version>5.2.0</exist.version>
-		<log4j.version>2.13.0</log4j.version>		
+		<exist.version>5.3.0</exist.version>
+		<log4j.version>2.13.3</log4j.version>		
 		<maven.version>3.6.0</maven.version>
 		<package.name>http://expath.org/ns/${project.artifactId}</package.name>
 		<package.abbrev>expath-${project.artifactId}-exist-lib</package.abbrev>
@@ -65,7 +65,7 @@
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
-				<version>2.6</version>
+				<version>2.8.0</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
