@@ -42,7 +42,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<exist.version>5.3.0</exist.version>
+		<exist.version>5.3.0-SNAPSHOT</exist.version>
 		<log4j.version>2.13.3</log4j.version>		
 		<maven.version>3.6.0</maven.version>
 		<package.name>http://expath.org/ns/${project.artifactId}</package.name>
@@ -85,7 +85,8 @@
 	<repositories>
 		<repository>
 			<id>exist-db</id>
-			<url>http://repo.evolvedbinary.com/content/repositories/exist-db/</url>
+			<!-- url>http://repo.evolvedbinary.com/content/repositories/exist-db/</url -->
+			<url>file://home/exsol/.m2/repository/org/exist-db/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
