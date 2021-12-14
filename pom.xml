@@ -46,7 +46,7 @@
 		<maven.version>3.6.0</maven.version>
 		<package.name>http://expath.org/ns/${project.artifactId}</package.name>
 		<package.abbrev>expath-${project.artifactId}-exist-lib</package.abbrev>
-		<log4j.version>2.12.1</log4j.version>
+		<log4j.version>2.16.0</log4j.version>
 	</properties>
 
 	<dependencyManagement>
